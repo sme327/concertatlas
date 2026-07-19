@@ -52,80 +52,82 @@ def inject_css() -> None:
       .rank-row .n { color:var(--amber); font-weight:700; font-variant-numeric:tabular-nums; }
 
       /* ------------------------------------------------------------------ */
-      /* Ticket system — printed paper artifacts, not UI cards. One         */
-      /* renderer, three variants: upcoming_full, past_torn, journey_compact*/
-      /* Square corners, fibrous grain, true perforation, stamped status.   */
-      /* Decorative fields derive only from real data (archive № = event).  */
-      /* Year is the dominant date element: the journey is about time.      */
+      /* Ticket system — Grandstand Stub direction (approved design III).   */
+      /* Aged manila stock, foxing, faint sunburst, navy + faded-red inks,  */
+      /* wood-type capitals, KEEP THIS COUPON stub, ADMIT ONE tape edge.    */
+      /* One renderer, three variants: upcoming_full, past_torn,            */
+      /* journey_compact. Decorative fields derive only from real data      */
+      /* (archive № = event id). Year stays the dominant date element.      */
       /* ------------------------------------------------------------------ */
-      .ticket { display:flex; align-items:stretch; margin:.6rem 0; max-width:700px;
+      .ticket { display:flex; align-items:stretch; margin:.65rem 0; max-width:640px;
+                color:#23304d; position:relative; border-radius:1px;
+                font-family:'Avenir Next Condensed','Futura-CondensedMedium','Arial Narrow','Helvetica Neue',sans-serif;
                 background:
-                  repeating-linear-gradient(90deg, rgba(74,58,30,.028) 0 1px, transparent 1px 4px),
-                  radial-gradient(ellipse 120% 90% at 78% 8%, rgba(140,112,62,.12), transparent 60%),
-                  radial-gradient(ellipse 100% 120% at 0% 100%, rgba(120,95,50,.08), transparent 55%),
-                  linear-gradient(168deg, #f1e7d3 0%, #ecdfc6 60%, #e5d6b8 100%);
-                color:#1c1710; border-radius:1px; overflow:visible;
-                border:1px solid rgba(58,45,22,.5);
-                filter:drop-shadow(0 1px 2px rgba(0,0,0,.35)); position:relative; }
-      /* faint handling crease */
-      .ticket::after { content:""; position:absolute; top:0; bottom:0; left:62%; width:1px;
-                background:linear-gradient(180deg, transparent, rgba(74,58,30,.09) 40%, transparent);
-                pointer-events:none; }
-      .tk-date { flex:0 0 4.6rem; text-align:center; padding:.5rem .3rem;
-                 display:flex; flex-direction:column; justify-content:center; }
-      .tk-date .d-year { font-size:1.45rem; font-weight:850; line-height:1; letter-spacing:.02em;
-                         font-variant-numeric:tabular-nums; }
-      .tk-date .d-rule { width:70%; margin:.26rem auto; border-top:1px solid rgba(58,45,22,.4); }
-      .tk-date .d-md { font-size:.68rem; letter-spacing:.18em; font-weight:800; color:#5d5138; }
-      .tk-body { flex:1 1 auto; padding:.5rem .85rem .45rem; min-width:0; position:relative; }
-      .tk-head { font-size:.52rem; letter-spacing:.26em; text-transform:uppercase; color:#9a8c6a; font-weight:700; }
-      .tk-title { font-weight:850; font-size:1.02rem; line-height:1.15; text-transform:uppercase;
-                  letter-spacing:.01em; margin-top:.05rem; }
-      .tk-venue { font-size:.82rem; font-weight:750; color:#33291a; margin-top:.14rem; }
-      .tk-city { font-size:.74rem; color:#5d5138; }
-      .tk-also { font-size:.68rem; color:#6b5f45; margin-top:.22rem; border-top:1px solid rgba(58,45,22,.25);
-                 padding-top:.2rem; letter-spacing:.03em; }
-      .tk-also b { font-weight:800; letter-spacing:.1em; color:#8a7c5c; }
-      .tk-meta { font-size:.64rem; color:#8a7c5c; margin-top:.2rem; font-weight:800; letter-spacing:.1em; }
-      /* stamped, slightly uneven status mark */
-      .tk-status { position:absolute; top:.35rem; right:.5rem; color:rgba(163,74,55,.62);
-                   border:1.5px solid rgba(163,74,55,.5); border-radius:1px; padding:.05rem .3rem;
-                   font-size:.52rem; font-weight:850; letter-spacing:.2em; transform:rotate(-4deg);
-                   mask-image:radial-gradient(ellipse 100% 100% at 50% 50%, black 92%, transparent 100%); }
-      /* True perforation: punched-dot column with semicircle edge notches. */
-      .tk-perf { flex:0 0 6px; position:relative;
-                 background-image:radial-gradient(circle, rgba(28,23,16,.5) 1.4px, transparent 1.6px);
+                  radial-gradient(circle 2px at 12% 30%, rgba(140,100,50,.18) 40%, transparent 60%),
+                  radial-gradient(circle 1.6px at 78% 68%, rgba(140,100,50,.16) 40%, transparent 60%),
+                  radial-gradient(circle 2.4px at 55% 12%, rgba(140,100,50,.12) 40%, transparent 60%),
+                  repeating-conic-gradient(from 0deg at 50% 46%, rgba(163,56,40,.04) 0 5deg, transparent 5deg 10deg),
+                  linear-gradient(160deg,#ead9ab,#dcc88e);
+                border:2px solid #23304d;
+                box-shadow:inset 0 0 0 3px #ead9ab, inset 0 0 0 5px rgba(35,48,77,.7),
+                  0 2px 6px rgba(0,0,0,.4); }
+      .tk-stub { flex:0 0 4.4rem; border-right:2px dashed rgba(35,48,77,.75); display:flex;
+                 flex-direction:column; align-items:center; justify-content:center; gap:.5rem;
+                 padding:.7rem .3rem; background:rgba(255,250,232,.35); }
+      .tk-keep { writing-mode:vertical-rl; text-orientation:mixed; font-weight:700; font-size:.6rem;
+                 letter-spacing:.26em; }
+      .tk-no { font-family:'American Typewriter','Courier New',serif; font-size:.6rem; color:#5a4a2c;
+               font-variant-numeric:tabular-nums; }
+      .tk-perf { flex:0 0 6px;
+                 background-image:radial-gradient(circle, rgba(35,48,77,.45) 1.4px, transparent 1.6px);
                  background-size:6px 8px; background-repeat:repeat-y; background-position:center; }
-      .tk-perf::before, .tk-perf::after { content:""; position:absolute; left:50%; transform:translateX(-50%);
-                 width:10px; height:10px; border-radius:50%; background:var(--ink); z-index:1; }
-      .tk-perf::before { top:-6px; } .tk-perf::after { bottom:-6px; }
-      .tk-stub { flex:0 0 4.6rem; display:flex; flex-direction:column;
-                 align-items:center; justify-content:center; gap:.3rem; padding:.5rem .35rem; text-align:center;
-                 background:rgba(255,255,255,.28); }
-      .tk-admit { font-size:.6rem; letter-spacing:.26em; font-weight:850; writing-mode:vertical-rl;
-                  text-orientation:mixed; color:#5d5138; }
-      .tk-no { font-size:.62rem; letter-spacing:.08em; color:#9a8c6a; font-variant-numeric:tabular-nums; }
-      .tk-stamp { border:2px solid #a34a37; color:#a34a37; border-radius:1px; transform:rotate(-7deg);
-                  padding:.1rem .4rem; font-size:.58rem; font-weight:850; letter-spacing:.18em;
-                  mask-image:radial-gradient(ellipse 100% 100% at 50% 50%, black 90%, transparent 100%); }
+      .tk-body { flex:1 1 auto; text-align:center; padding:.8rem .9rem 1.15rem; min-width:0;
+                 position:relative; }
+      .tk-head { font-weight:700; font-size:.6rem; letter-spacing:.3em; color:#a03828; }
+      .tk-title { font-weight:800; font-size:1.5rem; line-height:.98; text-transform:uppercase;
+                  letter-spacing:.01em; margin-top:.22rem; }
+      .tk-at { font-family:'Snell Roundhand','Brush Script MT',cursive; font-size:1rem;
+               color:#a03828; margin-top:.12rem; }
+      .tk-venue { font-weight:700; font-size:.98rem; text-transform:uppercase; letter-spacing:.1em; }
+      .tk-city { font-family:'American Typewriter','Courier New',serif; font-size:.66rem;
+                 margin-top:.16rem; color:#5a4a2c; }
+      .tk-also { font-family:'American Typewriter','Courier New',serif; font-size:.63rem;
+                 color:#5a4a2c; margin-top:.4rem; }
+      .tk-also b { font-weight:700; letter-spacing:.08em; color:#a03828; }
+      .tk-date { display:flex; justify-content:center; align-items:center; gap:.6rem; margin-top:.5rem; }
+      .tk-date .d-year { font-weight:800; font-size:1.5rem; line-height:1.1; border:2px solid #23304d;
+                 padding:.04rem .45rem; background:rgba(255,250,232,.5);
+                 font-variant-numeric:tabular-nums; }
+      .tk-date .d-md { font-weight:700; font-size:.7rem; letter-spacing:.2em; text-align:left;
+                 line-height:1.3; }
+      .tk-meta { font-weight:700; font-size:.6rem; letter-spacing:.22em; color:#a03828; margin-top:.42rem; }
+      .tk-tape { position:absolute; left:0; right:0; bottom:0; font-weight:700; font-size:.5rem;
+                 letter-spacing:.4em; color:rgba(35,48,77,.5); white-space:nowrap; overflow:hidden;
+                 border-top:1px solid rgba(35,48,77,.35); padding:.14rem 0 .1rem; }
+      .tk-seal { position:absolute; top:.5rem; right:.6rem; width:46px; height:46px; border-radius:50%;
+                 border:2px solid rgba(160,56,40,.6); color:rgba(160,56,40,.8); display:flex;
+                 align-items:center; justify-content:center; font-weight:800; font-size:.5rem;
+                 letter-spacing:.12em; transform:rotate(10deg); text-align:center; line-height:1.2;
+                 background:radial-gradient(circle, rgba(160,56,40,.07), transparent 70%); }
+      .tk-status { position:absolute; top:.5rem; right:.6rem; color:rgba(160,56,40,.65);
+                 border:1.5px solid rgba(160,56,40,.5); border-radius:1px; padding:.08rem .34rem;
+                 font-size:.54rem; font-weight:800; letter-spacing:.2em; transform:rotate(-4deg); }
 
-      /* Past: stub torn away, handled and faded but readable. */
-      .ticket.torn { max-width:640px; opacity:.9; filter:saturate(.8) brightness(.97) sepia(.08)
-                       drop-shadow(0 1px 2px rgba(0,0,0,.3));
-                     clip-path:polygon(0 0, 97.2% 0, 98.6% 6%, 97.4% 13%, 99% 21%, 97.6% 30%, 98.8% 38%,
-                       97.3% 47%, 99% 55%, 97.5% 64%, 98.7% 72%, 97.2% 81%, 98.9% 90%, 97.5% 100%, 0 100%); }
-      .ticket.torn::after { left:58%; }
+      /* Past: coupon torn off the left edge; handled, sepia, still legible. */
+      .ticket.torn { max-width:600px; filter:sepia(.18) saturate(.9) brightness(.96);
+                     clip-path:polygon(2.6% 0,100% 0,100% 100%,3% 100%,1.4% 91%,3.2% 81%,1.2% 70%,
+                       3% 60%,1.5% 49%,3.3% 38%,1.3% 27%,3.1% 16%,1.6% 7%); }
 
-      /* Compact strip ticket for dense chronological lists. */
-      .ticket.compact { max-width:100%; margin:.35rem 0; }
-      .ticket.compact .tk-date { flex-basis:3.9rem; padding:.32rem .25rem; }
-      .ticket.compact .tk-date .d-year { font-size:1.05rem; }
-      .ticket.compact .tk-date .d-rule { margin:.15rem auto; }
-      .ticket.compact .tk-date .d-md { font-size:.6rem; }
-      .ticket.compact .tk-body { padding:.38rem .7rem .34rem; }
-      .ticket.compact .tk-title { font-size:.88rem; }
-      .ticket.compact .tk-venue { font-size:.76rem; margin-top:.08rem; }
-      .ticket.compact .tk-also { margin-top:.14rem; padding-top:.14rem; }
+      /* Compact strip for dense chronological lists and drawers. */
+      .ticket.compact { max-width:100%; margin:.35rem 0; box-shadow:inset 0 0 0 2px #ead9ab,
+                 inset 0 0 0 3px rgba(35,48,77,.6), 0 1px 4px rgba(0,0,0,.35); border-width:1px; }
+      .ticket.compact .tk-body { padding:.5rem .7rem .55rem; }
+      .ticket.compact .tk-title { font-size:1.05rem; }
+      .ticket.compact .tk-at { display:none; }
+      .ticket.compact .tk-venue { font-size:.8rem; margin-top:.08rem; }
+      .ticket.compact .tk-date { margin-top:.3rem; }
+      .ticket.compact .tk-date .d-year { font-size:1.05rem; border-width:1.5px; }
+      .ticket.compact .tk-also { margin-top:.25rem; }
 
       /* Journey timeline strip beneath the standard map. */
       .jt-strip { display:flex; align-items:flex-end; gap:2px; margin:.7rem 0 .2rem; height:52px; }
@@ -211,44 +213,53 @@ def also_listed(event_title, bill: list[str]) -> list[str]:
 
 
 def ticket_html(row, bill: list[str], variant: str = "past_torn", meta: str = "") -> str:
-    """One event as a printed box-office ticket.
+    """One event as a grandstand-style printed ticket (approved direction III).
 
-    Variants: "upcoming_full" (complete unused printed ticket with attached
-    stub), "past_torn" (stub torn away, handled, ARCHIVED stamp),
-    "journey_compact" (slim strip). The year dominates the date block — the
-    journey is about time. Every printed field derives from real event data;
-    the archive number is the event id, presented as decoration. No
-    seat/section/row/price/gate values are ever manufactured. `meta` is an
-    optional data-derived line (e.g. "TIME #12").
+    Variants: "upcoming_full" (complete ticket with attached KEEP THIS COUPON
+    stub and UPCOMING seal), "past_torn" (coupon torn off the left edge,
+    sepia-handled, ARCHIVED stamp), "journey_compact" (slim strip). The boxed
+    year dominates the date block — the journey is about time. Every printed
+    field derives from real event data; the archive number is the event id,
+    presented as decoration. No seat/section/row/price/gate values are ever
+    manufactured. `meta` is an optional data-derived line (e.g. "TIME #12").
     """
     date = row.event_date
     year = f"{date:%Y}" if date is not None else "—"
-    md = f"{date:%b} {date:%d}".upper() if date is not None else "—"
+    md = f"{date:%b}<br>{date:%d}".upper() if date is not None else "—"
     upcoming = bool(getattr(row, "is_upcoming", 0))
+    compact = variant == "journey_compact"
     also = also_listed(row.event_title, bill)
     also_html = (f'<div class="tk-also"><b>ALSO LISTED:</b> '
                  f'{" · ".join(esc(b) for b in also)}</div>') if also else ""
-    status = "" if upcoming else '<span class="tk-status">ARCHIVED</span>'
+    if variant == "upcoming_full":
+        mark = '<span class="tk-seal" role="img" aria-label="UPCOMING">UP<br>COMING</span>'
+    elif upcoming:
+        mark = '<span class="tk-status">UPCOMING</span>'
+    else:
+        mark = '<span class="tk-status">ARCHIVED</span>'
+    tape = ('<div class="tk-tape">' + " · ".join(["ADMIT ONE"] * 8) + '</div>') if not compact else ""
     body = (
-        f'<div class="tk-date"><div class="d-year">{year}</div>'
-        f'<div class="d-rule"></div><div class="d-md">{md}</div></div>'
-        f'<div class="tk-body">{status}<div class="tk-head">My Concert Atlas</div>'
+        f'<div class="tk-body">{mark}'
+        f'<div class="tk-head">MY CONCERT ATLAS PRESENTS</div>'
         f'<div class="tk-title">{esc(row.event_title)}</div>'
+        f'<div class="tk-at">at</div>'
         f'<div class="tk-venue">{esc(row.venue)}</div>'
         f'<div class="tk-city">{esc(place_line(row.city, row.state_region))}</div>'
         + also_html
+        + f'<div class="tk-date"><span class="d-year">{year}</span><span class="d-md">{md}</span></div>'
         + (f'<div class="tk-meta">{esc(meta)}</div>' if meta else "")
+        + tape
         + '</div>'
     )
     archive_no = f"№ {int(row.event_id):06d}"
     if variant == "upcoming_full":
         stub = (
+            f'<div class="tk-stub"><span class="tk-keep">KEEP THIS COUPON</span>'
+            f'<span class="tk-no">{archive_no}</span></div>'
             f'<div class="tk-perf"></div>'
-            f'<div class="tk-stub"><span class="tk-admit">ADMIT ONE</span>'
-            f'<span class="tk-stamp">UPCOMING</span><span class="tk-no">{archive_no}</span></div>'
         )
-        return f'<div class="ticket full">{body}{stub}</div>'
-    if variant == "journey_compact":
+        return f'<div class="ticket full">{stub}{body}</div>'
+    if compact:
         cls = "ticket compact full" if upcoming else "ticket compact torn"
         return f'<div class="{cls}">{body}</div>'
     return f'<div class="ticket torn">{body}</div>'

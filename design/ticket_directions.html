@@ -1,0 +1,610 @@
+<title>The Ticket Is the Artifact — Design Directions</title>
+<style>
+  :root {
+    --ink:#0c1012; --panel:#12181c; --paper:#eee7da; --muted:#a2a8a4; --amber:#e89a3d;
+    --serif:'Iowan Old Style','Baskerville','Palatino',Georgia,serif;
+    --didone:'Didot','Bodoni 72',Georgia,serif;
+    --cond:'Avenir Next Condensed','Futura-CondensedMedium','Arial Narrow','Helvetica Neue',sans-serif;
+    --geo:'Avenir Next','Futura','Helvetica Neue',Helvetica,sans-serif;
+    --mono:'SF Mono','Menlo',Consolas,monospace;
+    --plate:'Copperplate','Copperplate Gothic Light','Avenir Next Condensed',serif;
+    --script:'Snell Roundhand','Brush Script MT',cursive;
+    --typew:'American Typewriter','Courier New',serif;
+  }
+  html { background:var(--ink); }
+  body { background:var(--ink); color:var(--paper); font-family:var(--geo); margin:0;
+         -webkit-font-smoothing:antialiased; }
+  .page { max-width:1060px; margin:0 auto; padding:3.2rem 1.4rem 5rem; }
+  .eyebrow { color:var(--amber); font-size:.72rem; letter-spacing:.24em; text-transform:uppercase;
+             font-weight:700; }
+  h1 { font-family:var(--didone); font-weight:400; font-size:clamp(2.2rem,5vw,3.4rem);
+       line-height:1.05; margin:.4rem 0 1rem; text-wrap:balance; }
+  .lede { color:var(--muted); max-width:58ch; line-height:1.65; font-size:1.02rem; margin:0 0 .4rem; }
+  .lede b { color:var(--paper); font-weight:600; }
+  .real { color:var(--muted); font-size:.8rem; border-left:2px solid var(--amber);
+          padding-left:.8rem; max-width:60ch; line-height:1.55; margin-top:1.4rem; }
+
+  .dir { margin-top:4.6rem; }
+  .dir-head { display:flex; align-items:baseline; gap:1rem; border-top:1px solid #262d31;
+              padding-top:1.6rem; }
+  .dir-no { font-family:var(--didone); color:var(--amber); font-size:1.6rem; }
+  .dir-name { font-family:var(--geo); font-weight:700; font-size:1.5rem; letter-spacing:.01em; }
+  .dir-meta { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin:.9rem 0 1.8rem; }
+  .dir-meta p { margin:.2rem 0 0; color:var(--muted); line-height:1.6; font-size:.92rem; max-width:52ch; }
+  .dir-meta .k { color:var(--amber); font-size:.66rem; letter-spacing:.2em; text-transform:uppercase;
+                 font-weight:700; }
+  @media (max-width:760px){ .dir-meta { grid-template-columns:1fr; } }
+
+  .board { background:var(--panel); border:1px solid #232a2e; border-radius:4px;
+           padding:2.2rem 2rem 2.4rem; display:flex; flex-wrap:wrap; gap:2.4rem 2.6rem;
+           align-items:flex-start; }
+  .slot { display:flex; flex-direction:column; gap:.6rem; }
+  .vlabel { color:var(--muted); font-size:.62rem; letter-spacing:.22em; text-transform:uppercase;
+            font-weight:700; }
+  .tk { transition:transform .35s ease, filter .35s ease; }
+  .tk:hover { transform:translateY(-4px) rotate(-.4deg); filter:drop-shadow(0 14px 22px rgba(0,0,0,.5)); }
+  @media (prefers-reduced-motion: reduce){ .tk, .tk:hover { transition:none; transform:none; } }
+
+  /* ======================= I · LETTERPRESS ARCHIVE ======================= */
+  .lp { width:560px; max-width:100%; display:flex; color:#2a2317;
+        background:
+          repeating-linear-gradient(0deg, rgba(120,100,70,.05) 0 1px, transparent 1px 5px),
+          radial-gradient(ellipse 130% 100% at 20% 0%, rgba(255,252,242,.5), transparent 55%),
+          linear-gradient(165deg,#f0e7d3,#e5d8bc);
+        border:1px solid #b7a37e; box-shadow:inset 0 0 0 3px #efe6d2, inset 0 0 0 4px #8a744f,
+          0 3px 8px rgba(0,0,0,.45); }
+  .lp * { text-shadow:0 1px 0 rgba(255,253,245,.55); }
+  .lp-year { flex:0 0 5.4rem; display:flex; flex-direction:column; align-items:center;
+             justify-content:center; border-right:1px solid #8a744f; padding:1rem .4rem; gap:.4rem; }
+  .lp-year .y { font-family:var(--didone); font-size:2.6rem; line-height:1; letter-spacing:.02em; }
+  .lp-year .md { font-family:var(--plate); font-size:.72rem; letter-spacing:.22em; color:#6d5b3c; }
+  .lp-main { flex:1; padding:1.05rem 1.2rem .95rem; text-align:center; min-width:0; position:relative; }
+  .lp-brand { font-family:var(--plate); font-size:.6rem; letter-spacing:.34em; color:#8a744f; }
+  .lp-rule { border:none; border-top:1px solid #8a744f; margin:.5rem 18%; position:relative; }
+  .lp-rule::after { content:"❦"; position:absolute; top:-.62em; left:50%; transform:translateX(-50%);
+                    background:#ece1c8; padding:0 .5em; color:#8a744f; font-size:.7rem; text-shadow:none; }
+  .lp-artist { font-family:var(--serif); font-variant:small-caps; font-size:1.6rem; letter-spacing:.06em;
+               line-height:1.1; }
+  .lp-venue { font-family:var(--serif); font-style:italic; font-size:.98rem; margin-top:.28rem; }
+  .lp-city { font-family:var(--plate); font-size:.66rem; letter-spacing:.26em; color:#5d4d31;
+             margin-top:.3rem; }
+  .lp-also { font-family:var(--serif); font-style:italic; font-size:.78rem; color:#6d5b3c;
+             margin-top:.5rem; }
+  .lp-meta { font-family:var(--plate); font-size:.6rem; letter-spacing:.22em; color:#8a744f;
+             margin-top:.55rem; }
+  .lp-stamp { position:absolute; top:.55rem; right:.7rem; font-family:var(--plate); font-size:.56rem;
+              letter-spacing:.2em; color:rgba(156,74,51,.75); border:1.5px solid rgba(156,74,51,.55);
+              padding:.14rem .45rem; transform:rotate(6deg); border-radius:2px; text-shadow:none; }
+  .lp-stub { flex:0 0 4.3rem; border-left:1px dashed #8a744f; display:flex; flex-direction:column;
+             align-items:center; justify-content:center; gap:.55rem; padding:.8rem .3rem;
+             background:rgba(255,252,242,.35); }
+  .lp-stub .admit { font-family:var(--plate); writing-mode:vertical-rl; font-size:.6rem;
+                    letter-spacing:.3em; color:#6d5b3c; }
+  .lp-stub .no { font-family:var(--mono); font-size:.6rem; color:#8a744f; }
+  .lp.archived { filter:sepia(.22) saturate(.85) brightness(.965); }
+  .lp.archived .lp-stub { display:none; }
+  .lp.archived { clip-path:polygon(0 0,96.8% 0,98.4% 7%,96.9% 15%,98.8% 24%,97% 33%,98.5% 41%,
+      96.8% 50%,98.9% 59%,97.1% 68%,98.6% 77%,96.9% 86%,98.8% 94%,97% 100%,0 100%); }
+  .lp.journey { width:400px; }
+  .lp.journey .lp-year { flex-basis:4.2rem; } .lp.journey .lp-year .y { font-size:1.9rem; }
+  .lp.journey .lp-main { padding:.7rem .9rem .6rem; }
+  .lp.journey .lp-artist { font-size:1.15rem; }
+  .lp.journey .lp-stub, .lp.journey .lp-also { display:none; }
+
+  /* ========================= II · BOARDING PASS ========================= */
+  .bp { width:620px; max-width:100%; color:#1d232a; background:#f7f4ec;
+        border:1px solid #c9c2b0; border-radius:2px; overflow:hidden; display:flex;
+        box-shadow:0 3px 8px rgba(0,0,0,.45); position:relative;
+        mask:radial-gradient(circle 9px at 0 50%, transparent 97%, black 100%); }
+  .bp-main { flex:1; min-width:0; }
+  .bp-band { display:flex; justify-content:space-between; align-items:center;
+             background:#1d232a; color:#f7f4ec; padding:.42rem .95rem .42rem 1.4rem; }
+  .bp-band .t { font-family:var(--geo); font-size:.62rem; letter-spacing:.3em; font-weight:700; }
+  .bp-band .no { font-family:var(--mono); font-size:.62rem; color:#e89a3d; }
+  .bp-grid { display:flex; gap:1.1rem; padding:.85rem 1rem .7rem 1.4rem; align-items:flex-start;
+             background:repeating-linear-gradient(-45deg, rgba(179,84,30,.045) 0 2px, transparent 2px 7px); }
+  .bp-code { text-align:center; }
+  .bp-code .c { font-family:var(--cond); font-weight:800; font-size:2.5rem; line-height:1;
+                letter-spacing:.02em; }
+  .bp-code .n { font-family:var(--mono); font-size:.58rem; color:#6b7280; letter-spacing:.08em;
+                margin-top:.15rem; }
+  .bp-mid { flex:1; min-width:0; border-left:1px solid #d9d2c0; padding-left:1.1rem; }
+  .bp-l { font-family:var(--mono); font-size:.55rem; letter-spacing:.18em; color:#8a8272;
+          text-transform:uppercase; margin-top:.5rem; }
+  .bp-l:first-child { margin-top:0; }
+  .bp-v { font-family:var(--cond); font-weight:700; font-size:1.25rem; line-height:1.05;
+          text-transform:uppercase; }
+  .bp-v.small { font-size:.95rem; font-weight:600; }
+  .bp-date { text-align:right; }
+  .bp-date .y { font-family:var(--cond); font-weight:800; font-size:2rem; line-height:1; }
+  .bp-date .md { font-family:var(--mono); font-size:.68rem; color:#4a4438; }
+  .bp-foot { display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;
+             padding:.3rem 1rem .6rem 1.4rem; }
+  .bp-wave { display:flex; align-items:flex-end; gap:2px; height:22px; }
+  .bp-wave i { width:3px; background:#1d232a; opacity:.8; }
+  .bp-meta { font-family:var(--mono); font-size:.6rem; color:#6b7280; text-align:right; }
+  .bp-meta b { color:#b3541e; font-weight:700; }
+  .bp-perf { flex:0 0 6px; background-image:radial-gradient(circle, rgba(29,35,42,.5) 1.4px, transparent 1.6px);
+             background-size:6px 9px; background-repeat:repeat-y; background-position:center; }
+  .bp-stub { flex:0 0 6.4rem; background:#efe9db; display:flex; flex-direction:column; gap:.3rem;
+             align-items:center; justify-content:center; padding:.6rem .4rem; text-align:center; }
+  .bp-stub .c { font-family:var(--cond); font-weight:800; font-size:1.3rem; }
+  .bp-stub .d { font-family:var(--mono); font-size:.58rem; color:#6b7280; }
+  .bp-stub .stamp { font-family:var(--geo); font-size:.55rem; letter-spacing:.22em; font-weight:800;
+                    color:#b3541e; border:1.5px solid #b3541e; padding:.12rem .38rem;
+                    transform:rotate(-5deg); border-radius:1px; }
+  .bp.archived { filter:saturate(.75) brightness(.96); }
+  .bp.archived .bp-perf, .bp.archived .bp-stub { display:none; }
+  .bp.archived { clip-path:polygon(0 0,97.4% 0,99% 9%,97.5% 19%,98.9% 30%,97.4% 42%,99% 53%,
+      97.5% 64%,98.8% 75%,97.4% 87%,98.9% 100%,0 100%); }
+  .bp.archived .bp-astamp { position:absolute; right:1.2rem; bottom:1rem; font-family:var(--geo);
+      font-size:.6rem; letter-spacing:.24em; font-weight:800; color:rgba(179,84,30,.55);
+      border:2px solid rgba(179,84,30,.45); padding:.16rem .5rem; transform:rotate(-7deg); }
+  .bp.journey { width:430px; }
+  .bp.journey .bp-grid { padding:.6rem .9rem .55rem 1.1rem; }
+  .bp.journey .bp-code .c { font-size:1.8rem; }
+  .bp.journey .bp-date .y { font-size:1.4rem; }
+  .bp.journey .bp-foot, .bp.journey .bp-perf, .bp.journey .bp-stub { display:none; }
+
+  /* ======================== III · GRANDSTAND STUB ======================== */
+  .gs { width:540px; max-width:100%; display:flex; color:#23304d; position:relative;
+        background:
+          radial-gradient(circle 2px at 12% 30%, rgba(140,100,50,.18) 40%, transparent 60%),
+          radial-gradient(circle 1.6px at 78% 68%, rgba(140,100,50,.16) 40%, transparent 60%),
+          radial-gradient(circle 2.4px at 55% 12%, rgba(140,100,50,.12) 40%, transparent 60%),
+          repeating-conic-gradient(from 0deg at 50% 46%, rgba(163,56,40,.045) 0 5deg, transparent 5deg 10deg),
+          linear-gradient(160deg,#ead9ab,#dcc88e);
+        border:2px solid #23304d; outline:1px solid #dcc88e; outline-offset:-5px;
+        box-shadow:inset 0 0 0 3px #ead9ab, inset 0 0 0 5px rgba(35,48,77,.75), 0 3px 8px rgba(0,0,0,.45); }
+  .gs-stub { flex:0 0 4.6rem; border-right:2px dashed #23304d; display:flex; flex-direction:column;
+             align-items:center; justify-content:center; gap:.5rem; padding:.8rem .3rem;
+             background:rgba(255,250,232,.35); }
+  .gs-stub .keep { writing-mode:vertical-rl; font-family:var(--cond); font-weight:700; font-size:.6rem;
+                   letter-spacing:.26em; }
+  .gs-stub .no { font-family:var(--typew); font-size:.6rem; color:#5a4a2c; }
+  .gs-main { flex:1; text-align:center; padding:.95rem 1rem .75rem; min-width:0; position:relative; }
+  .gs-pres { font-family:var(--cond); font-size:.62rem; letter-spacing:.3em; font-weight:700;
+             color:#a03828; }
+  .gs-artist { font-family:var(--cond); font-weight:800; font-size:2rem; line-height:.98;
+               text-transform:uppercase; letter-spacing:.01em; margin-top:.25rem; }
+  .gs-at { font-family:var(--script); font-size:1.05rem; color:#a03828; margin-top:.2rem; }
+  .gs-venue { font-family:var(--cond); font-weight:700; font-size:1.02rem; text-transform:uppercase;
+              letter-spacing:.1em; }
+  .gs-city { font-family:var(--typew); font-size:.68rem; margin-top:.18rem; color:#5a4a2c; }
+  .gs-date { display:flex; align-items:center; justify-content:center; gap:.7rem; margin-top:.45rem; }
+  .gs-date .d { font-family:var(--cond); font-weight:800; font-size:1.7rem; line-height:1;
+                border:2px solid #23304d; padding:.1rem .5rem; background:rgba(255,250,232,.5); }
+  .gs-date .my { font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.2em;
+                 text-align:left; line-height:1.35; }
+  .gs-also { font-family:var(--typew); font-size:.64rem; color:#5a4a2c; margin-top:.45rem; }
+  .gs-meta { font-family:var(--cond); font-weight:700; font-size:.6rem; letter-spacing:.24em;
+             color:#a03828; margin-top:.4rem; }
+  .gs-tape { position:absolute; left:0; right:0; bottom:0; font-family:var(--cond); font-weight:700;
+             font-size:.5rem; letter-spacing:.4em; color:rgba(35,48,77,.5); white-space:nowrap;
+             overflow:hidden; padding:.15rem 0 .1rem; border-top:1px solid rgba(35,48,77,.35); }
+  .gs-seal { position:absolute; top:.5rem; right:.6rem; width:44px; height:44px; border-radius:50%;
+             border:2px solid rgba(160,56,40,.6); color:rgba(160,56,40,.75); display:flex;
+             align-items:center; justify-content:center; font-family:var(--cond); font-weight:800;
+             font-size:.5rem; letter-spacing:.12em; transform:rotate(10deg); text-align:center;
+             line-height:1.2; background:radial-gradient(circle, rgba(160,56,40,.07), transparent 70%); }
+  .gs.archived .gs-stub { display:none; }
+  .gs.archived { clip-path:polygon(2.6% 0,100% 0,100% 100%,3% 100%,1.4% 91%,3.2% 81%,1.2% 70%,
+      3% 60%,1.5% 49%,3.3% 38%,1.3% 27%,3.1% 16%,1.6% 7%); filter:sepia(.18) brightness(.96); }
+  .gs.journey { width:360px; }
+  .gs.journey .gs-stub, .gs.journey .gs-also, .gs.journey .gs-tape { display:none; }
+  .gs.journey .gs-artist { font-size:1.4rem; }
+  .gs.journey .gs-main { padding:.7rem .8rem .6rem; }
+
+  /* ======================== IV · DIE-CUT NOCTURNE ======================== */
+  .nc { width:600px; max-width:100%; display:flex; position:relative; color:#eee7da;
+        background:linear-gradient(155deg,#171c21,#101418 70%);
+        clip-path:polygon(0 10px,10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),
+          calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px));
+        box-shadow:0 4px 14px rgba(0,0,0,.6); }
+  .nc::before { content:""; position:absolute; inset:0; pointer-events:none;
+        background:linear-gradient(120deg, rgba(232,154,61,.14), transparent 30%, transparent 75%,
+          rgba(232,154,61,.08));
+        border:1px solid rgba(232,154,61,.55); }
+  .nc-band { flex:0 0 3.4rem; background:linear-gradient(165deg,#f0e7d3,#e2d4b4); color:#1c1710;
+             display:flex; flex-direction:column; align-items:center; justify-content:center;
+             gap:.55rem; padding:.8rem .25rem; }
+  .nc-band .v { writing-mode:vertical-rl; font-family:var(--geo); font-weight:700; font-size:.56rem;
+                letter-spacing:.32em; text-transform:uppercase; color:#6d5b3c; }
+  .nc-band .no { font-family:var(--mono); font-size:.56rem; color:#8a744f;
+                 writing-mode:vertical-rl; }
+  .nc-perf { flex:0 0 6px; background-image:radial-gradient(circle, rgba(238,231,218,.4) 1.3px, transparent 1.5px);
+             background-size:6px 9px; background-repeat:repeat-y; background-position:center; }
+  .nc-main { flex:1; min-width:0; padding:1rem 1.15rem .85rem; position:relative; overflow:hidden; }
+  .nc-ghost { position:absolute; right:-.35rem; top:50%; transform:translateY(-50%);
+              font-family:var(--didone); font-size:6.2rem; line-height:1; color:transparent;
+              -webkit-text-stroke:1px rgba(232,154,61,.4); user-select:none; pointer-events:none;
+              font-variant-numeric:tabular-nums; }
+  .nc-head { font-family:var(--geo); font-weight:700; font-size:.56rem; letter-spacing:.32em;
+             text-transform:uppercase; color:rgba(232,154,61,.85); }
+  .nc-artist { font-family:var(--geo); font-weight:800; font-size:1.5rem; text-transform:uppercase;
+               letter-spacing:.02em; line-height:1.08; margin-top:.3rem; max-width:75%; }
+  .nc-venue { font-family:var(--geo); font-weight:600; font-size:.9rem; color:var(--amber);
+              margin-top:.3rem; }
+  .nc-city { font-family:var(--geo); font-size:.76rem; color:#9aa09b; }
+  .nc-date { font-family:var(--mono); font-size:.66rem; color:#c8bfa8; margin-top:.5rem;
+             letter-spacing:.08em; }
+  .nc-also { font-size:.68rem; color:#8d938e; margin-top:.35rem; max-width:70%; }
+  .nc-also b { color:#b3a883; font-weight:700; letter-spacing:.08em; font-size:.6rem; }
+  .nc-meta { font-family:var(--geo); font-weight:700; font-size:.6rem; letter-spacing:.22em;
+             color:rgba(232,154,61,.7); margin-top:.45rem; }
+  .nc-stamp { position:absolute; top:.7rem; right:.8rem; font-family:var(--geo); font-weight:800;
+              font-size:.54rem; letter-spacing:.24em; padding:.14rem .4rem; border-radius:1px; }
+  .nc-stamp.up { color:#f0b264; border:1.5px solid rgba(240,178,100,.7); }
+  .nc-stamp.ar { color:#5d6360; border:1.5px solid #3a413e; }
+  .nc.archived .nc-band, .nc.archived .nc-perf { display:none; }
+  .nc.archived { background:linear-gradient(155deg,#14181c,#0e1215 70%); }
+  .nc.archived::before { border-color:rgba(232,154,61,.22); background:none; }
+  .nc.archived .nc-ghost { -webkit-text-stroke-color:rgba(232,154,61,.18); }
+  .nc.journey { width:430px; }
+  .nc.journey .nc-main { padding:.65rem .9rem .6rem; }
+  .nc.journey .nc-artist { font-size:1.1rem; }
+  .nc.journey .nc-ghost { font-size:4rem; }
+  .nc.journey .nc-also { display:none; }
+
+  .choose { margin-top:4.5rem; border-top:1px solid #262d31; padding-top:1.6rem; }
+  .choose p { color:var(--muted); line-height:1.65; max-width:62ch; font-size:.95rem; }
+  .choose b { color:var(--paper); }
+</style>
+
+<div class="page">
+  <div class="eyebrow">My Concert Atlas · Design Exploration</div>
+  <h1>The ticket is the artifact.</h1>
+  <p class="lede">Four directions, none of them iterations of the current cream rectangle.
+  Each is a complete material world — its own paper, ink, typography, and motion — shown in all
+  four states: <b>full</b>, <b>upcoming</b>, <b>archived</b>, and the compact <b>journey</b>
+  overlay. Hover any ticket to pick it up.</p>
+  <p class="real">Every ticket below is set with real events from the archive — from
+  № 000001 (Live · New World Music Theatre, August 31 1995) to № 000642 (Counting Crows ·
+  Hollywood Bowl, August 7 2026). No seat, row, section, or price appears anywhere: the
+  archive number derived from the event id is the only decorative field.</p>
+
+  <!-- ================================================================ I -->
+  <section class="dir">
+    <div class="dir-head"><span class="dir-no">I</span><span class="dir-name">Letterpress Archive</span></div>
+    <div class="dir-meta">
+      <div><span class="k">Philosophy</span>
+        <p>A keepsake printed on a proof press: heavy cotton paper, two inks (iron black and a
+        worn rust), deep impression, a fleuron on the center rule. The year stands in a Didot
+        column like a spine label. Influences: letterpress print shops, museum admissions,
+        century-old theatre stock. This is the most <em>archival</em> direction — it treats
+        every show like it already happened long ago, beautifully.</p></div>
+      <div><span class="k">Motion</span>
+        <p>Paper laid on a table. The next ticket slides in from the right with a slight
+        settling rotation while the previous slips underneath — a stack forming as the journey
+        plays. Nothing bounces; paper has weight.</p></div>
+    </div>
+    <div class="board">
+      <div class="slot"><span class="vlabel">Full</span>
+        <div class="tk lp">
+          <div class="lp-year"><div class="y">2008</div><div class="md">Apr 10</div></div>
+          <div class="lp-main">
+            <div class="lp-brand">MY CONCERT ATLAS</div>
+            <hr class="lp-rule">
+            <div class="lp-artist">Counting Crows</div>
+            <div class="lp-venue">at the Riviera</div>
+            <div class="lp-city">CHICAGO · ILLINOIS</div>
+            <div class="lp-meta">TIME Nº 24 — FIRST TIME AT RIVIERA</div>
+          </div>
+          <div class="lp-stub"><span class="admit">ADMIT ONE</span><span class="no">№ 000223</span></div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Upcoming</span>
+        <div class="tk lp">
+          <div class="lp-year"><div class="y">2026</div><div class="md">Aug 07</div></div>
+          <div class="lp-main">
+            <span class="lp-stamp">UPCOMING</span>
+            <div class="lp-brand">MY CONCERT ATLAS</div>
+            <hr class="lp-rule">
+            <div class="lp-artist">Counting Crows</div>
+            <div class="lp-venue">at the Hollywood Bowl</div>
+            <div class="lp-city">LOS ANGELES · CALIFORNIA</div>
+            <div class="lp-meta">TIME Nº 43 — FIRST LOS ANGELES SHOW</div>
+          </div>
+          <div class="lp-stub"><span class="admit">ADMIT ONE</span><span class="no">№ 000642</span></div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Archived</span>
+        <div class="tk lp archived">
+          <div class="lp-year"><div class="y">1995</div><div class="md">Aug 31</div></div>
+          <div class="lp-main">
+            <span class="lp-stamp">ARCHIVED</span>
+            <div class="lp-brand">MY CONCERT ATLAS</div>
+            <hr class="lp-rule">
+            <div class="lp-artist">Live</div>
+            <div class="lp-venue">at the New World Music Theatre</div>
+            <div class="lp-city">TINLEY PARK · ILLINOIS</div>
+            <div class="lp-also">also listed — PJ Harvey · Veruca Salt</div>
+            <div class="lp-meta">TIME Nº 1</div>
+          </div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Journey</span>
+        <div class="tk lp journey">
+          <div class="lp-year"><div class="y">2019</div><div class="md">Aug 09</div></div>
+          <div class="lp-main">
+            <div class="lp-brand">MY CONCERT ATLAS</div>
+            <hr class="lp-rule">
+            <div class="lp-artist">Counting Crows</div>
+            <div class="lp-venue">at Golden Gate Park</div>
+            <div class="lp-city">SAN FRANCISCO · CALIFORNIA</div>
+            <div class="lp-meta">TIME Nº 40</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================== II -->
+  <section class="dir">
+    <div class="dir-head"><span class="dir-no">II</span><span class="dir-name">Boarding Pass</span></div>
+    <div class="dir-meta">
+      <div><span class="k">Philosophy</span>
+        <p>The journey mode already plays like a travel documentary — this ticket makes the
+        document to match. Airline stock with a fine security tint, mono microtype labels,
+        a big condensed city code, the year set like a flight number. The waveform strip is
+        openly decorative (it will never scan). Influences: boarding passes, transit punch
+        cards, mid-century airline liveries — no specific carrier.</p></div>
+      <div><span class="k">Motion</span>
+        <p>Pulled from a document sleeve: passes slide laterally with a paper-drag ease, and
+        the city code ticks over like a split-flap board as the journey crosses a border.</p></div>
+    </div>
+    <div class="board">
+      <div class="slot"><span class="vlabel">Full</span>
+        <div class="tk bp">
+          <div class="bp-main">
+            <div class="bp-band"><span class="t">MY CONCERT ATLAS · CONCERT PASS</span><span class="no">№ 000223</span></div>
+            <div class="bp-grid">
+              <div class="bp-code"><div class="c">CHI</div><div class="n">CHICAGO, IL</div></div>
+              <div class="bp-mid">
+                <div class="bp-l">Artist</div><div class="bp-v">Counting Crows</div>
+                <div class="bp-l">Venue</div><div class="bp-v small">Riviera</div>
+              </div>
+              <div class="bp-date"><div class="y">2008</div><div class="md">APR 10</div></div>
+            </div>
+            <div class="bp-foot">
+              <div class="bp-wave"><i style="height:6px"></i><i style="height:14px"></i><i style="height:9px"></i><i style="height:18px"></i><i style="height:5px"></i><i style="height:12px"></i><i style="height:20px"></i><i style="height:8px"></i><i style="height:15px"></i><i style="height:6px"></i><i style="height:11px"></i><i style="height:17px"></i><i style="height:7px"></i><i style="height:13px"></i><i style="height:5px"></i><i style="height:16px"></i><i style="height:9px"></i><i style="height:12px"></i></div>
+              <div class="bp-meta"><b>TIME #24</b> · FIRST TIME AT RIVIERA</div>
+            </div>
+          </div>
+          <div class="bp-perf"></div>
+          <div class="bp-stub"><div class="c">CHI</div><div class="d">2008 · APR 10</div><div class="d">№ 000223</div></div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Upcoming</span>
+        <div class="tk bp">
+          <div class="bp-main">
+            <div class="bp-band"><span class="t">MY CONCERT ATLAS · CONCERT PASS</span><span class="no">№ 000642</span></div>
+            <div class="bp-grid">
+              <div class="bp-code"><div class="c">LA</div><div class="n">LOS ANGELES, CA</div></div>
+              <div class="bp-mid">
+                <div class="bp-l">Artist</div><div class="bp-v">Counting Crows</div>
+                <div class="bp-l">Venue</div><div class="bp-v small">Hollywood Bowl</div>
+              </div>
+              <div class="bp-date"><div class="y">2026</div><div class="md">AUG 07</div></div>
+            </div>
+            <div class="bp-foot">
+              <div class="bp-wave"><i style="height:8px"></i><i style="height:16px"></i><i style="height:6px"></i><i style="height:13px"></i><i style="height:19px"></i><i style="height:7px"></i><i style="height:11px"></i><i style="height:17px"></i><i style="height:5px"></i><i style="height:14px"></i><i style="height:9px"></i><i style="height:18px"></i><i style="height:6px"></i><i style="height:12px"></i><i style="height:15px"></i><i style="height:8px"></i></div>
+              <div class="bp-meta"><b>TIME #43</b> · FIRST LOS ANGELES SHOW</div>
+            </div>
+          </div>
+          <div class="bp-perf"></div>
+          <div class="bp-stub"><div class="c">LA</div><div class="d">2026 · AUG 07</div><div class="stamp">UPCOMING</div></div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Archived</span>
+        <div class="tk bp archived">
+          <div class="bp-main">
+            <div class="bp-band"><span class="t">MY CONCERT ATLAS · CONCERT PASS</span><span class="no">№ 000001</span></div>
+            <div class="bp-grid">
+              <div class="bp-code"><div class="c">CHI</div><div class="n">TINLEY PARK, IL</div></div>
+              <div class="bp-mid">
+                <div class="bp-l">Artist</div><div class="bp-v">Live</div>
+                <div class="bp-l">Venue</div><div class="bp-v small">New World Music Theatre</div>
+                <div class="bp-l">Also Listed</div><div class="bp-v small" style="text-transform:none">PJ Harvey · Veruca Salt</div>
+              </div>
+              <div class="bp-date"><div class="y">1995</div><div class="md">AUG 31</div></div>
+            </div>
+            <div class="bp-foot">
+              <div class="bp-wave"><i style="height:5px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:7px"></i><i style="height:14px"></i><i style="height:9px"></i><i style="height:16px"></i><i style="height:6px"></i><i style="height:11px"></i><i style="height:19px"></i><i style="height:8px"></i><i style="height:13px"></i></div>
+              <div class="bp-meta"><b>TIME #1</b></div>
+            </div>
+          </div>
+          <span class="bp-astamp">ARCHIVED</span>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Journey</span>
+        <div class="tk bp journey">
+          <div class="bp-main">
+            <div class="bp-band"><span class="t">CONCERT PASS</span><span class="no">№ 000514</span></div>
+            <div class="bp-grid">
+              <div class="bp-code"><div class="c">SF</div><div class="n">SAN FRANCISCO</div></div>
+              <div class="bp-mid">
+                <div class="bp-l">Artist</div><div class="bp-v">Counting Crows</div>
+                <div class="bp-l">Venue</div><div class="bp-v small">Golden Gate Park · Time #40</div>
+              </div>
+              <div class="bp-date"><div class="y">2019</div><div class="md">AUG 09</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== III -->
+  <section class="dir">
+    <div class="dir-head"><span class="dir-no">III</span><span class="dir-name">Grandstand Stub</span></div>
+    <div class="dir-meta">
+      <div><span class="k">Philosophy</span>
+        <p>The shoebox ticket: aged manila stock with foxing, a faint sunburst behind the bill,
+        navy and faded red inks, wood-type condensed capitals, a script flourish on
+        <em>at the</em>, and a KEEP THIS COUPON stub. Influences: 1940s–60s grandstand and
+        ballpark stubs, county-fair admissions, early rock handbills. The warmest and most
+        nostalgic direction — every show becomes a night your grandfather might have kept.</p></div>
+      <div><span class="k">Motion</span>
+        <p>Thumbing a stack in a shoebox: the current stub tips forward and away while the
+        next rises from beneath it, slightly offset, like riffling through decades.</p></div>
+    </div>
+    <div class="board">
+      <div class="slot"><span class="vlabel">Full</span>
+        <div class="tk gs">
+          <div class="gs-stub"><span class="keep">KEEP THIS COUPON</span><span class="no">№ 000223</span></div>
+          <div class="gs-main">
+            <div class="gs-pres">MY CONCERT ATLAS PRESENTS</div>
+            <div class="gs-artist">Counting Crows</div>
+            <div class="gs-at">at the</div>
+            <div class="gs-venue">Riviera</div>
+            <div class="gs-city">CHICAGO, ILLINOIS</div>
+            <div class="gs-date"><span class="d">10</span><span class="my">APRIL<br>2008</span></div>
+            <div class="gs-meta">TIME № 24 · FIRST TIME AT RIVIERA</div>
+            <div class="gs-tape">ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE</div>
+          </div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Upcoming</span>
+        <div class="tk gs">
+          <div class="gs-stub"><span class="keep">KEEP THIS COUPON</span><span class="no">№ 000642</span></div>
+          <div class="gs-main">
+            <div class="gs-seal">UP<br>COMING</div>
+            <div class="gs-pres">MY CONCERT ATLAS PRESENTS</div>
+            <div class="gs-artist">Counting Crows</div>
+            <div class="gs-at">at the</div>
+            <div class="gs-venue">Hollywood Bowl</div>
+            <div class="gs-city">LOS ANGELES, CALIFORNIA</div>
+            <div class="gs-date"><span class="d">07</span><span class="my">AUGUST<br>2026</span></div>
+            <div class="gs-meta">TIME № 43 · FIRST LOS ANGELES SHOW</div>
+            <div class="gs-tape">ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE</div>
+          </div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Archived</span>
+        <div class="tk gs archived">
+          <div class="gs-main">
+            <div class="gs-pres">MY CONCERT ATLAS PRESENTS</div>
+            <div class="gs-artist">Live</div>
+            <div class="gs-at">at the</div>
+            <div class="gs-venue">New World Music Theatre</div>
+            <div class="gs-city">TINLEY PARK, ILLINOIS</div>
+            <div class="gs-also">with PJ Harvey · Veruca Salt</div>
+            <div class="gs-date"><span class="d">31</span><span class="my">AUGUST<br>1995</span></div>
+            <div class="gs-meta">TIME № 1</div>
+            <div class="gs-tape">ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE · ADMIT ONE</div>
+          </div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Journey</span>
+        <div class="tk gs journey">
+          <div class="gs-main">
+            <div class="gs-pres">MY CONCERT ATLAS</div>
+            <div class="gs-artist">Counting Crows</div>
+            <div class="gs-at">at</div>
+            <div class="gs-venue">Golden Gate Park</div>
+            <div class="gs-city">SAN FRANCISCO, CALIFORNIA</div>
+            <div class="gs-date"><span class="d">09</span><span class="my">AUGUST<br>2019</span></div>
+            <div class="gs-meta">TIME № 40</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================== IV -->
+  <section class="dir">
+    <div class="dir-head"><span class="dir-no">IV</span><span class="dir-name">Die-Cut Nocturne</span></div>
+    <div class="dir-meta">
+      <div><span class="k">Philosophy</span>
+        <p>The deliberate risk: stop borrowing nostalgia and let the app print its own ticket.
+        Night-black card with die-cut corners, a hairline of amber foil, and the year as a huge
+        ghost numeral pressed into the stock. A cream paper band wraps the card and tears away
+        when the show is archived. This is the only direction that shares a material world with
+        the map itself — the journey overlay stops looking like a scan and starts looking like
+        the app's signature object. Influences: premium gig laminates, letterpress-on-black
+        studio prints, gallery admission cards.</p></div>
+      <div><span class="k">Motion</span>
+        <p>Night transit: the current card dims and slides down and away while the next emerges
+        out of the map's glow — the transition and the journey share one atmosphere.</p></div>
+    </div>
+    <div class="board">
+      <div class="slot"><span class="vlabel">Full</span>
+        <div class="tk nc">
+          <div class="nc-band"><span class="v">My Concert Atlas</span><span class="no">№ 000223</span></div>
+          <div class="nc-perf"></div>
+          <div class="nc-main">
+            <div class="nc-ghost">2008</div>
+            <div class="nc-head">Admit One</div>
+            <div class="nc-artist">Counting Crows</div>
+            <div class="nc-venue">Riviera</div>
+            <div class="nc-city">Chicago, Illinois</div>
+            <div class="nc-date">APR 10 · 2008</div>
+            <div class="nc-meta">TIME #24 · FIRST TIME AT RIVIERA</div>
+          </div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Upcoming</span>
+        <div class="tk nc">
+          <div class="nc-band"><span class="v">My Concert Atlas</span><span class="no">№ 000642</span></div>
+          <div class="nc-perf"></div>
+          <div class="nc-main">
+            <div class="nc-ghost">2026</div>
+            <span class="nc-stamp up">UPCOMING</span>
+            <div class="nc-head">Admit One</div>
+            <div class="nc-artist">Counting Crows</div>
+            <div class="nc-venue">Hollywood Bowl</div>
+            <div class="nc-city">Los Angeles, California</div>
+            <div class="nc-date">AUG 07 · 2026</div>
+            <div class="nc-meta">TIME #43 · FIRST LOS ANGELES SHOW</div>
+          </div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Archived</span>
+        <div class="tk nc archived">
+          <div class="nc-main">
+            <div class="nc-ghost">1995</div>
+            <span class="nc-stamp ar">ARCHIVED</span>
+            <div class="nc-head">Admit One</div>
+            <div class="nc-artist">Live</div>
+            <div class="nc-venue">New World Music Theatre</div>
+            <div class="nc-city">Tinley Park, Illinois</div>
+            <div class="nc-also"><b>ALSO LISTED:</b> PJ Harvey · Veruca Salt</div>
+            <div class="nc-date">AUG 31 · 1995</div>
+            <div class="nc-meta">TIME #1</div>
+          </div>
+        </div>
+      </div>
+      <div class="slot"><span class="vlabel">Journey</span>
+        <div class="tk nc journey">
+          <div class="nc-band"><span class="v">Atlas</span><span class="no">№ 000514</span></div>
+          <div class="nc-perf"></div>
+          <div class="nc-main">
+            <div class="nc-ghost">2019</div>
+            <div class="nc-artist">Counting Crows</div>
+            <div class="nc-venue">Golden Gate Park</div>
+            <div class="nc-city">San Francisco, California</div>
+            <div class="nc-date">AUG 09 · 2019</div>
+            <div class="nc-meta">TIME #40</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="choose">
+    <div class="eyebrow">Choosing</div>
+    <p style="margin-top:.6rem">All four keep the exact information architecture you have today
+    — year-dominant date, artist, venue, city, ALSO LISTED, appearance number, milestone,
+    stamped status — so any one can replace the current renderer without touching the data
+    layer.</p>
+    <p><b>Grandstand Stub</b> is the most emotional artifact — closest to a shoebox of real
+    stubs. <b>Boarding Pass</b> is the best structural fit for the travel-documentary journey
+    mode. <b>Letterpress Archive</b> is the most timeless and the calmest. <b>Die-Cut
+    Nocturne</b> is the only one that makes the ticket the app's own identity rather than a
+    memory of someone else's — the boldest, and my recommendation for the journey overlay
+    even if a paper direction wins the archive pages.</p>
+    <p>A split is also legitimate: one paper direction for archive and profile pages, Nocturne
+    for the ticket that floats on the map.</p>
+  </div>
+</div>

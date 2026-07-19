@@ -26,14 +26,17 @@ def test_no_fabricated_ticket_fields(variant):
 
 def test_upcoming_full_has_stub_stamp_and_archive_number():
     html = ticket_html(ROW, [], "upcoming_full")
-    assert "UPCOMING" in html and "ADMIT ONE" in html
+    assert 'aria-label="UPCOMING"' in html  # circular seal splits the word visually
+    assert "KEEP THIS COUPON" in html and "ADMIT ONE" in html
     assert "№ 000017" in html  # decorative number derived from real event id
 
 
 def test_past_torn_has_no_stub():
     past = SimpleNamespace(**{**ROW.__dict__, "is_upcoming": 0})
     html = ticket_html(past, [], "past_torn")
-    assert "torn" in html and "ADMIT ONE" not in html and "UPCOMING" not in html
+    # The coupon stub is gone; the decorative ADMIT ONE tape edge remains.
+    assert "torn" in html and "KEEP THIS COUPON" not in html and "UPCOMING" not in html
+    assert "ARCHIVED" in html
 
 
 def test_real_fields_render():

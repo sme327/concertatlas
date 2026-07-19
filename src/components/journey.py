@@ -51,37 +51,49 @@ PLAYER_CSS = """
           margin-bottom:.55rem; text-shadow:0 1px 6px rgba(0,0,0,.85); font-variant-numeric:tabular-nums; }
   #card { pointer-events:auto; filter:drop-shadow(0 2px 3px rgba(0,0,0,.45)); }
 
+  /* Journey overlay ticket — Grandstand Stub direction (approved design III):
+     aged manila, faint sunburst, navy + faded-red inks, wood-type capitals. */
   .jticket { display:flex; position:relative; align-items:stretch;
+             font-family:'Avenir Next Condensed','Futura-CondensedMedium','Arial Narrow',sans-serif;
              background:
-               repeating-linear-gradient(90deg, rgba(74,58,30,.028) 0 1px, transparent 1px 4px),
-               radial-gradient(ellipse 120% 90% at 78% 8%, rgba(140,112,62,.12), transparent 60%),
-               radial-gradient(ellipse 100% 120% at 0% 100%, rgba(120,95,50,.08), transparent 55%),
-               linear-gradient(168deg,#f1e7d3 0%, #ecdfc6 60%, #e5d6b8 100%);
-             color:#1c1710; border-radius:1px; overflow:hidden;
-             border:1px solid rgba(58,45,22,.5); box-shadow:0 3px 14px rgba(0,0,0,.5); }
-  .jt-stubwrap { flex:0 0 4.2rem; display:flex; align-items:stretch; position:relative; }
+               radial-gradient(circle 2px at 15% 35%, rgba(140,100,50,.16) 40%, transparent 60%),
+               radial-gradient(circle 1.8px at 80% 70%, rgba(140,100,50,.14) 40%, transparent 60%),
+               repeating-conic-gradient(from 0deg at 50% 46%, rgba(163,56,40,.04) 0 5deg, transparent 5deg 10deg),
+               linear-gradient(160deg,#ead9ab,#dcc88e);
+             color:#23304d; border-radius:1px; overflow:hidden;
+             border:1.5px solid #23304d;
+             box-shadow:inset 0 0 0 2px #ead9ab, inset 0 0 0 3px rgba(35,48,77,.6),
+               0 3px 14px rgba(0,0,0,.5); }
+  .jt-stubwrap { flex:0 0 4.2rem; display:flex; align-items:stretch; position:relative;
+             background:rgba(255,250,232,.35); }
   .jt-date { flex:1; text-align:center; padding:.5rem .25rem; display:flex; flex-direction:column;
-             justify-content:center; }
-  .jt-year { font-size:1.45rem; font-weight:850; line-height:1; font-variant-numeric:tabular-nums; }
-  .jt-rule { width:70%; margin:.28rem auto; border-top:1px solid rgba(58,45,22,.4); }
-  .jt-md { font-size:.66rem; letter-spacing:.18em; font-weight:800; color:#5d5138; }
+             justify-content:center; align-items:center; gap:.22rem; }
+  .jt-year { font-size:1.2rem; font-weight:800; line-height:1.1; font-variant-numeric:tabular-nums;
+             border:2px solid #23304d; padding:.02rem .3rem; background:rgba(255,250,232,.5); }
+  .jt-rule { width:60%; border-top:1px solid rgba(35,48,77,.4); }
+  .jt-md { font-size:.62rem; letter-spacing:.18em; font-weight:700; color:#5a4a2c; }
   .jt-perf { flex:0 0 6px; position:relative;
-             background-image:radial-gradient(circle, rgba(28,23,16,.5) 1.4px, transparent 1.6px);
+             background-image:radial-gradient(circle, rgba(35,48,77,.45) 1.4px, transparent 1.6px);
              background-size:6px 8px; background-repeat:repeat-y; background-position:center; }
   .jt-main { padding:.5rem .65rem .45rem; min-width:0; flex:1; position:relative; }
-  .jt-head { font-size:.52rem; letter-spacing:.26em; text-transform:uppercase; color:#9a8c6a; font-weight:700; }
-  .jt-t { font-weight:850; font-size:1rem; text-transform:uppercase; line-height:1.12; margin-top:.06rem; }
-  .jt-venue { font-size:.8rem; font-weight:750; color:#33291a; margin-top:.14rem; }
-  .jt-city { font-size:.72rem; color:#5d5138; }
-  .jt-also { font-size:.64rem; color:#6b5f45; margin-top:.22rem; border-top:1px solid rgba(58,45,22,.25);
-             padding-top:.2rem; }
-  .jt-also b { font-weight:800; letter-spacing:.1em; color:#8a7c5c; }
-  .jt-meta { font-size:.64rem; color:#8a7c5c; margin-top:.2rem; font-weight:800; letter-spacing:.1em; }
-  .jt-mile { font-size:.66rem; color:#7c6a48; margin-top:.12rem; font-style:italic; }
-  .jt-note { color:#a34a37; font-weight:800; }
-  .jt-stamp { position:absolute; top:.35rem; right:.45rem; color:rgba(163,74,55,.62);
-              border:1.5px solid rgba(163,74,55,.5); border-radius:1px; padding:.06rem .3rem;
-              font-size:.52rem; font-weight:850; letter-spacing:.2em; transform:rotate(-4deg); }
+  .jt-head { font-size:.54rem; letter-spacing:.28em; text-transform:uppercase; color:#a03828;
+             font-weight:700; }
+  .jt-t { font-weight:800; font-size:1.05rem; text-transform:uppercase; line-height:1.05;
+          margin-top:.08rem; }
+  .jt-venue { font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+              margin-top:.14rem; }
+  .jt-city { font-family:'American Typewriter','Courier New',serif; font-size:.64rem;
+             color:#5a4a2c; margin-top:.08rem; }
+  .jt-also { font-family:'American Typewriter','Courier New',serif; font-size:.6rem; color:#5a4a2c;
+             margin-top:.22rem; border-top:1px solid rgba(35,48,77,.25); padding-top:.2rem; }
+  .jt-also b { font-weight:700; letter-spacing:.08em; color:#a03828; }
+  .jt-meta { font-size:.6rem; color:#a03828; margin-top:.2rem; font-weight:700; letter-spacing:.2em; }
+  .jt-mile { font-family:'American Typewriter','Courier New',serif; font-size:.62rem; color:#5a4a2c;
+             margin-top:.12rem; font-style:italic; }
+  .jt-note { color:#a03828; font-weight:800; }
+  .jt-stamp { position:absolute; top:.35rem; right:.45rem; color:rgba(160,56,40,.7);
+              border:1.5px solid rgba(160,56,40,.55); border-radius:1px; padding:.06rem .3rem;
+              font-size:.52rem; font-weight:800; letter-spacing:.2em; transform:rotate(-4deg); }
 
   #controls { background:#111719; border:1px solid #343a3b; border-top:none; border-radius:0 0 3px 3px;
               padding:.55rem .8rem .65rem; color:#eee7da; }
