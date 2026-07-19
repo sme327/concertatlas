@@ -84,3 +84,31 @@ def test_days_since_prev():
     assert stops[0]["days_since_prev"] is None
     assert stops[2]["days_since_prev"] == 62
     assert stops[3]["days_since_prev"] > 365 * 20
+
+
+def test_cinematic_metadata_fields():
+    stops = seq()
+    assert stops[0]["travel_mode"] is None and stops[0]["travel_miles"] is None  # first stop
+    assert stops[1]["travel_mode"] is None      # same Chicago coordinates: no movement
+    assert [s["season"] for s in stops] == ["summer", "summer", "fall", "winter"]
+    assert stops[0]["venue_category"] == "club"  # Metro
+
+
+def test_venue_coords_only_when_validated():
+    events = make_events()
+    stops = journey_sequence(events, make_artist_events())
+    # Chicago venues sit ~1-2 miles from the city point -> validated for street view.
+    assert stops[0]["venue_latitude"] is not None
+    # A venue far from its city must be withheld from the street camera.
+    events.loc[events.event_id == 1, ["venue_latitude", "venue_longitude"]] = [45.0, -93.0]
+    stops2 = journey_sequence(events, make_artist_events())
+    assert stops2[0]["venue_latitude"] is None
+    # Unresolved city -> no venue coordinate either (city trust comes first).
+    seattle = [s for s in stops if s["city_name"] == "Seattle"]
+    assert all(s["venue_latitude"] is None for s in seattle)
+
+
+def test_attendance_types_attached_only_when_supplied():
+    stops = journey_sequence(make_events(), make_artist_events(), attendance_types={1: "friends"})
+    assert stops[0]["attendance_type"] == "friends"
+    assert stops[1]["attendance_type"] is None

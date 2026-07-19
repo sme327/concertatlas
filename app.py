@@ -107,7 +107,10 @@ if journey_available:
 
 if journey_available and view == "JOURNEY":
     # ------------------------------------------------------------ journey
-    stops = journey_sequence(filtered, artist_events)
+    from src.config import DATA_DIR
+    from src.journey_meta import load_attendance_types
+    stops = journey_sequence(filtered, artist_events,
+                             attendance_types=load_attendance_types(DATA_DIR / "attendance_types.csv"))
     if artist_journey:
         title = artist_names.get(s.selected_artist, "")
         # Progressive header: start at the first stop; the player advances it.

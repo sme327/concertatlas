@@ -56,26 +56,44 @@ def test_upcoming_year_not_shown_before_reached():
 
 def test_header_updates_wired_to_every_control_path():
     """prev/next/restart/scrubber/play all funnel through show() → rebuild()
-    → renderCard(), which is the single place the header is written."""
+    → renderCard(), which is the single place the header is written; the
+    cinematic play loop advances via show() too."""
     assert "function show(i, animate) { idx = Math.max(0, Math.min(i, N-1)); rebuild(idx, animate); }" in PLAYER_JS
     assert PLAYER_JS.count("headerLine(STOPS") == 1  # written only in renderCard
     assert "renderCard(s);" in PLAYER_JS             # called from rebuild
+    assert "show(j, false);" in PLAYER_JS            # runPlay advances through show()
     for control in ["scrub.oninput", "getElementById('prev')", "getElementById('nextb')",
-                    "getElementById('restart')", "function tick()"]:
+                    "getElementById('restart')", "async function runPlay"]:
         assert control in PLAYER_JS
 
 
 def test_marker_transform_regression_guard():
-    """MapLibre owns the root marker transform: the pulse animation must only
-    ever target the inner .dot, never .lemarker itself."""
+    """MapLibre owns the root transform on every marker (.lemarker, .veh,
+    .crowdwrap): animation/rotation must only target inner elements."""
     assert ".lemarker.current.pulse .dot { animation:lepulse" in PLAYER_CSS
     assert ".lemarker.current.pulse {" not in PLAYER_CSS
-    # The root gets no transform/animation rules at all.
     root_block = PLAYER_CSS.split(".lemarker {")[1].split("}")[0]
     assert "transform" not in root_block and "animation" not in root_block
-    # Markers are created with the dot child the CSS depends on.
     assert '<div class="dot"></div>' in PLAYER_JS
     assert "querySelector('.dot')" in PLAYER_JS
+    # Vehicle rotation and crowd motion live on inner elements, never roots.
+    veh_root = PLAYER_CSS.split(".veh {")[1].split("}")[0]
+    crowd_root = PLAYER_CSS.split(".crowdwrap {")[1].split("}")[0]
+    assert "transform" not in veh_root and "transform" not in crowd_root
+    assert "icon.style.transform" in PLAYER_JS       # inner .veh-icon
+    assert "el.style.transform" not in PLAYER_JS     # marker roots untouched
+
+
+def test_cinematic_structure():
+    """Travel and arrival are choreographed, calm, and resilient."""
+    for needle in ["async function travelAnim", "async function arrivalAnim",
+                   "contrail", "trailFeatures", "SEASON_PARK", "RASTER_STYLE",
+                   "STREET_OK", "fill-extrusion", "CROWD_SIZE"]:
+        assert needle in PLAYER_JS
+    # Crowds only appear when attendance metadata exists — never invented.
+    assert "CROWD_SIZE[s.attendance_type]" in PLAYER_JS
+    # Reduced motion skips travel animation but playback still works.
+    assert "if (RM || !a || !b || !mode) return;" in PLAYER_JS
 
 
 def test_no_fabricated_fields_in_player_card():

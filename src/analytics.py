@@ -128,17 +128,24 @@ def decade_counts(df: pd.DataFrame) -> pd.DataFrame:
     return d.groupby(decade).event_id.nunique().rename_axis('decade').reset_index(name='shows')
 
 
-def journey_sequence(filtered: pd.DataFrame, artist_events: pd.DataFrame) -> list[dict]:
+def journey_sequence(filtered: pd.DataFrame, artist_events: pd.DataFrame,
+                     attendance_types: dict[int, str] | None = None) -> list[dict]:
     """Ordered journey stops for playback.
 
     Ordering: event_date then event_id (deterministic for same-date events).
 
     Coordinates: national/world-scale playback always uses the trusted
-    canonical CITY coordinates (city_latitude/city_longitude) — never venue
-    coordinates, which are reserved for a future reviewed city-level mode.
-    Every event stays in the chronology, including those without resolved
-    coordinates (has_coords False — retained in the detail card, never given
-    a fabricated map point). draw_segment_from_prev is True only when this
+    canonical CITY coordinates (city_latitude/city_longitude). Venue
+    coordinates are exposed separately (venue_latitude/venue_longitude) ONLY
+    when validated — resolved and within VENUE_CITY_REVIEW_MILES of the
+    parent city — for the street-level arrival camera; they never replace
+    the city point on the route. Every event stays in the chronology,
+    including those without resolved coordinates (has_coords False —
+    retained in the detail card, never given a fabricated map point).
+
+    Cinematic metadata (travel_mode, travel_miles, season, venue_category,
+    attendance_type) is presentation-layer inference from real data; see
+    src/journey_meta.py. draw_segment_from_prev is True only when this
     stop and the previous *resolved* stop have different coordinates, so
     repeat visits pulse in place instead of drawing loops. The route is the
     user's attendance order, not any performer's tour.
@@ -183,6 +190,24 @@ def journey_sequence(filtered: pd.DataFrame, artist_events: pd.DataFrame) -> lis
             days_since_prev=int((row.event_date - prev_date).days) if prev_date is not None else None,
             bill=bill_rows.display_name.tolist(),
         ))
+        # Cinematic metadata (see src/journey_meta.py) — inference only.
+        from src.geo_audit import VENUE_CITY_REVIEW_MILES, distance_miles
+        from src.journey_meta import infer_travel_mode, infer_venue_category, season_for
+        stop = stops[-1]
+        travel_miles = None
+        if has_coords and prev_coords is not None and coords != prev_coords:
+            travel_miles = distance_miles(prev_coords[0], prev_coords[1], coords[0], coords[1])
+        is_cruise = str(row.state_region) == "Atlantic Ocean" if pd.notna(row.state_region) else False
+        stop["travel_miles"] = round(travel_miles, 1) if travel_miles is not None else None
+        stop["travel_mode"] = infer_travel_mode(travel_miles, is_cruise=is_cruise)
+        stop["season"] = season_for(row.event_date)
+        stop["venue_category"] = infer_venue_category(stop["venue_name"])
+        vlat, vlon = getattr(row, "venue_latitude", None), getattr(row, "venue_longitude", None)
+        stop["venue_latitude"] = stop["venue_longitude"] = None
+        if has_coords and pd.notna(vlat) and pd.notna(vlon):
+            if distance_miles(float(vlat), float(vlon), coords[0], coords[1]) <= VENUE_CITY_REVIEW_MILES:
+                stop["venue_latitude"], stop["venue_longitude"] = float(vlat), float(vlon)
+        stop["attendance_type"] = (attendance_types or {}).get(int(row.event_id))
         if has_coords:
             prev_coords = coords
         prev_date = row.event_date
