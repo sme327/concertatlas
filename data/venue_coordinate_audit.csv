@@ -1,0 +1,222 @@
+venue_id,venue,city,state_region,venue_lat,venue_lon,city_lat,city_lon,venue_city_miles,status
+1,Southern Alberta Jubilee Auditorium,Calgary,Alberta (Canada),51.06254,-114.0925189,51.0456064,-114.057541,1.9,ok
+2,Northern Alberta Jubilee Auditorium,Edmonton,Alberta (Canada),53.521789,-113.5287755,53.5462055,-113.491241,2.3,ok
+3,Arizona Financial Theatre,Phoenix,Arizona,33.4489301,-112.0796261,33.4484367,-112.074141,0.3,ok
+4,The Van Buren,Phoenix,Arizona,33.4510864,-112.0794386,33.4484367,-112.074141,0.4,ok
+5,Norwegian Gem Cruise Ship,,Atlantic Ocean,,,,,,venue_unresolved
+6,Greek Theatre,Berkeley,California,37.8736749,-122.2542407,37.8708393,-122.272863,1.0,ok
+7,The UC Theatre,Berkeley,California,37.8718055,-122.2698143,37.8708393,-122.272863,0.2,ok
+8,The Cave Big Bear,Big Bear Lake,California,34.2409593,-116.9113793,34.2440587,-116.91018,0.2,ok
+9,Gnarlywood,Carlsbad,California,33.1341393,-117.2857295,33.1580933,-117.3505966,4.1,ok
+10,North Island Credit Union Amphitheatre,Chula Vista,California,32.5880923,-117.0057957,32.6400541,-117.084195,5.8,ok
+11,Pacific Amphitheater,Costa Mesa,California,,,33.6633386,-117.903317,,venue_unresolved
+12,Infinite Loop,Cupertino,California,37.3326452,-122.029923,37.3228934,-122.0322895,0.7,ok
+13,Steve Jobs Theater,Cupertino,California,37.330881,-122.007454,37.3228934,-122.0322895,1.5,ok
+14,Cow Palace,Daly City,California,37.7061821,-122.4202102,37.6904826,-122.47267,3.1,ok
+15,Del Mar Fairgrounds,Del Mar,California,,,32.9594891,-117.2653146,,venue_unresolved
+16,Hollywood Palladium,Hollywood,California,34.0984937,-118.3242932,34.0980031,-118.329523,0.3,ok
+17,Five Points Amphitheatre,Irvine,California,,,33.6856969,-117.825981,,venue_unresolved
+18,El Rey Theatre,Los Angeles,California,34.0626321,-118.3489122,34.0536909,-118.242766,6.1,review_gt_6mi
+19,Fonda Theatre,Los Angeles,California,34.1012784,-118.3232534,34.0536909,-118.242766,5.7,ok
+20,Hollywood Bowl,Los Angeles,California,34.1121836,-118.3392774,34.0536909,-118.242766,6.8,review_gt_6mi
+21,Sports Arena,Los Angeles,California,34.0258128,-118.0456572,34.0536909,-118.242766,11.4,review_gt_6mi
+22,The Theatre at Ace Hotel,Los Angeles,California,,,34.0536909,-118.242766,,venue_unresolved
+23,Wiltern Theater,Los Angeles,California,34.0614963,-118.308908,34.0536909,-118.242766,3.8,ok
+24,Monterey County Fairgrounds,Monterey,California,,,36.2231079,-121.387742,,venue_unresolved
+25,Shoreline Amphitheater,Mountain View,California,37.4268616,-122.0806072,37.3893889,-122.0832101,2.6,ok
+26,Fox Theater,Oakland,California,37.8081438,-122.2705153,37.8044557,-122.271356,0.3,ok
+27,Oracle Arena,Oakland,California,37.7502734,-122.2029323,37.8044557,-122.271356,5.3,ok
+28,Hotel Zoso Woodstock Ballroom,Palm Springs,California,,,33.8246269,-116.540303,,venue_unresolved
+29,Plaza Theatre,Palm Springs,California,33.8225723,-116.5462526,33.8246269,-116.540303,0.4,ok
+30,Lagunitas,Peteluma,California,,,38.2325829,-122.636465,,venue_unresolved
+31,Ace of Spades,Sacramento,California,38.5699259,-121.4909477,38.5810606,-121.493895,0.8,ok
+32,Americas Cup Pavilion,San Francisco,California,,,37.7879363,-122.4075201,,venue_unresolved
+33,Bill Graham Civic Auditorium,San Francisco,California,37.7780501,-122.4173077,37.7879363,-122.4075201,0.9,ok
+34,Bottom of the Hill,San Francisco,California,37.7649626,-122.3964115,37.7879363,-122.4075201,1.7,ok
+35,California Academy of Sciences,San Francisco,California,37.7698266,-122.4660927,37.7879363,-122.4075201,3.4,ok
+36,Fillmore,San Francisco,California,37.7898937,-122.4343718,37.7879363,-122.4075201,1.5,ok
+37,Golden Gate Park,San Francisco,California,37.7693681,-122.4821837,37.7879363,-122.4075201,4.3,ok
+38,Great American Music Hall,San Francisco,California,37.7847659,-122.4188356,37.7879363,-122.4075201,0.7,ok
+39,Palace of Fine Arts,San Francisco,California,37.8029186,-122.4484029,37.7879363,-122.4075201,2.5,ok
+40,Regency Ballroom,San Francisco,California,37.7878176,-122.4215762,37.7879363,-122.4075201,0.8,ok
+41,Slim’s,San Francisco,California,37.7715111,-122.4132648,37.7879363,-122.4075201,1.2,ok
+42,The Fillmore,San Francisco,California,37.7840838,-122.433171,37.7879363,-122.4075201,1.4,ok
+43,The Independent,San Francisco,California,37.7755281,-122.437641,37.7879363,-122.4075201,1.9,ok
+44,The Warfield,San Francisco,California,,,37.7879363,-122.4075201,,venue_unresolved
+45,Avaya Stadium,San Jose,California,,,37.3361663,-121.890591,,venue_unresolved
+46,Civic National City,San Jose,California,37.3307938,-121.8897013,37.3361663,-121.890591,0.4,ok
+47,SAP Centre,San Jose,California,,,37.3361663,-121.890591,,venue_unresolved
+48,The Ritz,San Jose,California,37.3301346,-121.885471,37.3361663,-121.890591,0.5,ok
+49,Terrapin Station,San Rafael,California,,,37.9747795,-122.5316686,,venue_unresolved
+50,Levi's Stadium,Santa Clara,California,37.4029867,-121.9696489,37.2333253,-121.6846349,19.6,review_gt_6mi
+51,Catalyst,Santa Cruz,California,36.9712828,-122.0258837,37.050096,-121.99059,5.8,ok
+52,Moe's Alley,Santa Cruz,California,36.9877622,-121.9828878,37.050096,-121.99059,4.3,ok
+53,Rio Theatre,Santa Cruz,California,36.9800104,-122.0104498,37.050096,-121.99059,5.0,ok
+54,The Catalyst,Santa Cruz,California,36.9712828,-122.0258837,37.050096,-121.99059,5.8,ok
+55,Mountain Winery,Saratoga,California,37.2601209,-122.064787,37.2638324,-122.0230146,2.3,ok
+56,Green Music Center (Sonoma State University),Sonoma,California,,,38.5110803,-122.8473388,,venue_unresolved
+57,The Venice West,Venice,California,33.9963454,-118.4579146,33.995044,-118.4668875,0.5,ok
+58,Commodore Ballroom,Vancouver,Canada,49.2805634,-123.120792,49.2608724,-123.113952,1.4,ok
+59,Doug Mitchell Thunderbird Sports Center,Vancouver,Canada,,,49.2608724,-123.113952,,venue_unresolved
+60,Mission Ballroom,Denver,Colorado,39.7761742,-104.9691889,39.7392364,-104.984862,2.7,ok
+61,Red Rocks Amphitheatre,Morrison,Colorado,39.6653917,-105.2057171,39.6535988,-105.191099,1.1,ok
+62,O2 Academy Islington,London,England,51.534574,-0.1056969,51.5074456,-0.1277653,2.1,ok
+63,Fort Lauderdale Beach,Fort Lauderdale,Florida,26.1470056,-80.1013357,26.1223084,-80.1433786,3.1,ok
+64,Atlantic Station,Atlanta,Georgia,33.7900612,-84.398518,33.7544657,-84.3898151,2.5,ok
+65,CenterStage,Atlanta,Georgia,,,33.7544657,-84.3898151,,venue_unresolved
+66,Chastain Park Amphitheatre,Atlanta,Georgia,,,33.7544657,-84.3898151,,venue_unresolved
+67,RiverEdge,Aurora,Illinois,41.7657858,-88.3092729,41.7571701,-88.3147539,0.7,ok
+68,Toyota Park,Bridgeview,Illinois,41.7648089,-87.8061921,41.7500323,-87.8042216,1.0,ok
+69,Brookfield Zoo,Brookfield,Illinois,41.8330104,-87.8334648,41.8228378,-87.848085,1.0,ok
+70,A Finkl & Sons,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+71,Abbey Pub,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+72,Aragon Ballroom,Chicago,Illinois,41.9694312,-87.658026,41.8755616,-87.6244212,6.7,review_gt_6mi
+73,Auditorium Theatre,Chicago,Illinois,41.8760769,-87.6252708,41.8755616,-87.6244212,0.1,ok
+74,Beat Kitchen,Chicago,Illinois,41.9397346,-87.6809524,41.8755616,-87.6244212,5.3,ok
+75,Bottom Lounge,Chicago,Illinois,41.8851506,-87.6618035,41.8755616,-87.6244212,2.0,ok
+76,Charter One Pavilion at Northerly Island,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+77,Chicago Theatre,Chicago,Illinois,41.8854968,-87.6271883,41.8755616,-87.6244212,0.7,ok
+78,Concord,Chicago,Illinois,41.9105184,-87.7478083,41.8755616,-87.6244212,6.8,review_gt_6mi
+79,Congress Theatre,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+80,Cubby Bear,Chicago,Illinois,41.9469428,-87.6566341,41.8755616,-87.6244212,5.2,ok
+81,Division Avenue & Damen,Chicago,Illinois,41.9029936,-87.6771959,41.8755616,-87.6244212,3.3,ok
+82,Double Door,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+83,Douglas Park,Chicago,Illinois,41.8626642,-87.6993904,41.8755616,-87.6244212,4.0,ok
+84,Elbo Room,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+85,Empty Bottle,Chicago,Illinois,41.9004807,-87.6866529,41.8755616,-87.6244212,3.6,ok
+86,Grant Park,Chicago,Illinois,41.8827266,-87.6187299,41.8755616,-87.6244212,0.6,ok
+87,House of Blues,Chicago,Illinois,41.888244,-87.6291087,41.8755616,-87.6244212,0.9,ok
+88,House of Blues Second Stage,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+89,Humboldt Park,Chicago,Illinois,41.9027884,-87.7209107,41.8755616,-87.6244212,5.3,ok
+90,Huntington Bank Pavilion,Chicago,Illinois,41.8633504,-87.6084927,41.8755616,-87.6244212,1.2,ok
+91,Jay Pritzker Pavilion at Millenium Park,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+92,Joe's,Chicago,Illinois,41.9128261,-87.6773405,41.8755616,-87.6244212,3.7,ok
+93,Kathy's House (neighborhood),Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+94,Lakeshore Theatre,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+95,Lincoln Hall,Chicago,Illinois,41.9259154,-87.6498127,41.8755616,-87.6244212,3.7,ok
+96,Lincoln Park Zoo,Chicago,Illinois,41.9212558,-87.6337656,41.8755616,-87.6244212,3.2,ok
+97,Loyola Gentile Center,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+98,Madison Street & Des Plaines Street,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+99,Metro,Chicago,Illinois,41.949842,-87.6589453,41.8755616,-87.6244212,5.4,ok
+100,Navy Pier,Chicago,Illinois,41.8917999,-87.6041447,41.8755616,-87.6244212,1.5,ok
+101,Northerly Island,Chicago,Illinois,41.8602009,-87.6082797,41.8755616,-87.6244212,1.3,ok
+102,Park West,Chicago,Illinois,41.9185714,-87.6374384,41.8755616,-87.6244212,3.0,ok
+103,Radius,Chicago,Illinois,41.8532824,-87.6426088,41.8755616,-87.6244212,1.8,ok
+104,Reggie's,Chicago,Illinois,41.8539071,-87.6268152,41.8755616,-87.6244212,1.5,ok
+105,Riviera,Chicago,Illinois,41.9685594,-87.659926,41.8755616,-87.6244212,6.7,review_gt_6mi
+106,Riviera Theater,Chicago,Illinois,41.9685594,-87.659926,41.8755616,-87.6244212,6.7,review_gt_6mi
+107,Rubloff Auditorium,Chicago,Illinois,41.879941,-87.6217251,41.8755616,-87.6244212,0.3,ok
+108,Salt Shed,Chicago,Illinois,41.906736,-87.659207,41.8755616,-87.6244212,2.8,ok
+109,Schubas,Chicago,Illinois,41.9396311,-87.6634352,41.8755616,-87.6244212,4.9,ok
+110,Sheffield & Addison,Chicago,Illinois,41.9471097,-87.6543855,41.8755616,-87.6244212,5.2,ok
+111,Soldier Field,Chicago,Illinois,41.8623356,-87.6176477,41.8755616,-87.6244212,1.0,ok
+112,Subterranean,Chicago,Illinois,41.9103014,-87.6780044,41.8755616,-87.6244212,3.7,ok
+113,The Hideout,Chicago,Illinois,41.9139157,-87.6626385,41.8755616,-87.6244212,3.3,ok
+114,The Vic,Chicago,Illinois,41.9395215,-87.6537443,41.8755616,-87.6244212,4.7,ok
+115,Top Note Theatre,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+116,Township,Chicago,Illinois,41.9309531,-87.7725545,41.8755616,-87.6244212,8.5,review_gt_6mi
+117,Tweeter Center,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+118,UIC Pavilion,Chicago,Illinois,41.8746993,-87.6561358,41.8755616,-87.6244212,1.6,ok
+119,Union Park,Chicago,Illinois,41.88419,-87.665168,41.8755616,-87.6244212,2.2,ok
+120,United Center,Chicago,Illinois,41.8806831,-87.6741851,41.8755616,-87.6244212,2.6,ok
+121,Vic,Chicago,Illinois,41.9395215,-87.6537443,41.8755616,-87.6244212,4.7,ok
+122,WTTW Grainger Studio,Chicago,Illinois,,,41.8755616,-87.6244212,,venue_unresolved
+123,Wicker Park/Damen Ave,Chicago,Illinois,41.9080368,-87.6767399,41.8755616,-87.6244212,3.5,ok
+124,Wrigley Field,Chicago,Illinois,41.9481846,-87.655559,41.8755616,-87.6244212,5.3,ok
+125,NIU Convocation Center,DeKalb,Illinois,,,41.8903447,-88.7713953,,venue_unresolved
+126,Ravinia,Highland Park,Illinois,42.1650631,-87.7828618,42.1836719,-87.7993245,1.5,ok
+127,Rotary Hill,Naperville,Illinois,41.769407,-88.1556195,41.7728699,-88.1479278,0.5,ok
+128,Bradley Field House,Peoria,Illinois,,,40.6938609,-89.5891008,,venue_unresolved
+129,Coronado Theatre,Rockford,Illinois,42.2736979,-89.0929954,42.2713945,-89.093966,0.2,ok
+130,Allstate Arena,Rosemont,Illinois,42.0052767,-87.8877714,41.9941334,-87.8756737,1.0,ok
+131,Rosemont Horizon,Rosemont,Illinois,,,41.9941334,-87.8756737,,venue_unresolved
+132,Schaumburg Boomers Stadium,Schaumburg,Illinois,41.9931054,-88.1177138,42.0333608,-88.083406,3.3,ok
+133,First Midwest Bank Amphitheatre,Tinley Park,Illinois,,,41.5733669,-87.7844944,,venue_unresolved
+134,New World Music Theatre,Tinley Park,Illinois,,,41.5733669,-87.7844944,,venue_unresolved
+135,Tweeter Center,Tinley Park,Illinois,,,41.5733669,-87.7844944,,venue_unresolved
+136,Canopy Club,Urbana,Illinois,40.106686,-88.2233975,40.1117174,-88.207301,0.9,ok
+137,Odeum,Villa Park,Illinois,,,41.8893116,-87.9778368,,venue_unresolved
+138,Downtown Winnetka,Winnetka,Illinois,,,42.1080703,-87.7365286,,venue_unresolved
+139,Victory Field,Indianapolis,Indiana,39.7648981,-86.1688593,39.7683331,-86.1583502,0.6,ok
+140,Deer Creek Music Center,Noblesville,Indiana,,,40.0460881,-86.0139854,,venue_unresolved
+141,Morris Performing Arts Center,South Bend,Indiana,41.6781748,-86.250968,41.6833813,-86.2500066,0.4,ok
+142,Harrah's Hidden Cove,Council Bluff,Iowa,,,41.258841,-95.8519484,,venue_unresolved
+143,Principal Park,Des Moines,Iowa,41.5802173,-93.6166144,41.5868654,-93.6249494,0.6,ok
+144,Louisville Slugger Field,Louisville,Kentucky,38.2564512,-85.7436241,38.2542376,-85.759407,0.9,ok
+145,Ottobar,Baltimore,Maryland,39.3188574,-76.6196694,39.2908816,-76.610759,2.0,ok
+146,Ram's Head Live,Baltimore,Maryland,,,39.2908816,-76.610759,,venue_unresolved
+147,St Andrew’s Hall,Detroit,Michigan,42.3323474,-83.0415954,42.3315509,-83.0466403,0.3,ok
+148,The Intersection,Grand Rapids,Michigan,42.9598855,-85.6740737,42.9632425,-85.6678639,0.4,ok
+149,The Orbit Room,Grand Rapids,Michigan,,,42.9632425,-85.6678639,,venue_unresolved
+150,State Theatre,Kalamazoo,Michigan,42.2885313,-85.5832179,42.291707,-85.5872286,0.3,ok
+151,Wings Stadium,Kalamazoo,Michigan,42.2540681,-85.5361745,42.291707,-85.5872286,3.7,ok
+152,Meadow Brook Music Festival,Rochester Hills,Michigan,,,42.6583661,-83.1499322,,venue_unresolved
+153,400 Bar,Minneapolis,Minnesota,,,44.9772995,-93.2654692,,venue_unresolved
+154,Fine Line Music Café,Minneapolis,Minnesota,,,44.9772995,-93.2654692,,venue_unresolved
+155,Riverport Amphitheatre,Maryland Heights,Missouri,,,38.7150511,-90.435999,,venue_unresolved
+156,Plush,St Louis,Missouri,38.6365342,-90.2263271,38.6254063,-90.190009,2.1,ok
+157,Big Sky Brewing Amphitheatre,Missoula,Montana,,,46.8701049,-113.995267,,venue_unresolved
+158,Freemont Street,Las Vegas,Nevada,,,36.1674263,-115.1484131,,venue_unresolved
+159,House of Blues Las Vegas,Las Vegas,Nevada,36.0932298,-115.1755517,36.1674263,-115.1484131,5.3,ok
+160,Las Vegas Fairgrounds,Las Vegas,Nevada,,,36.1674263,-115.1484131,,venue_unresolved
+161,Mandalay Bay Conference Center,Las Vegas,Nevada,36.0889032,-115.1778099,36.1674263,-115.1484131,5.7,ok
+162,The Joint / Hard Rock Hotel & Casino,Las Vegas,Nevada,,,36.1674263,-115.1484131,,venue_unresolved
+163,Virginia Street Brewhouse,Reno,Nevada,39.5271565,-119.8137711,39.5261788,-119.812658,0.1,ok
+164,Tweeter Center at the Waterfront,Camden,New Jersey,,,39.9440874,-75.1191932,,venue_unresolved
+165,Yeatman’s Cove,Cincinnati,Ohio,,,39.1012809,-84.5127405,,venue_unresolved
+166,Classic Park,Eastlake,Ohio,41.6412307,-81.4360086,41.6490337,-81.4378991,0.5,ok
+167,Centennial Terrace,Sylvania,Ohio,,,41.7188956,-83.7127729,,venue_unresolved
+168,Arlene Schnitzer Concert Hall,Portland,Oregon,45.5171493,-122.6815601,45.5202471,-122.674194,0.4,ok
+169,Crystal Ballroom,Portland,Oregon,45.5226821,-122.6847689,45.5202471,-122.674194,0.5,ok
+170,Pioneer Square Courthouse,Portland,Oregon,45.5189007,-122.6792966,45.5202471,-122.674194,0.3,ok
+171,Revolution Hall,Portland,Oregon,45.5191349,-122.6521123,45.5202471,-122.674194,1.1,ok
+172,Topaz Farm,Portland,Oregon,45.6478211,-122.8236435,45.5202471,-122.674194,11.4,review_gt_6mi
+173,Edgefield Amphitheater,Troutdale,Oregon,45.5382193,-122.4050972,45.5392862,-122.3873133,0.9,ok
+174,XL Live,Harrisburg,Pennsylvania,40.2538315,-76.8690745,40.2663107,-76.8861122,1.2,ok
+175,Southside Works,Pittsburgh,Pennsylvania,40.4273837,-79.9649503,40.4406968,-80.0025666,2.2,ok
+176,Orpheum Theatre,Memphis,Tennessee,35.1402161,-90.055549,35.146026,-90.0517786,0.5,ok
+177,Ryman Auditorium,Nashville,Tennessee,36.1612473,-86.7784951,36.1622767,-86.7742984,0.2,ok
+178,,Austin,Texas,,,30.2711286,-97.7436995,,venue_unresolved
+179,Ogden Amphitheatre,Ogden,Utah,,,41.2230048,-111.9738429,,venue_unresolved
+180,Nissan Pavillion,Bristow,Virginia,,,38.7311636,-77.5480241,,venue_unresolved
+181,White River Amphitheater,Auburn,Washington,47.23749,-122.1120735,47.3075369,-122.2301808,7.4,review_gt_6mi
+182,Wild Buffalo,Bellingham,Washington,48.750884,-122.4803582,48.7544012,-122.478836,0.3,ok
+183,Edmonds Center for the Arts,Edmonds,Washington,47.8142609,-122.375753,47.8105738,-122.3774952,0.3,ok
+184,Marymoor Live,Redmond,Washington,,,47.6694141,-122.1238767,,venue_unresolved
+185,Chop Suey,Seattle,Washington,47.6135323,-122.3144552,47.6038321,-122.330062,1.0,ok
+186,Climate Pledge Arena,Seattle,Washington,47.6219014,-122.3539905,47.6038321,-122.330062,1.7,ok
+187,El Corazon,Seattle,Washington,47.6187293,-122.3293154,47.6038321,-122.330062,1.0,ok
+188,Hidden Hall,Seattle,Washington,47.6516233,-122.3542084,47.6038321,-122.330062,3.5,ok
+189,Lumen Field,Seattle,Washington,47.5953459,-122.3316443,47.6038321,-122.330062,0.6,ok
+190,Madame Lou’s,Seattle,Washington,,,47.6038321,-122.330062,,venue_unresolved
+191,Marymoor Live,Seattle,Washington,,,47.6038321,-122.330062,,venue_unresolved
+192,Neptune Theatre,Seattle,Washington,47.6611364,-122.3140309,47.6038321,-122.330062,4.0,ok
+193,Neumo’s,Seattle,Washington,,,47.6038321,-122.330062,,venue_unresolved
+194,Paramount Theatre,Seattle,Washington,47.6132449,-122.331356,47.6038321,-122.330062,0.7,ok
+195,Seattle Center,Seattle,Washington,47.621255,-122.349741,47.6038321,-122.330062,1.5,ok
+196,Showbox,Seattle,Washington,47.6085136,-122.3394726,47.6038321,-122.330062,0.5,ok
+197,Showbox SODO,Seattle,Washington,47.5880461,-122.333928,47.6038321,-122.330062,1.1,ok
+198,Sunset Tavern,Seattle,Washington,47.6682756,-122.3860837,47.6038321,-122.330062,5.2,ok
+199,T-Mobile Park,Seattle,Washington,47.5913974,-122.332507,47.6038321,-122.330062,0.9,ok
+200,The Crocodile,Seattle,Washington,47.6146474,-122.3490734,47.6038321,-122.330062,1.2,ok
+201,The Moore Theatre,Seattle,Washington,,,47.6038321,-122.330062,,venue_unresolved
+202,Tim’s Tavern,Seattle,Washington,47.5158507,-122.3557004,47.6038321,-122.330062,6.2,review_gt_6mi
+203,Tractor Tavern,Seattle,Washington,47.6657081,-122.382803,47.6038321,-122.330062,4.9,ok
+204,WAMU Theater,Seattle,Washington,47.593154,-122.3329041,47.6038321,-122.330062,0.7,ok
+205,The Podium,Spokane,Washington,47.6662254,-117.4190913,47.6571934,-117.42351,0.7,ok
+206,Alma,Tacoma,Washington,47.249951,-122.4427086,47.2455013,-122.438329,0.4,ok
+207,Dune Peninsula,Tacoma,Washington,47.3061889,-122.5097921,47.2455013,-122.438329,5.4,ok
+208,Emerald Queen Casino,Tacoma,Washington,47.237872,-122.408254,47.2455013,-122.438329,1.5,ok
+209,Chateau Ste Michelle Winery,Woodinville,Washington,47.7292858,-122.1493659,47.7545827,-122.1588902,1.8,ok
+210,Alpine Valley,East Troy,Wisconsin,42.7381877,-88.429212,42.7851871,-88.4054374,3.5,ok
+211,Waldron County Fairgrounds,Elkhorn,Wisconsin,,,42.6719206,-88.543494,,venue_unresolved
+212,Resch Center,Green Bay,Wisconsin,44.4994911,-88.0550423,44.5126379,-88.0125794,2.3,ok
+213,(Carthage College),Kenosha,Wisconsin,42.6228012,-87.8222909,42.5846773,-87.8212263,2.6,ok
+214,Orpheum Theatre,Madison,Wisconsin,43.0751848,-89.388732,43.07469,-89.3841663,0.2,ok
+215,Maier Festival Park Summerfest Grounds,Milwaukee,Wisconsin,,,43.0386475,-87.9090751,,venue_unresolved
+216,Marcus Amphitheatre,Milwaukee,Wisconsin,,,43.0386475,-87.9090751,,venue_unresolved
+217,Modjeska,Milwaukee,Wisconsin,43.0126298,-87.926516,43.0386475,-87.9090751,2.0,ok
+218,Rave/Eagle's Ballroom,Milwaukee,Wisconsin,,,43.0386475,-87.9090751,,venue_unresolved
+219,Riverside Theatre,Milwaukee,Wisconsin,43.0388947,-87.9109327,43.0386475,-87.9090751,0.1,ok
+220,Shank Hall,Milwaukee,Wisconsin,43.0485595,-87.8960535,43.0386475,-87.9090751,0.9,ok
+221,Kolf Arena,Oshkosh,Wisconsin,,,44.0206919,-88.5408574,,venue_unresolved

@@ -1,0 +1,96 @@
+city_id,shows,first_visit,latest_visit,venues,city,state_region,country,latitude,longitude,geocode_status
+1,1,2015-05-03,2015-05-03,1,Calgary,Alberta (Canada),,,,unresolved
+2,1,2015-05-04,2015-05-04,1,Edmonton,Alberta (Canada),,,,unresolved
+3,2,2021-10-11,2022-10-28,2,Phoenix,Arizona,,,,unresolved
+4,4,2024-11-09,2024-11-12,1,,Atlantic Ocean,,,,unresolved
+5,5,2014-08-15,2020-01-25,2,Berkeley,California,,,,unresolved
+6,1,2019-12-20,2019-12-20,1,Big Bear Lake,California,,,,unresolved
+7,1,2021-07-27,2021-07-27,1,Carlsbad,California,,,,unresolved
+8,1,2019-08-01,2019-08-01,1,Chula Vista,California,,,,unresolved
+9,1,2013-08-23,2013-08-23,1,Costa Mesa,California,,,,unresolved
+10,5,2013-07-26,2019-06-12,2,Cupertino,California,,,,unresolved
+11,1,2019-06-23,2019-06-23,1,Daly City,California,,,,unresolved
+12,3,2017-09-15,2017-09-17,1,Del Mar,California,,,,unresolved
+13,1,2019-06-22,2019-06-22,1,Hollywood,California,,,,unresolved
+14,1,2023-07-29,2023-07-29,1,Irvine,California,,,,unresolved
+15,7,2004-10-11,2026-08-07,6,Los Angeles,California,,,,unresolved
+16,1,2014-08-23,2014-08-23,1,Monterey,California,,,,unresolved
+17,4,2014-07-31,2018-07-25,1,Mountain View,California,,,,unresolved
+18,18,2013-12-07,2026-04-29,2,Oakland,California,,,,unresolved
+19,4,2026-03-26,2026-03-28,2,Palm Springs,California,,,,unresolved
+20,1,2016-08-15,2016-08-15,1,Peteluma,California,,,,unresolved
+21,2,2017-04-22,2021-09-27,1,Sacramento,California,,,,unresolved
+22,42,2013-07-18,2025-12-09,13,San Francisco,California,,,,unresolved
+23,6,2014-03-25,2018-12-12,4,San Jose,California,,,,unresolved
+24,2,2018-06-14,2018-06-16,1,San Rafael,California,,,,unresolved
+25,3,2015-06-26,2022-07-28,1,Santa Clara,California,,,,unresolved
+26,8,2013-04-23,2019-03-08,4,Santa Cruz,California,,,,unresolved
+27,1,2017-08-16,2017-08-16,1,Saratoga,California,,,,unresolved
+28,1,2017-11-18,2017-11-18,1,Sonoma,California,,,,unresolved
+29,1,2025-01-27,2025-01-27,1,Venice,California,,,,unresolved
+30,2,2022-11-30,2026-07-19,2,Vancouver,Canada,,,,unresolved
+31,1,2023-11-11,2023-11-11,1,Denver,Colorado,,,,unresolved
+32,6,2009-07-29,2022-06-20,1,Morrison,Colorado,,,,unresolved
+33,1,2026-05-22,2026-05-22,1,London,England,,,,unresolved
+34,2,2021-12-04,2021-12-06,1,Fort Lauderdale,Florida,,,,unresolved
+35,5,2009-08-12,2014-05-11,3,Atlanta,Georgia,,,,unresolved
+36,1,2026-08-23,2026-08-23,1,Aurora,Illinois,,,,unresolved
+37,2,2007-07-28,2010-06-26,1,Bridgeview,Illinois,,,,unresolved
+38,1,2012-07-29,2012-07-29,1,Brookfield,Illinois,,,,unresolved
+39,303,1996-03-22,2026-08-20,55,Chicago,Illinois,,,,unresolved
+40,1,2002-09-25,2002-09-25,1,DeKalb,Illinois,,,,unresolved
+41,1,2010-06-13,2010-06-13,1,Highland Park,Illinois,,,,unresolved
+42,1,2006-09-03,2006-09-03,1,Naperville,Illinois,,,,unresolved
+43,1,2007-04-15,2007-04-15,1,Peoria,Illinois,,,,unresolved
+44,1,1999-05-05,1999-05-05,1,Rockford,Illinois,,,,unresolved
+45,9,1995-12-08,2008-12-12,2,Rosemont,Illinois,,,,unresolved
+46,3,2020-10-02,2020-10-04,1,Schaumburg,Illinois,,,,unresolved
+47,33,1995-08-31,2011-08-20,3,Tinley Park,Illinois,,,,unresolved
+48,2,1999-09-25,2000-04-08,1,Urbana,Illinois,,,,unresolved
+49,1,1996-10-10,1996-10-10,1,Villa Park,Illinois,,,,unresolved
+50,1,2025-06-21,2025-06-21,1,Winnetka,Illinois,,,,unresolved
+51,1,2007-08-04,2007-08-04,1,Indianapolis,Indiana,,,,unresolved
+52,1,1998-08-15,1998-08-15,1,Noblesville,Indiana,,,,unresolved
+53,1,2002-10-15,2002-10-15,1,South Bend,Indiana,,,,unresolved
+54,1,2007-08-10,2007-08-10,1,Council Bluff,Iowa,,,,unresolved
+55,1,2007-08-11,2007-08-11,1,Des Moines,Iowa,,,,unresolved
+56,1,2007-08-03,2007-08-03,1,Louisville,Kentucky,,,,unresolved
+57,2,2008-02-01,2012-07-01,2,Baltimore,Maryland,,,,unresolved
+58,2,2011-09-23,2011-09-24,1,Detroit,Michigan,,,,unresolved
+59,2,2000-10-08,2009-07-07,2,Grand Rapids,Michigan,,,,unresolved
+60,2,1999-07-17,2000-05-28,2,Kalamazoo,Michigan,,,,unresolved
+61,1,2009-07-08,2009-07-08,1,Rochester Hills,Michigan,,,,unresolved
+62,2,2001-09-01,2004-02-13,2,Minneapolis,Minnesota,,,,unresolved
+63,1,2000-07-09,2000-07-09,1,Maryland Heights,Missouri,,,,unresolved
+64,1,2012-03-02,2012-03-02,1,St Louis,Missouri,,,,unresolved
+65,1,2023-07-11,2023-07-11,1,Missoula,Montana,,,,unresolved
+66,6,2015-10-20,2026-04-18,5,Las Vegas,Nevada,,,,unresolved
+67,1,2019-07-15,2019-07-15,1,Reno,Nevada,,,,unresolved
+68,1,2006-08-25,2006-08-25,1,Camden,New Jersey,,,,unresolved
+69,3,2012-07-13,2012-07-15,1,Cincinnati,Ohio,,,,unresolved
+70,1,2007-07-24,2007-07-24,1,Eastlake,Ohio,,,,unresolved
+71,1,2012-06-16,2012-06-16,1,Sylvania,Ohio,,,,unresolved
+72,9,2013-04-27,2026-07-24,5,Portland,Oregon,,,,unresolved
+73,1,2021-08-31,2021-08-31,1,Troutdale,Oregon,,,,unresolved
+74,1,2021-11-06,2021-11-06,1,Harrisburg,Pennsylvania,,,,unresolved
+75,2,2008-08-08,2008-08-09,1,Pittsburgh,Pennsylvania,,,,unresolved
+76,1,2009-06-20,2009-06-20,1,Memphis,Tennessee,,,,unresolved
+77,1,2009-08-11,2009-08-11,1,Nashville,Tennessee,,,,unresolved
+78,1,2025-04-02,2025-04-02,1,Austin,Texas,,,,unresolved
+79,1,2021-09-03,2021-09-03,1,Ogden,Utah,,,,unresolved
+80,1,2006-08-26,2006-08-26,1,Bristow,Virginia,,,,unresolved
+81,2,2025-07-08,2025-09-03,1,Auburn,Washington,,,,unresolved
+82,1,2021-10-29,2021-10-29,1,Bellingham,Washington,,,,unresolved
+83,1,2022-06-13,2022-06-13,1,Edmonds,Washington,,,,unresolved
+84,1,2023-08-11,2023-08-11,1,Redmond,Washington,,,,unresolved
+85,62,2014-09-09,2026-12-05,20,Seattle,Washington,,,,unresolved
+86,1,2023-07-14,2023-07-14,1,Spokane,Washington,,,,unresolved
+87,3,2022-05-11,2026-09-19,3,Tacoma,Washington,,,,unresolved
+88,1,2023-09-16,2023-09-16,1,Woodinville,Washington,,,,unresolved
+89,1,2011-09-03,2011-09-03,1,East Troy,Wisconsin,,,,unresolved
+90,1,2010-04-29,2010-04-29,1,Elkhorn,Wisconsin,,,,unresolved
+91,1,2008-10-11,2008-10-11,1,Green Bay,Wisconsin,,,,unresolved
+92,1,2008-04-12,2008-04-12,1,Kenosha,Wisconsin,,,,unresolved
+93,1,2014-12-13,2014-12-13,1,Madison,Wisconsin,,,,unresolved
+94,18,1997-11-03,2010-06-05,6,Milwaukee,Wisconsin,,,,unresolved
+95,1,1998-11-18,1998-11-18,1,Oshkosh,Wisconsin,,,,unresolved

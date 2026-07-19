@@ -1,0 +1,655 @@
+event_id,event_date,event_title,venue_id,city_id,facebook_recorded,is_upcoming,source_row,date_recorded,venue_recorded,city_recorded,state_recorded
+1,1995-08-31,Live,134,47,True,False,2,"Thursday, August 31, 1995",New World Music Theatre,Tinley Park,Illinois
+2,1995-12-08,Q101's Twisted Christmas 2,131,45,False,False,3,"Friday, December 8, 1995",Rosemont Horizon,Rosemont,Illinois
+3,1996-03-22,Spacehog,99,39,True,False,4,"Friday, March 22, 1996",Metro,Chicago,Illinois
+4,1996-07-05,Everclear,72,39,False,False,5,"Friday, July 5, 1996",Aragon Ballroom,Chicago,Illinois
+5,1996-08-23,Smashing Pumpkins,99,39,False,False,6,"Friday, August 23, 1996",Metro,Chicago,Illinois
+6,1996-09-06,Neil Yong with Crazy Horse,134,47,True,False,7,"Friday, September 6, 1996",New World Music Theatre,Tinley Park,Illinois
+7,1996-10-10,Kick-Off Concert,137,49,True,False,8,"Thursday, October 10, 1996",Odeum,Villa Park,Illinois
+8,1996-11-21,Dishwalla,99,39,False,False,9,"Thursday, November 21, 1996",Metro,Chicago,Illinois
+9,1996-12-12,Stone Temple Pilots,131,45,False,False,10,"Thursday, December 12, 1996",Rosemont Horizon,Rosemont,Illinois
+10,1997-03-01,Live,105,39,False,False,11,"Saturday, March 1, 1997",Riviera,Chicago,Illinois
+11,1997-03-10,Counting Crows,72,39,True,False,12,"Monday, March 10, 1997",Aragon Ballroom,Chicago,Illinois
+12,1997-04-24,Bush,131,45,False,False,13,"Thursday, April 24, 1997",Rosemont Horizon,Rosemont,Illinois
+13,1997-05-25,Q101's Jamboree '97,134,47,False,False,14,"Sunday, May 25, 1997",New World Music Theatre,Tinley Park,Illinois
+14,1997-05-30,Collective Soul,105,39,False,False,15,"Friday, May 30, 1997",Riviera,Chicago,Illinois
+15,1997-06-29,U2,111,39,True,False,16,"Sunday, June 29, 1997",Soldier Field,Chicago,Illinois
+16,1997-07-05,Counting Crows,134,47,False,False,17,"Saturday, July 5, 1997",New World Music Theatre,Tinley Park,Illinois
+17,1997-07-08,Sister Hazel,87,39,True,False,18,"Tuesday, July 8, 1997",House of Blues,Chicago,Illinois
+18,1997-08-14,Verve Pipe,121,39,False,False,19,"Thursday, August 14, 1997",Vic,Chicago,Illinois
+19,1997-08-22,Live,134,47,False,False,20,"Friday, August 22, 1997",New World Music Theatre,Tinley Park,Illinois
+20,1997-08-29,Rage Against the Machine,134,47,True,False,21,"Friday, August 29, 1997",New World Music Theatre,Tinley Park,Illinois
+21,1997-08-30,Aerosmith,134,47,False,False,22,"Saturday, August 30, 1997",New World Music Theatre,Tinley Park,Illinois
+22,1997-10-26,Refreshments,99,39,False,False,23,"Sunday, October 26, 1997",Metro,Chicago,Illinois
+23,1997-11-03,Everclear,217,94,False,False,24,"Monday, November 3, 1997",Modjeska,Milwaukee,Wisconsin
+24,1998-03-12,Our Lady Peace,99,39,True,False,25,"Thursday, March 12, 1998",Metro,Chicago,Illinois
+25,1998-03-14,Our Lady Peace,217,94,False,False,26,"Saturday, March 14, 1998",Modjeska,Milwaukee,Wisconsin
+26,1998-05-23,Q101's Jamboree '98,134,47,False,False,27,"Saturday, May 23, 1998",New World Music Theatre,Tinley Park,Illinois
+27,1998-06-11,Everclear,72,39,False,False,28,"Thursday, June 11, 1998",Aragon Ballroom,Chicago,Illinois
+28,1998-07-07,Smashing Pumpkins,134,47,False,False,29,"Tuesday, July 7, 1998",New World Music Theatre,Tinley Park,Illinois
+29,1998-07-22,B-52's,134,47,False,False,30,"Wednesday, July 22, 1998",New World Music Theatre,Tinley Park,Illinois
+30,1998-08-06,K's Choice,99,39,False,False,31,"Thursday, August 6, 1998",Metro,Chicago,Illinois
+31,1998-08-15,X-Fest '98,140,52,False,False,32,"Saturday, August 15, 1998",Deer Creek Music Center,Noblesville,Indiana
+32,1998-08-21,Matchbox 20,131,45,False,False,33,"Friday, August 21, 1998",Rosemont Horizon,Rosemont,Illinois
+33,1998-08-22,Sister Hazel,87,39,True,False,34,"Saturday, August 22, 1998",House of Blues,Chicago,Illinois
+34,1998-09-23,Tripping Daisy,99,39,True,False,35,"Wednesday, September 23, 1998",Metro,Chicago,Illinois
+35,1998-09-25,Third Eye Blind,72,39,False,False,36,"Friday, September 25, 1998",Aragon Ballroom,Chicago,Illinois
+36,1998-10-17,Better Than Ezra,121,39,True,False,37,"Saturday, October 17, 1998",Vic,Chicago,Illinois
+37,1998-11-18,Goo Goo Dolls,221,95,True,False,38,"Wednesday, November 18, 1998",Kolf Arena,Oshkosh,Wisconsin
+38,1998-11-22,Billy Joel,131,45,True,False,39,"Saturday, November 22, 1998",Rosemont Horizon,Rosemont,Illinois
+39,1998-12-03,Offspring,99,39,True,False,40,"Thursday, December 3, 1998",Metro,Chicago,Illinois
+40,1998-12-18,Q101's Twisted Christmas 5,131,45,False,False,41,"Friday, December 18, 1998",Rosemont Horizon,Rosemont,Illinois
+41,1999-02-12,Semisonic,121,39,False,False,42,"Friday, February 12, 1999",Vic,Chicago,Illinois
+42,1999-04-15,Better Than Ezra,87,39,False,False,43,"Thursday, April 15, 1999",House of Blues,Chicago,Illinois
+43,1999-04-22,Fastball,87,39,False,False,44,"Thursday, April 22, 1999",House of Blues,Chicago,Illinois
+44,1999-05-05,Collective Soul,129,44,True,False,45,"Wednesday, May 5 1999",Coronado Theatre,Rockford,Illinois
+45,1999-06-19,Santana,134,47,False,False,46,"Saturday, June 19, 1999",New World Music Theatre,Tinley Park,Illinois
+46,1999-06-24,Dovetail Joint,99,39,False,False,47,"Thursday, June 24, 1999",Metro,Chicago,Illinois
+47,1999-06-30,Sponge,87,39,False,False,48,"Wednesday, June 30, 1999",House of Blues,Chicago,Illinois
+48,1999-07-02,John Mellencamp,216,94,False,False,49,"Friday, July 2, 1999",Marcus Amphitheatre,Milwaukee,Wisconsin
+49,1999-07-17,Counting Crows,150,60,True,False,50,"Saturday, July 17, 1999",State Theatre,Kalamazoo,Michigan
+50,1999-07-31,Tom Petty and the Heartbreakers,134,47,True,False,51,"Saturday, July 31, 1999",New World Music Theatre,Tinley Park,Illinois
+51,1999-08-03,Dovetail Joint,99,39,False,False,52,"Tuesday, August 3, 1999",Metro,Chicago,Illinois
+52,1999-08-10,Goo Goo Dolls,216,94,True,False,53,"Tuesday, August 10, 1999",Marcus Amphitheatre,Milwaukee,Wisconsin
+53,1999-08-12,Young Dubliners,87,39,False,False,54,"Thursday, August 12, 1999",House of Blues,Chicago,Illinois
+54,1999-08-20,REM,134,47,False,False,55,"Friday August 20, 1999",New World Music Theatre,Tinley Park,Illinois
+55,1999-08-27,Lenny Kravitz,134,47,False,False,56,"Friday, August 27, 1999",New World Music Theatre,Tinley Park,Illinois
+56,1999-09-09,Bonnie Raitt,134,47,False,False,57,"Thursday, September 9, 1999",New World Music Theatre,Tinley Park,Illinois
+57,1999-09-10,Jeff Beck,134,47,False,False,58,"Friday, September 10, 1999",New World Music Theatre,Tinley Park,Illinois
+58,1999-09-18,Manic Street Preachers,99,39,False,False,59,"Saturday, September 18, 1999",Metro,Chicago,Illinois
+59,1999-09-22,Train,99,39,False,False,60,"Wednesday, September 22, 1999",Metro,Chicago,Illinois
+60,1999-09-23,Marvelous 3,218,94,True,False,61,"Thursday, September 23, 1999",Rave/Eagle's Ballroom,Milwaukee,Wisconsin
+61,1999-09-25,Dovetail Joint,136,48,True,False,62,"Saturday, September 25, 1999",Canopy Club,Urbana,Illinois
+62,1999-09-29,Better Than Ezra,102,39,False,False,63,"Wednesday, September 29, 1999",Park West,Chicago,Illinois
+63,1999-10-05,Dovetail Joint,99,39,False,False,64,"Tuesday, October 5, 1999",Metro,Chicago,Illinois
+64,1999-10-07,Tom Petty & the Heartbrakers,120,39,False,False,65,"Thursday, October 7, 1999",United Center,Chicago,Illinois
+65,1999-10-13,Creed,72,39,True,False,66,"Wednesday, October 13, 1999",Aragon Ballroom,Chicago,Illinois
+66,1999-10-14,John Mellencamp,120,39,True,False,67,"Thursday, October 14, 1999",United Center,Chicago,Illinois
+67,1999-11-05,Live,105,39,False,False,68,"Friday, November 5, 1999",Riviera,Chicago,Illinois
+68,1999-11-24,Counting Crows,72,39,False,False,69,"Wednesday, November 24, 1999",Aragon Ballroom,Chicago,Illinois
+69,1999-11-26,Counting Crows,218,94,True,False,70,"Friday, November 26, 1999",Rave/Eagle's Ballroom,Milwaukee,Wisconsin
+70,1999-12-03,Bush,218,94,False,False,71,"Friday, December 3, 1999",Rave/Eagle's Ballroom,Milwaukee,Wisconsin
+71,1999-12-13,Stroke 9,87,39,False,False,72,"Monday, December 13, 1999",House of Blues,Chicago,Illinois
+72,2000-01-20,Counting Crows,72,39,False,False,73,"Thursday, January 20, 2000",Aragon Ballroom,Chicago,Illinois
+73,2000-02-20,Smash Mouth,72,39,False,False,74,"Sunday, February 20, 2000",Aragon Ballroom,Chicago,Illinois
+74,2000-02-25,Gas Giants,102,39,False,False,75,"Friday, February 25, 2000",Park West,Chicago,Illinois
+75,2000-02-26,Pretenders,105,39,True,False,76,"Saturday, February 26, 2000",Riviera,Chicago,Illinois
+76,2000-02-29,Vertical Horizon,87,39,False,False,77,"Tuesday, February 29, 2000",House of Blues,Chicago,Illinois
+77,2000-03-17,Third Eye Blind,105,39,True,False,78,"Friday, March 17, 2000",Riviera,Chicago,Illinois
+78,2000-03-18,Third Eye Blind,105,39,True,False,79,"Saturday, March 18, 2000",Riviera,Chicago,Illinois
+79,2000-03-19,Lit,87,39,False,False,80,"Sunday, March 19, 2000",House of Blues,Chicago,Illinois
+80,2000-03-21,Organic,99,39,False,False,81,"Tuesday, March 21, 2000",Metro,Chicago,Illinois
+81,2000-03-23,After Five Live,88,39,False,False,82,"Thursday, March 23, 2000",House of Blues Second Stage,Chicago,Illinois
+82,2000-04-05,After Five Live,88,39,False,False,83,"Wednesday, April 5, 2000",House of Blues Second Stage,Chicago,Illinois
+83,2000-04-08,Local H,136,48,True,False,84,"Saturday, April 8, 2000",Canopy Club,Urbana,Illinois
+84,2000-04-16,Smashing Pumpkins,72,39,False,False,85,"Sunday, April 16, 2000",Aragon Ballroom,Chicago,Illinois
+85,2000-04-22,Local H,218,94,False,False,86,"Saturday, April 22, 2000",Rave/Eagle's Ballroom,Milwaukee,Wisconsin
+86,2000-04-24,Train,87,39,False,False,87,"Monday, April 24, 2000",House of Blues,Chicago,Illinois
+87,2000-04-25,Stroke 9,87,39,False,False,88,"Tuesday, April 25, 2000",House of Blues,Chicago,Illinois
+88,2000-04-29,Lucky Boy's Confusion,87,39,False,False,89,"Saturday, April 29, 2000",House of Blues,Chicago,Illinois
+89,2000-05-20,Jamboree 2000,134,47,False,False,90,"Saturday, May 20, 2000",New World Music Theatre,Tinley Park,Illinois
+90,2000-05-24,The Flys,87,39,False,False,91,"Wednesday, May 24, 2000",House of Blues,Chicago,Illinois
+91,2000-05-28,Counting Crows,151,60,True,False,92,"Sunday, May 28, 2000",Wings Stadium,Kalamazoo,Michigan
+92,2000-06-08,Lucky Boy's Confusion,99,39,False,False,93,"Thursday, June 8, 2000",Metro,Chicago,Illinois
+93,2000-07-02,Sister Hazel,96,39,False,False,94,"Sunday, July 2, 2000",Lincoln Park Zoo,Chicago,Illinois
+94,2000-07-09,Third Eye Blind,155,63,True,False,95,"Sunday, July 9, 2000",Riverport Amphitheatre,Maryland Heights,Missouri
+95,2000-07-18,Neve,87,39,False,False,96,"Thursday, July 18, 2000",House of Blues,Chicago,Illinois
+96,2000-08-02,Red Hot Chili Peppers,134,47,False,False,97,"Wednesday, August 2, 2000",New World Music Theatre,Tinley Park,Illinois
+97,2000-08-05,Counting Crows,134,47,False,False,98,"Saturday, August 5, 2000",New World Music Theatre,Tinley Park,Illinois
+98,2000-08-11,Creed,134,47,False,False,99,"Friday, August 11, 2000",New World Music Theatre,Tinley Park,Illinois
+99,2000-08-25,Allman Brothers Band,134,47,True,False,100,"Saturday, August 25, 2000",New World Music Theatre,Tinley Park,Illinois
+100,2000-09-07,Eve 6,121,39,True,False,101,"Thursday, September 7, 2000",Vic,Chicago,Illinois
+101,2000-09-12,Counting Crows,216,94,False,False,102,"Tuesday, September 12, 2000",Marcus Amphitheatre,Milwaukee,Wisconsin
+102,2000-09-15,David Gray,99,39,False,False,103,"Friday, September 15, 2000",Metro,Chicago,Illinois
+103,2000-09-19,Travis,105,39,True,False,104,"Tuesday, September 19, 2000",Riviera,Chicago,Illinois
+104,2000-10-08,"The Big ""O""",149,59,True,False,105,"Sunday, October 8, 2000",The Orbit Room,Grand Rapids,Michigan
+105,2000-10-21,Marvelous 3,99,39,True,False,106,"Saturday, October 21, 2000",Metro,Chicago,Illinois
+106,2000-10-26,SR-71,87,39,False,False,107,"Thursday, October 26, 2000",House of Blues,Chicago,Illinois
+107,2000-11-09,Sister Hazel,87,39,True,False,108,"Thursday, November 9, 2000",House of Blues,Chicago,Illinois
+108,2000-11-29,Smashing Pumpkins,120,39,False,False,109,"Wednesday, November 29, 2000",United Center,Chicago,Illinois
+109,2000-11-30,J Davis Trio,87,39,False,False,110,"Thursday, November 30, 2000",House of Blues,Chicago,Illinois
+110,2000-12-17,Plain White T's,99,39,False,False,111,"Sunday, December 17, 2000",Metro,Chicago,Illinois
+111,2001-01-23,Green Day,218,94,False,False,112,"Wednesday, January 23, 2001",Rave/Eagle's Ballroom,Milwaukee,Wisconsin
+112,2001-02-27,Eve 6,218,94,False,False,113,"Tuesday, February 27, 2001",Rave/Eagle's Ballroom,Milwaukee,Wisconsin
+113,2001-03-02,Matchbox Twenty,130,45,True,False,114,"Friday, March 2, 2001",Allstate Arena,Rosemont,Illinois
+114,2001-03-03,Eve 6,87,39,False,False,115,"Saturday, March 3, 2001",House of Blues,Chicago,Illinois
+115,2001-03-14,The Corrs,121,39,False,False,116,"Wednesday, March 14, 2001",Vic,Chicago,Illinois
+116,2001-03-26,Train,102,39,False,False,117,"Monday, March 26, 2001",Park West,Chicago,Illinois
+117,2001-04-21,Collective Soul,87,39,False,False,118,"Saturday, April 21, 2001",House of Blues,Chicago,Illinois
+118,2001-05-08,Lucky Boy's Confusion,99,39,False,False,119,"Tuesday, May 8, 2001",Metro,Chicago,Illinois
+119,2001-05-16,U2,120,39,True,False,120,"Wednesday, May 16, 2001",United Center,Chicago,Illinois
+120,2001-05-27,Plain White Ts,99,39,False,False,121,"Sunday, May 27, 2001",Metro,Chicago,Illinois
+121,2001-06-09,Sister Hazel,87,39,False,False,122,"Saturday, June 9, 2001",House of Blues,Chicago,Illinois
+122,2001-06-26,Our Lady Peace,99,39,False,False,123,"Tuesday, June 26, 2001",Metro,Chicago,Illinois
+123,2001-07-06,Three Doors Down,216,94,False,False,124,"Friday, July 6, 2001",Marcus Amphitheatre,Milwaukee,Wisconsin
+124,2001-07-22,Plain White T's,99,39,False,False,125,"Sunday, July 22, 2001",Metro,Chicago,Illinois
+125,2001-08-03,Matchbox Twenty,135,47,False,False,126,"Friday, August 3, 2001",Tweeter Center,Tinley Park,Illinois
+126,2001-08-18,John Mellencamp,135,47,False,False,127,"Saturday, August 18, 2001",Tweeter Center,Tinley Park,Illinois
+127,2001-09-01,Roger Clyne & the Peacemakers,153,62,False,False,128,"Saturday, September 1, 2001",400 Bar,Minneapolis,Minnesota
+128,2001-09-24,After Five Live,88,39,False,False,129,"Monday, September 24, 2001",House of Blues Second Stage,Chicago,Illinois
+129,2001-10-10,Travis,105,39,False,False,130,"Wednesday, October 10, 2001",Riviera,Chicago,Illinois
+130,2001-11-08,Live,79,39,False,False,131,"Thursday, November 8, 2001",Congress Theatre,Chicago,Illinois
+131,2001-11-09,Lucky Boy's Confusion,87,39,False,False,132,"Friday, November 9, 2001",House of Blues,Chicago,Illinois
+132,2001-11-13,The Calling,82,39,True,False,133,"Tuesday, November 13, 2001",Double Door,Chicago,Illinois
+133,2001-12-07,Remy Zero,115,39,False,False,134,"Friday, December 7, 2001",Top Note Theatre,Chicago,Illinois
+134,2001-12-09,Lifehouse,121,39,False,False,135,"Sunday, December 9, 2001",Vic,Chicago,Illinois
+135,2002-01-18,Penny and the Loafers,99,39,False,False,136,"Friday, January 18, 2002",Metro,Chicago,Illinois
+136,2002-02-21,The Dog and Everything,87,39,False,False,137,"Thursday, February 21, 2002",House of Blues,Chicago,Illinois
+137,2002-04-18,Pete Yorn,105,39,False,False,138,"Thursday, April 18, 2002",Riviera,Chicago,Illinois
+138,2002-04-27,Penny and the Loafers,99,39,False,False,139,"Saturday, April 27, 2002",Metro,Chicago,Illinois
+139,2002-05-03,Roger Clyne & the Peacemakers,99,39,False,False,140,"Friday, May 3, 2002",Metro,Chicago,Illinois
+140,2002-05-29,Goo Goo Dolls,105,39,False,False,141,"Wednesday, May 29, 2002",Riviera,Chicago,Illinois
+141,2002-05-30,Remy Zero,82,39,True,False,142,"Thursday, May 30, 2002",Double Door,Chicago,Illinois
+142,2002-07-27,John Mayer,70,39,False,False,143,"Saturday, July 27, 2002",A Finkl & Sons,Chicago,Illinois
+143,2002-08-04,Jimmy Eat World,105,39,False,False,144,"Sunday, August 4, 2002",Riviera,Chicago,Illinois
+144,2002-08-09,Creed,135,47,False,False,145,"Friday, August 9, 2002",Tweeter Center,Tinley Park,Illinois
+145,2002-08-10,Our Lady Peace,121,39,False,False,146,"Saturday, August 10, 2002",Vic,Chicago,Illinois
+146,2002-08-11,Jeep World Outdoor Festival,135,47,False,False,147,"Sunday, August 11, 2002",Tweeter Center,Tinley Park,Illinois
+147,2002-08-15,Brian Vander Ark,109,39,False,False,148,"Thursday, August 15, 2002",Schubas,Chicago,Illinois
+148,2002-08-19,Riddlin' Kids,87,39,False,False,149,"Monday, August 19, 2002",House of Blues,Chicago,Illinois
+149,2002-08-22,Goo Goo Dolls,135,47,False,False,150,"Thursday, August 22, 2002",Tweeter Center,Tinley Park,Illinois
+150,2002-08-23,Roger Clyne & the Peacemakers,99,39,False,False,151,"Friday, August 23, 2002",Metro,Chicago,Illinois
+151,2002-09-25,Counting Crows,125,40,False,False,152,"Wednesday, September 25, 2002",NIU Convocation Center,DeKalb,Illinois
+152,2002-10-10,Roger Clyne & the Peacemakers,220,94,False,False,153,"Thursday, October 10, 2002",Shank Hall,Milwaukee,Wisconsin
+153,2002-10-15,Counting Crows,141,53,False,False,154,"Tuesday, October 15, 2002",Morris Performing Arts Center,South Bend,Indiana
+154,2002-10-18,Morris Minors,82,39,False,False,155,"Friday, October 18, 2002",Double Door,Chicago,Illinois
+155,2002-10-21,Counting Crows,118,39,False,False,156,"Monday, October 21, 2002",UIC Pavilion,Chicago,Illinois
+156,2002-10-29,Vanessa Carlton,102,39,False,False,157,"Tuesday, October 29, 2002",Park West,Chicago,Illinois
+157,2002-11-16,Wheat,82,39,False,False,158,"Saturday, November 16, 2002",Double Door,Chicago,Illinois
+158,2002-11-23,The Wallflowers,87,39,False,False,159,"Saturday, November 23, 2002",House of Blues,Chicago,Illinois
+159,2002-11-29,Counting Crows,219,94,False,False,160,"Friday, November 29, 2002",Riverside Theatre,Milwaukee,Wisconsin
+160,2003-02-18,Toad the Wet Sprockett,121,39,False,False,161,"Tuesday, February 18, 2003",Vic,Chicago,Illinois
+161,2003-02-21,Fastball,71,39,True,False,162,"Friday, February 21, 2003",Abbey Pub,Chicago,Illinois
+162,2003-03-27,Roger Clyne,220,94,False,False,163,"Thursday, March 27, 2003",Shank Hall,Milwaukee,Wisconsin
+163,2003-04-03,Everclear,105,39,False,False,164,"Thursday, April 3, 2003",Riviera,Chicago,Illinois
+164,2003-04-27,PXL,99,39,False,False,165,"Sunday, April 27, 2003",Metro,Chicago,Illinois
+165,2003-05-15,Butch Walker,71,39,False,False,166,"Thursday, May 15, 2003",Abbey Pub,Chicago,Illinois
+166,2003-06-28,Peter Gabriel,135,47,True,False,167,"Saturday, June 28, 2003",Tweeter Center,Tinley Park,Illinois
+167,2003-10-09,Eve 6,82,39,False,False,168,"Thursday, October 9, 2003",Double Door,Chicago,Illinois
+168,2004-02-13,Roger Clyne & the Peacemakers,154,62,False,False,169,"Friday, February 13, 2004",Fine Line Music Café,Minneapolis,Minnesota
+169,2004-07-04,Taste of Chicago,86,39,True,False,170,"Sunday, July 4, 2004",Grant Park,Chicago,Illinois
+170,2004-07-16,Counting Crows,87,39,False,False,171,"Friday, July 16, 2004",House of Blues,Chicago,Illinois
+171,2004-07-18,Sting,117,39,False,False,172,"Sunday, July 18, 2004",Tweeter Center,Chicago,Illinois
+172,2004-08-07,Butch Walker,71,39,False,False,173,"Saturday, August 7, 2004",Abbey Pub,Chicago,Illinois
+173,2004-11-08,Green Day,118,39,False,False,174,"Monday, November 8, 2004",UIC Pavilion,Chicago,Illinois
+174,2004-11-16,Everclear,87,39,False,False,175,"Tuesday, November 16, 2004",House of Blues,Chicago,Illinois
+175,2005-05-03,Soundstage,122,39,False,False,176,"Thursday, May 3, 2005",WTTW Grainger Studio,Chicago,Illinois
+176,2005-10-02,Our Lady Peace,121,39,False,False,177,"Sunday, October 2, 2005",Vic,Chicago,Illinois
+177,2005-11-14,Butch Walker,99,39,False,False,178,"Monday, November 14, 2005",Metro,Chicago,Illinois
+178,2006-02-16,Motion City Soundtrack,218,94,True,False,179,"Thursday, February 16, 2006",Rave/Eagle's Ballroom,Milwaukee,Wisconsin
+179,2006-03-25,The Academy is…,87,39,True,False,180,"Saturday, March 25, 2006",House of Blues,Chicago,Illinois
+180,2006-04-01,Motion City Soundtrack,105,39,True,False,181,"Saturday, April 1, 2006",Riviera,Chicago,Illinois
+181,2006-05-16,Live,121,39,False,False,182,"Tuesday, May 16, 2006",Vic,Chicago,Illinois
+182,2006-06-23,Gin Blossoms,96,39,False,False,183,"Friday, June 23, 2006",Lincoln Park Zoo,Chicago,Illinois
+183,2006-07-28,Collective Soul,96,39,False,False,184,"Friday, July 28, 2006",Lincoln Park Zoo,Chicago,Illinois
+184,2006-07-30,Warped Tour '06,133,47,False,False,185,"Sunday, July 30, 2006",First Midwest Bank Amphitheatre,Tinley Park,Illinois
+185,2006-08-02,Butch Walker & the Lets Go Out Tonites,99,39,False,False,186,"Wednesday, August 2, 2006",Metro,Chicago,Illinois
+186,2006-08-18,Counting Crows,133,47,False,False,187,"Friday, August 18, 2006",First Midwest Bank Amphitheatre,Tinley Park,Illinois
+187,2006-08-24,Third Eye Blind,87,39,False,False,188,"Thursday, August 24, 2006",House of Blues,Chicago,Illinois
+188,2006-08-25,Counting Crows,164,68,False,False,189,"Friday, August 25, 2006",Tweeter Center at the Waterfront,Camden,New Jersey
+189,2006-08-26,Counting Crows,180,80,True,False,190,"Saturday, August 26, 2006",Nissan Pavillion,Bristow,Virginia
+190,2006-08-27,Third Eye Blind,87,39,False,False,191,"Sunday, August 27, 2006",House of Blues,Chicago,Illinois
+191,2006-09-03,Collective Soul,127,42,False,False,192,"Sunday, September 3, 2006",Rotary Hill,Naperville,Illinois
+192,2006-09-15,Tom Petty,76,39,False,False,193,"Friday, September 15, 2006",Charter One Pavilion at Northerly Island,Chicago,Illinois
+193,2006-09-29,Roger Waters,133,47,False,False,194,"Friday, September 29, 2006",First Midwest Bank Amphitheatre,Tinley Park,Illinois
+194,2006-12-16,Better Than Ezra,87,39,False,False,195,"Saturday, December 16, 2006",House of Blues,Chicago,Illinois
+195,2007-01-25,Augustana,99,39,True,False,196,"Thursday, January 25, 2007",Metro,Chicago,Illinois
+196,2007-03-06,Jack's Mannequin,87,39,False,False,197,"Tuesday, March 6, 2007",House of Blues,Chicago,Illinois
+197,2007-04-02,Snow Patrol,72,39,True,False,198,"Monday, April 2, 2007",Aragon Ballroom,Chicago,Illinois
+198,2007-04-05,Snow Patrol,218,94,True,False,199,"Thursday, April 5, 2007",Rave/Eagle's Ballroom,Milwaukee,Wisconsin
+199,2007-04-10,Butch Walker,87,39,False,False,200,"Tuesday, April 10, 2007",House of Blues,Chicago,Illinois
+200,2007-04-15,Motion City Soundtrack,128,43,True,False,201,"Sunday, April 15, 2007",Bradley Field House,Peoria,Illinois
+201,2007-04-17,Motion City Soundtrack,97,39,False,False,202,"Tuesday, April 17, 2007",Loyola Gentile Center,Chicago,Illinois
+202,2007-05-04,Roger Clyne & the Peacemakers,92,39,True,False,203,"Friday, May 4, 2007",Joe's,Chicago,Illinois
+203,2007-06-14,The Fray,76,39,False,False,204,"Thursday, June 14, 2007",Charter One Pavilion at Northerly Island,Chicago,Illinois
+204,2007-07-05,The Police,124,39,False,False,205,"Thursday, July 5, 2007",Wrigley Field,Chicago,Illinois
+205,2007-07-24,Counting Crows,166,70,False,False,206,"Tuesday, July 24, 2007",Classic Park,Eastlake,Ohio
+206,2007-07-28,Crossroads Guitar Festival,68,37,False,False,207,"Saturday, July 28, 2007",Toyota Park,Bridgeview,Illinois
+207,2007-08-03,Counting Crows,144,56,False,False,208,"Friday, August 3, 2007",Louisville Slugger Field,Louisville,Kentucky
+208,2007-08-04,Counting Crows,139,51,False,False,209,"Saturday, August 4, 2007",Victory Field,Indianapolis,Indiana
+209,2007-08-10,Third Eye Blind,142,54,False,False,210,"Friday, August 10, 2007",Harrah's Hidden Cove,Council Bluff,Iowa
+210,2007-08-11,Counting Crows,143,55,False,False,211,"Saturday, August 11, 2007",Principal Park,Des Moines,Iowa
+211,2007-10-12,Spoon,105,39,False,False,212,"Friday, October 12, 2007",Riviera,Chicago,Illinois
+212,2007-10-24,Say Anything,79,39,False,False,213,"Wednesday, October 24, 2007",Congress Theatre,Chicago,Illinois
+213,2007-11-07,The Wallflowers,102,39,False,False,214,"Wednesday, November 7, 2007",Park West,Chicago,Illinois
+214,2007-11-15,Jimmy Eat World,105,39,False,False,215,"Thursday, November 15, 2007",Riviera,Chicago,Illinois
+215,2007-11-18,Vanessa Carlton,102,39,False,False,216,"Sunday, November 18, 2007",Park West,Chicago,Illinois
+216,2007-12-28,Sister Hazel,87,39,False,False,217,"Friday, December 28, 2007",House of Blues,Chicago,Illinois
+217,2008-02-01,Adam Duritz with Dave Gibbs,146,57,True,False,218,"Friday, February 1, 2008",Ram's Head Live,Baltimore,Maryland
+218,2008-02-08,Will Hoge,82,39,False,False,219,"Friday, February 8, 2008",Double Door,Chicago,Illinois
+219,2008-04-04,Spoon,121,39,False,False,220,"Friday, April 4, 2008",Vic,Chicago,Illinois
+220,2008-04-06,Vampire Weekend,99,39,True,False,221,"Sunday, April 6, 2008",Metro,Chicago,Illinois
+221,2008-04-08,Soundstage,122,39,False,False,222,"Tuesday, April 8, 2008",WTTW Grainger Studio,Chicago,Illinois
+222,2008-04-09,Third Eye Blind,97,39,True,False,223,"Wednesday, April 9, 2008",Loyola Gentile Center,Chicago,Illinois
+223,2008-04-10,Counting Crows,105,39,False,False,224,"Thursday, April 10, 2008",Riviera,Chicago,Illinois
+224,2008-04-12,Counting Crows,213,92,False,False,225,"Saturday, April 12, 2008",(Carthage College),Kenosha,Wisconsin
+225,2008-04-18,Eliot Morris,93,39,False,False,226,"Friday, April 18, 2008",Kathy's House (neighborhood),Chicago,Illinois
+226,2008-04-19,Santana,130,45,False,False,227,"Saturday, April 19, 2008",Allstate Arena,Rosemont,Illinois
+227,2008-04-23,As Tall As Lions,104,39,True,False,228,"Wednesday, April 23, 2008",Reggie's,Chicago,Illinois
+228,2008-05-13,Augustana,99,39,False,False,229,"Tuesday, May 13, 2008",Metro,Chicago,Illinois
+229,2008-05-16,Sponge,82,39,False,False,230,"Friday, May 16, 2008",Double Door,Chicago,Illinois
+230,2008-05-22,Stone Temple Pilots,76,39,True,False,231,"Thursday, May 22, 2008",Charter One Pavilion at Northerly Island,Chicago,Illinois
+231,2008-05-23,Honda Civic Tour,79,39,True,False,232,"Friday, May 23, 2008",Congress Theatre,Chicago,Illinois
+232,2008-06-03,Death Cab for Cutie,91,39,False,False,233,"Tuesday, June 3, 2008",Jay Pritzker Pavilion at Millenium Park,Chicago,Illinois
+233,2008-07-22,Coldplay,120,39,True,False,234,"Tuesday, July 22, 2008",United Center,Chicago,Illinois
+234,2008-08-08,New American Music Union,175,75,True,False,235,"Friday, August 8, 2008",Southside Works,Pittsburgh,Pennsylvania
+235,2008-08-09,New American Music Union,175,75,True,False,236,"Saturday, August 9, 2008",Southside Works,Pittsburgh,Pennsylvania
+236,2008-08-21,Eddie Vedder,73,39,False,False,237,"Thursday, August 21, 2008",Auditorium Theatre,Chicago,Illinois
+237,2008-08-22,Counting Crows,133,47,False,False,238,"Friday, August 22, 2008",First Midwest Bank Amphitheatre,Tinley Park,Illinois
+238,2008-10-05,Wild Sweet Orange,109,39,False,False,239,"Sunday, October 5, 2008",Schubas,Chicago,Illinois
+239,2008-10-08,Joe Satriani,77,39,False,False,240,"Wednesday, October 8, 2008",Chicago Theatre,Chicago,Illinois
+240,2008-10-10,Death Cab for Cutie,105,39,False,False,241,"Friday, October 10, 2008",Riviera,Chicago,Illinois
+241,2008-10-11,OKOBOS Music Festival,212,91,False,False,242,"Saturday, October 11, 2008",Resch Center,Green Bay,Wisconsin
+242,2008-11-01,Cavashawn,74,39,False,False,243,"Saturday, November 1, 2008",Beat Kitchen,Chicago,Illinois
+243,2008-12-12,Oasis,130,45,False,False,244,"Friday, December 12, 2008",Allstate Arena,Rosemont,Illinois
+244,2009-01-15,The Hold Steady,87,39,True,False,245,"Thursday, January 15, 2009",House of Blues,Chicago,Illinois
+245,2009-02-28,Jimmy Eat World,99,39,True,False,246,"Saturday, February 28, 2009",Metro,Chicago,Illinois
+246,2009-03-10,Butch Walker,87,39,True,False,247,"Tuesday, March 10, 2009",House of Blues,Chicago,Illinois
+247,2009-04-17,Death Cab for Cutie,72,39,False,False,248,"Friday, April 17, 2009",Aragon Ballroom,Chicago,Illinois
+248,2009-04-20,Alkaline Trio,99,39,False,False,249,"Monday, April 20, 2009",Metro,Chicago,Illinois
+249,2009-05-29,Third Eye Blind,105,39,True,False,250,"Friday, May 29, 2009",Riviera,Chicago,Illinois
+250,2009-06-20,Eddie Vedder,176,76,True,False,251,"Saturday, June 20, 2009",Orpheum Theatre,Memphis,Tennessee
+251,2009-06-23,Eddie Koalyczyk,109,39,True,False,252,"Tuesday, June 23, 2009",Schubas,Chicago,Illinois
+252,2009-06-28,The Fray,133,47,True,False,253,"Sunday, June 28, 2009",First Midwest Bank Amphitheatre,Tinley Park,Illinois
+253,2009-07-07,Augustana,148,59,False,False,254,"Tuesday, July 7, 2009",The Intersection,Grand Rapids,Michigan
+254,2009-07-08,Counting Crows with Augustana,152,61,False,False,255,"Wednesday, July 8, 2009",Meadow Brook Music Festival,Rochester Hills,Michigan
+255,2009-07-10,World's Biggest Block Party,98,39,False,False,256,"Friday, July 10, 2009",Madison Street & Des Plaines Street,Chicago,Illinois
+256,2009-07-19,Frightened Rabbit,75,39,False,False,257,"Sunday, July 19, 2009",Bottom Lounge,Chicago,Illinois
+257,2009-07-29,The Traveling Circus & Medicine Show,61,32,True,False,258,"Wednesday, July 29, 2009",Red Rocks Amphitheatre,Morrison,Colorado
+258,2009-08-01,City Riots,82,39,False,False,259,"Saturday, August 1, 2009",Double Door,Chicago,Illinois
+259,2009-08-07,Lollapalooza '09,86,39,False,False,260,"Friday, August 7, 2009",Grant Park,Chicago,Illinois
+260,2009-08-08,Lollapalooza '09,86,39,False,False,261,"Saturday, August 8, 2009",Grant Park,Chicago,Illinois
+261,2009-08-09,Lollapalooza '09,86,39,False,False,262,"Sunday, August 9, 2009",Grant Park,Chicago,Illinois
+262,2009-08-11,The Traveling Circus & Medicine Show,177,77,False,False,263,"Tuesday, August 11, 2009",Ryman Auditorium,Nashville,Tennessee
+263,2009-08-12,The Traveling Circus & Medicine Show,66,35,False,False,264,"Wednesday, August 12, 2009",Chastain Park Amphitheatre,Atlanta,Georgia
+264,2009-08-19,Green River Ordinance,109,39,True,False,265,"Wednesday, August 19, 2009",Schubas,Chicago,Illinois
+265,2009-08-22,Our Lady Peace,114,39,False,False,266,"Saturday, August 22, 2009",The Vic,Chicago,Illinois
+266,2009-08-23,Pearl Jam,120,39,False,False,267,"Sunday, August 23, 2009",United Center,Chicago,Illinois
+267,2009-09-17,Ra Ra Riot,109,39,False,False,268,"Wednesday, September 17, 2009",Schubas,Chicago,Illinois
+268,2009-10-07,Andrew McMahon,94,39,True,False,269,"Wednesday, October 7, 2009",Lakeshore Theatre,Chicago,Illinois
+269,2009-10-08,Karl Rorvik and the Crafty Bastards,84,39,False,False,270,"Thursday, October 8, 2009",Elbo Room,Chicago,Illinois
+270,2009-10-26,Ben Gibbard & Jay Farrar,95,39,False,False,271,"Monday, October 26, 2009",Lincoln Hall,Chicago,Illinois
+271,2009-10-28,The Gaslight Anthem,82,39,False,False,272,"Wednesday, October 28, 2009",Double Door,Chicago,Illinois
+272,2009-10-30,Thao & the Get Down Stay Down,85,39,False,False,273,"Friday, October 30, 2009",Empty Bottle,Chicago,Illinois
+273,2009-11-20,Graham Colton,109,39,False,False,274,"Friday, November 20, 2009",Schubas,Chicago,Illinois
+274,2009-11-25,Blind Pilot,95,39,False,False,275,"Wednesday, November 25, 2009",Lincoln Hall,Chicago,Illinois
+275,2009-12-01,Weezer,72,39,False,False,276,"Tuesday, December 1, 2009",Aragon Ballroom,Chicago,Illinois
+276,2009-12-12,Better Than Ezra,87,39,False,False,277,"Saturday, December 12, 2009",House of Blues,Chicago,Illinois
+277,2009-12-17,Our Lady Peace,80,39,False,False,278,"Thursday, December 17, 2009",Cubby Bear,Chicago,Illinois
+278,2009-12-18,Motion City Soundtrack - I Am the Movie,95,39,False,False,279,"Friday, December 18, 2009",Lincoln Hall,Chicago,Illinois
+279,2009-12-19,Motion City Soundtrack - Commit This to Memory,95,39,False,False,280,"Saturday, December 19, 2009",Lincoln Hall,Chicago,Illinois
+280,2009-12-20,Motion City Soundtrack - Even If It Kills Me,95,39,False,False,281,"Sunday, December 20, 2009",Lincoln Hall,Chicago,Illinois
+281,2010-01-30,Cold War Kids,114,39,True,False,282,"Saturday, January 30, 2010",The Vic,Chicago,Illinois
+282,2010-02-22,Jack’s Mannequin,87,39,True,False,283,"Monday, February 22, 2010",House of Blues,Chicago,Illinois
+283,2010-02-23,Jack’s Mannequin,87,39,True,False,284,"Tuesday, February 23, 2010",House of Blues,Chicago,Illinois
+284,2010-03-23,Manchester Orchestra,99,39,False,False,285,"Tuesday, March 23, 2010",Metro,Chicago,Illinois
+285,2010-04-01,Spoon,72,39,True,False,286,"Thursday, April 1, 2010",Aragon Ballroom,Chicago,Illinois
+286,2010-04-07,Motion City Soundtrack,87,39,False,False,287,"Wednesday, April 7, 2010",House of Blues,Chicago,Illinois
+287,2010-04-12,The Morning Benders,95,39,False,False,288,"Monday, April 12, 2010",Lincoln Hall,Chicago,Illinois
+288,2010-04-16,Dr Dog,99,39,True,False,289,"Friday, April 16, 2010",Metro,Chicago,Illinois
+289,2010-04-17,Rogue Wave,95,39,False,False,290,"Saturday, April 17, 2010",Lincoln Hall,Chicago,Illinois
+290,2010-04-24,Natalie Merchant,107,39,True,False,291,"Saturday, April 24, 2010",Rubloff Auditorium,Chicago,Illinois
+291,2010-04-29,Daytrotter Barnraiser III,211,90,False,False,292,"Thursday, April 29, 2010",Waldron County Fairgrounds,Elkhorn,Wisconsin
+292,2010-05-06,Everybody was in the French Resistance... Now!,109,39,False,False,293,"Thursday, May 6, 2010",Schubas,Chicago,Illinois
+293,2010-05-08,Frightened Rabbit,99,39,True,False,294,"Saturday, May 8, 2010",Metro,Chicago,Illinois
+294,2010-05-09,Butch Walker & the Black Widows,87,39,True,False,295,"Sunday, May 9, 2010",House of Blues,Chicago,Illinois
+295,2010-06-05,Verge Fest,215,94,False,False,296,"Saturday, June 5, 2010",Maier Festival Park Summerfest Grounds,Milwaukee,Wisconsin
+296,2010-06-13,Sheryl Crow,126,41,False,False,297,"Sunday, June 13, 2010",Ravinia,Highland Park,Illinois
+297,2010-06-19,Delta Spirit,99,39,False,False,298,"Saturday, June 19, 2010",Metro,Chicago,Illinois
+298,2010-06-26,Crossroads Guitar Festival,68,37,False,False,299,"Saturday, June 26, 2010",Toyota Park,Bridgeview,Illinois
+299,2010-06-28,Thao and Mirah,95,39,True,False,300,"Monday, June 28, 2010",Lincoln Hall,Chicago,Illinois
+300,2010-07-22,Natalie Merchant,77,39,False,False,301,"Thursday, July 22, 2010",Chicago Theatre,Chicago,Illinois
+301,2010-08-06,Lollapalooza ’10,86,39,False,False,302,"Friday, August 6, 2010",Grant Park,Chicago,Illinois
+302,2010-08-07,Lollapalooza ’10,86,39,False,False,303,"Saturday, August 7, 2010",Grant Park,Chicago,Illinois
+303,2010-08-08,Lollapalooza ’10,86,39,False,False,304,"Sunday, August 8, 2010",Grant Park,Chicago,Illinois
+304,2010-08-20,Stone Temple Pilots,76,39,False,False,305,"Friday, August 20, 2010",Charter One Pavilion at Northerly Island,Chicago,Illinois
+305,2010-09-04,North Coast Music Festival ’10,119,39,False,False,306,"Saturday, September 4, 2010",Union Park,Chicago,Illinois
+306,2010-09-12,Nick Coury,84,39,False,False,307,"Sunday, September 12, 2010",Elbo Room,Chicago,Illinois
+307,2010-09-23,These United States,109,39,False,False,308,"Thursday, September 23, 2010",Schubas,Chicago,Illinois
+308,2010-09-25,Spacehog,80,39,False,False,309,"Saturday, September 25, 2010",Cubby Bear,Chicago,Illinois
+309,2010-09-26,Royal Bangs,113,39,False,False,310,"Sunday, September 26, 2010",The Hideout,Chicago,Illinois
+310,2010-10-05,Jimmy Eat World,105,39,False,False,311,"Thursday, October 5, 2010",Riviera,Chicago,Illinois
+311,2010-10-30,Motion City Soundtrack,87,39,False,False,312,"Saturday, October 30, 2010",House of Blues,Chicago,Illinois
+312,2010-10-30,The Morning Benders,95,39,False,False,313,"Saturday, October 30, 2010",Lincoln Hall,Chicago,Illinois
+313,2010-11-26,Matt Skiba,75,39,False,False,314,"Friday, November 26, 2010",Bottom Lounge,Chicago,Illinois
+314,2010-12-04,Delta Spirit,99,39,False,False,315,"Saturday, December 4, 2010",Metro,Chicago,Illinois
+315,2010-12-29,Songs from a Scene 10th Anniversary,82,39,False,False,316,"Friday, December 29, 2010",Double Door,Chicago,Illinois
+316,2011-03-11,Cold War Kids,105,39,False,False,317,"Friday, March 11, 2011",Riviera,Chicago,Illinois
+317,2011-04-16,Royal Bangs,85,39,False,False,318,"Saturday, April 16, 2011",Empty Bottle,Chicago,Illinois
+318,2011-04-21,Counting Crows,87,39,False,False,319,"Thursday, April 21, 2011",House of Blues,Chicago,Illinois
+319,2011-04-22,Arcade Fire,118,39,False,False,320,"Friday, April 22, 2011",UIC Pavilion,Chicago,Illinois
+320,2011-05-16,Paul Simon,114,39,True,False,321,"Monday, May 16, 2011",The Vic,Chicago,Illinois
+321,2011-05-17,Paul Simon,77,39,True,False,322,"Tuesday, May 17, 2011",Chicago Theatre,Chicago,Illinois
+322,2011-05-18,The Cars,105,39,True,False,323,"Wednesday, May 18, 2011",Riviera,Chicago,Illinois
+323,2011-05-20,Death Cab for Cutie,99,39,False,False,324,"Friday, May 20, 2011",Metro,Chicago,Illinois
+324,2011-06-03,Thao and Mirah,85,39,False,False,325,"Friday, June 3, 2011",Empty Bottle,Chicago,Illinois
+325,2011-06-05,Do Division Street Festival,81,39,False,False,326,"Sunday, June 5, 2011",Division Avenue & Damen,Chicago,Illinois
+326,2011-06-19,Farewell Continental,109,39,False,False,327,"Sunday, June 19, 2011",Schubas,Chicago,Illinois
+327,2011-06-28,Eddie Vedder,77,39,False,False,328,"Tuesday, June 28, 2011",Chicago Theatre,Chicago,Illinois
+328,2011-07-05,U2,111,39,False,False,329,"Tuesday, July 5, 2011",Soldier Field,Chicago,Illinois
+329,2011-08-01,Paul McCartney,124,39,False,False,330,"Monday, August 1, 2011",Wrigley Field,Chicago,Illinois
+330,2011-08-04,Delta Spirit,95,39,False,False,331,"Thursday, August 4, 2011",Lincoln Hall,Chicago,Illinois
+331,2011-08-05,Lollapalooza ’11,86,39,False,False,332,"Friday, August 5, 2011",Grant Park,Chicago,Illinois
+332,2011-08-05,Local Natives,95,39,False,False,333,"Friday, August 5, 2011",Lincoln Hall,Chicago,Illinois
+333,2011-08-06,Lollapalooza ’11,86,39,False,False,334,"Saturday, August 6, 2011",Grant Park,Chicago,Illinois
+334,2011-08-07,Lollapalooza ’11,86,39,False,False,335,"Sunday, August 7, 2011",Grant Park,Chicago,Illinois
+335,2011-08-20,Honda Civic Tour,133,47,False,False,336,"Sunday, August 20, 2011",First Midwest Bank Amphitheatre,Tinley Park,Illinois
+336,2011-08-25,Death Cab for Cutie,118,39,False,False,337,"Thursday, August 25, 2011",UIC Pavilion,Chicago,Illinois
+337,2011-09-03,Pearl Jam,210,89,False,False,338,"Saturday, September 3, 2011",Alpine Valley,East Troy,Wisconsin
+338,2011-09-23,4 Albums/2 Nites: Motion City Soundtrack,147,58,False,False,339,"Friday, September 23, 2011",St Andrew’s Hall,Detroit,Michigan
+339,2011-09-24,4 Albums/2 Nites: Motion City Soundtrack,147,58,False,False,340,"Saturday, September 24, 2011",St Andrew’s Hall,Detroit,Michigan
+340,2011-10-05,Foster the People,114,39,False,False,341,"Wednesday, October 5, 2011",The Vic,Chicago,Illinois
+341,2011-10-28,Widespread Panic,77,39,False,False,342,"Friday, October 28, 2011",Chicago Theatre,Chicago,Illinois
+342,2011-10-29,These United States,109,39,False,False,343,"Saturday, October 29, 2011",Schubas,Chicago,Illinois
+343,2011-11-13,Blind Pilot,102,39,False,False,344,"Sunday, November 13, 2011",Park West,Chicago,Illinois
+344,2012-01-21,The Lifeline,95,39,False,False,345,"Saturday, January 21, 2012",Lincoln Hall,Chicago,Illinois
+345,2012-01-25,Jack’s Mannequin,87,39,False,False,346,"Wednesday, January 25, 2012",House of Blues,Chicago,Illinois
+346,2012-01-28,Augustana,102,39,True,False,347,"Saturday, January 28, 2012",Park West,Chicago,Illinois
+347,2012-02-18,moe.,105,39,True,False,348,"Saturday, February 18, 2012",Riviera,Chicago,Illinois
+348,2012-03-02,Blind Pilot,156,64,True,False,349,"Friday, March 2, 2012",Plush,St Louis,Missouri
+349,2012-03-09,Roger Clyne,109,39,False,False,350,"Friday, March 9, 2012",Schubas,Chicago,Illinois
+350,2012-03-23,Delta Spirit,99,39,False,False,351,"Friday, March 23, 2012",Metro,Chicago,Illinois
+351,2012-03-24,The Temper Trap,95,39,False,False,352,"Saturday, March 24, 2012",Lincoln Hall,Chicago,Illinois
+352,2012-04-06,Eve 6,80,39,False,False,353,"Friday, April 6, 2012",Cubby Bear,Chicago,Illinois
+353,2012-04-08,Our Lady Peace,112,39,False,False,354,"Sunday, April 8, 2012",Subterranean,Chicago,Illinois
+354,2012-04-08,White Rabbits,99,39,False,False,355,"Sunday, April 8, 2012",Metro,Chicago,Illinois
+355,2012-04-13,Trampled by Turtles,99,39,False,False,356,"Friday, April 13, 2012",Metro,Chicago,Illinois
+356,2012-04-14,Fun.,114,39,False,False,357,"Saturday, April 14, 2012",The Vic,Chicago,Illinois
+357,2012-04-22,Counting Crows,105,39,False,False,358,"Sunday, April 22, 2012",Riviera,Chicago,Illinois
+358,2012-05-10,Royal Bangs,116,39,False,False,359,"Thursday, May 10, 2012",Township,Chicago,Illinois
+359,2012-06-02,Sausage Fest ’12,110,39,False,False,360,"Saturday, June 2, 2012",Sheffield & Addison,Chicago,Illinois
+360,2012-06-02,Margot & the Nuclear So and So's,95,39,False,False,361,"Saturday, June 2, 2012",Lincoln Hall,Chicago,Illinois
+361,2012-06-07,Matt Skiba & the Sekrets,99,39,False,False,362,"Thursday, June 7, 2012",Metro,Chicago,Illinois
+362,2012-06-16,The Outlaw Rodeo Show,167,71,False,False,363,"Saturday, June 16, 2012",Centennial Terrace,Sylvania,Ohio
+363,2012-07-01,Motion City Soundtrack,145,57,False,False,364,"Sunday, July 1, 2012",Ottobar,Baltimore,Maryland
+364,2012-07-07,Counting Crows,100,39,False,False,365,"Saturday, July 7, 2012",Navy Pier,Chicago,Illinois
+365,2012-07-13,Bunbury Music Festival ’12,165,69,False,False,366,"Friday, July 13, 2012",Yeatman’s Cove,Cincinnati,Ohio
+366,2012-07-14,Bunbury Music Festival ’12,165,69,False,False,367,"Saturday, July 14, 2012",Yeatman’s Cove,Cincinnati,Ohio
+367,2012-07-15,Bunbury Music Festival ’12,165,69,False,False,368,"Sunday, July 15, 2012",Yeatman’s Cove,Cincinnati,Ohio
+368,2012-07-27,The Wallflowers,109,39,False,False,369,"Friday, July 27, 2012",Schubas,Chicago,Illinois
+369,2012-07-29,American English,69,38,False,False,370,"Sunday, July 29, 2012",Brookfield Zoo,Brookfield,Illinois
+370,2012-08-01,Delta Spirit,95,39,False,False,371,"Wednesday, August 1, 2012",Lincoln Hall,Chicago,Illinois
+371,2012-08-03,Blind Pilot,95,39,False,False,372,"Friday, August 3, 2012",Lincoln Hall,Chicago,Illinois
+372,2012-08-04,Hey Rosetta!,85,39,False,False,373,"Saturday, August 4, 2012",Empty Bottle,Chicago,Illinois
+373,2012-08-07,Garbage,99,39,False,False,374,"Tuesday, August 7, 2012",Metro,Chicago,Illinois
+374,2012-09-08,Bruce Springsteen & the E Street Band,124,39,False,False,375,"Saturday, September 8, 2012",Wrigley Field,Chicago,Illinois
+375,2012-09-15,Riot Fest ’12,89,39,False,False,376,"Saturday, September 15, 2012",Humboldt Park,Chicago,Illinois
+376,2012-09-16,Riot Fest ’12,89,39,False,False,377,"Sunday, September 16, 2012",Humboldt Park,Chicago,Illinois
+377,2012-10-12,Motion City Soundtrack,87,39,False,False,378,"Friday, October 12, 2012",House of Blues,Chicago,Illinois
+378,2012-10-23,Hey Rosetta!,95,39,False,False,379,"Tuesday, October 23, 2012",Lincoln Hall,Chicago,Illinois
+379,2012-12-30,Butch Walker,82,39,False,False,380,"Sunday, December 30, 2012",Double Door,Chicago,illinois
+380,2012-12-31,Butch Walker,75,39,False,False,381,"Monday, December 31, 2012",Bottom Lounge,Chicago,illinois
+381,2013-04-23,Local Natives,54,26,False,False,382,"Tuesday, April 23, 2013",The Catalyst,Santa Cruz,California
+382,2013-04-27,Blind Pilot,168,72,False,False,383,"Saturday, April 27, 2013",Arlene Schnitzer Concert Hall,Portland,Oregon
+383,2013-05-19,Beck,53,26,False,False,384,"Sunday, May 19, 2013",Rio Theatre,Santa Cruz,California
+384,2013-06-08,Tom Petty and the Heartbreakers,19,15,False,False,385,"Saturday, June 8, 2013",Fonda Theatre,Los Angeles,California
+385,2013-06-09,Tom Petty and the Heartbreakers,19,15,False,False,386,"Sunday, June 9, 2013",Fonda Theatre,Los Angeles,California
+386,2013-06-22,Green Music Fest ’13,123,39,False,False,387,"Saturday, June 22, 2013",Wicker Park/Damen Ave,Chicago,Illinois
+387,2013-07-18,Counting Crows,32,22,False,False,388,"Thursday, July 18, 2013",Americas Cup Pavilion,San Francisco,California
+388,2013-07-26,Beer Bash,12,10,False,False,389,"Friday, July 26, 2013",Infinite Loop,Cupertino,California
+389,2013-08-23,The Airborne Toxic Event with the Pacific Symphony,11,9,False,False,390,"Friday, August 23, 2013",Pacific Amphitheater,Costa Mesa,California
+390,2013-09-14,Grouplove,43,22,True,False,391,"Saturday, September 14, 2013",The Independent,San Francisco,California
+391,2013-09-21,Jimmy Eat World,54,26,True,False,392,"Saturday, September 21, 2013",The Catalyst,Santa Cruz,California
+392,2013-10-17,Thao & the Get Down Stay Down,35,22,False,False,393,"Thursday, October 17, 2013",California Academy of Sciences,San Francisco,California
+393,2013-11-23,Pearl Jam,21,15,False,False,394,"Saturday, November 23, 2013",Sports Arena,Los Angeles,California
+394,2013-12-07,Not So Silent Night 2013,27,18,False,False,395,"Saturday, December 7, 2013",Oracle Arena,Oakland,California
+395,2013-12-13,Beer Bash,12,10,False,False,396,"Friday, December 13, 2013",Infinite Loop,Cupertino,California
+396,2013-12-14,Lettuce,42,22,False,False,397,"Saturday, December 14, 2013",The Fillmore,San Francisco,California
+397,2014-03-15,Railroad Earth,42,22,True,False,398,"Saturday, March 15, 2014",The Fillmore,San Francisco,California
+398,2014-03-25,Kings of Leon,47,23,True,False,399,"Tuesday, March 25, 2014",SAP Centre,San Jose,California
+399,2014-03-29,Widespread Panic,26,18,True,False,400,"Saturday, March 29, 2014",Fox Theater,Oakland,California
+400,2014-05-09,Shaky Knees 2014,64,35,False,False,401,"Friday, May 9, 2014",Atlantic Station,Atlanta,Georgia
+401,2014-05-10,Shaky Knees 2014,64,35,False,False,402,"Saturday, May 10, 2014",Atlantic Station,Atlanta,Georgia
+402,2014-05-10,Shaky Knees After Show,65,35,False,False,403,"Saturday, May 10, 2014",CenterStage,Atlanta,Georgia
+403,2014-05-11,Shaky Knees 2014,64,35,False,False,404,"Sunday, May 11, 2014",Atlantic Station,Atlanta,Georgia
+404,2014-06-07,Chipotle Cultivate Festival ‘14,37,22,False,False,405,"Saturday, June 7, 2014",Golden Gate Park,San Francisco,California
+405,2014-06-28,Lucky Boy's Confusion,87,39,False,False,406,"Saturday, June 28, 2014",House of Blues,Chicago,Illinois
+406,2014-07-31,The Arcade Fire,25,17,False,False,407,"Wednesday, July 31, 2014",Shoreline Amphitheater,Mountain View,California
+407,2014-08-07,Typhoon,35,22,False,False,408,"Thursday, August 7, 2014",California Academy of Sciences,San Francisco,California
+408,2014-08-08,Outside Lands 2014,37,22,False,False,409,"Friday, August 8, 2014",Golden Gate Park,San Francisco,California
+409,2014-08-09,Outside Lands 2014,37,22,False,False,410,"Saturday, August 9, 2014",Golden Gate Park,San Francisco,California
+410,2014-08-10,Outside Lands 2014,37,22,False,False,411,"Sunday, August 10, 2014",Golden Gate Park,San Francisco,California
+411,2014-08-14,Beer Bash,12,10,False,False,412,"Thursday, August 14, 2014",Infinite Loop,Cupertino,California
+412,2014-08-15,Counting Crows,6,5,False,False,413,"Friday, August 15, 2014",Greek Theatre,Berkeley,California
+413,2014-08-23,First City Festival ‘14,24,16,False,False,414,"Saturday, August 23, 2014",Monterey County Fairgrounds,Monterey,California
+414,2014-08-30,J Davis Trio,99,39,False,False,415,"Saturday, August 30, 2014",Metro,Chicago,Illinois
+415,2014-09-09,Tableau Conference Customer Appreciation Party ‘14,195,85,False,False,416,"Tuesday, September 9, 2014",Seattle Center,Seattle,Washington
+416,2014-09-10,The Breeders,196,85,False,False,417,"Wednesday, September 10, 2014",Showbox,Seattle,Washington
+417,2014-09-18,The Airborne Toxic Event,42,22,False,False,418,"Thursday, September 18, 2014",The Fillmore,San Francisco,California
+418,2014-09-19,The Airborne Toxic Event,42,22,False,False,419,"Friday, September 19, 2014",The Fillmore,San Francisco,California
+419,2014-09-20,The Airborne Toxic Event,42,22,False,False,420,"Saturday, September 20, 2014",The Fillmore,San Francisco,California
+420,2014-09-30,Tom Petty & the Heartbrakers,61,32,False,False,421,"Tuesday, September 30, 2014",Red Rocks Amphitheatre,Morrison,Colorado
+421,2014-10-01,Tom Petty & the Heartbrakers,61,32,False,False,422,"Wednesday, October 1, 2014",Red Rocks Amphitheatre,Morrison,Colorado
+422,2004-10-11,LA Bluegrass Situation ‘14,22,15,False,False,423,"Saturday, October 11, 2004",The Theatre at Ace Hotel,Los Angeles,California
+423,2014-10-17,Andrew McMahon in the Wilderness,41,22,False,False,424,"Friday, October 17, 2014",Slim’s,San Francisco,California
+424,2014-11-08,Foster the People,26,18,False,False,425,"Saturday, November 8, 2014",Fox Theater,Oakland,California
+425,2014-11-22,Cold War Kids,54,26,False,False,426,"Saturday, November 22, 2014",The Catalyst,Santa Cruz,California
+426,2014-12-13,Counting Crows,214,93,False,False,427,"Saturday, December 13, 2014",Orpheum Theatre,Madison,Wisconsin
+427,2015-02-13,Motion City Soundtrack CTTM 10th Anniversary,42,22,True,False,428,"Friday, February 13, 2015",The Fillmore,San Francisco,California
+428,2015-03-15,Railroad Earth,26,18,True,False,429,"Saturday, March 15, 2015",Fox Theater,Oakland,California
+429,2015-05-03,Counting Crows,1,1,True,False,430,"Sunday, May 3, 2015",Southern Alberta Jubilee Auditorium,Calgary,Alberta (Canada)
+430,2015-05-04,Counting Crows,2,2,True,False,431,"Monday, May 4, 2015",Northern Alberta Jubilee Auditorium,Edmonton,Alberta (Canada)
+431,2015-05-29,Spoon,26,18,True,False,432,"Friday, May 29, 2015",Fox Theater,Oakland,California
+432,2015-06-26,The Grateful Dead,50,25,False,False,433,"Saturday, June 26, 2015",Levi's Stadium,Santa Clara,California
+433,2015-06-27,The Grateful Dead,50,25,False,False,434,"Sunday, June 27, 2015",Levi's Stadium,Santa Clara,California
+434,2015-09-12,Counting Crows,101,39,False,False,435,"Saturday, September 12, 2015",Northerly Island,Chicago,Illinois
+435,2015-10-10,DNC Hope Fundraiser,44,22,False,False,436,"Saturday, October 10, 2015",The Warfield,San Francisco,California
+436,2015-10-20,Data Night Out TC15,158,66,False,False,437,"Tuesday, October 20, 2015",Freemont Street,Las Vegas,Nevada
+437,2015-12-20,Typhoon,171,72,False,False,438,"Sunday, December 20, 2015",Revolution Hall,Portland,Oregon
+438,2016-01-20,Jack’s Mannequin,40,22,False,False,439,"Wednesday, January 20, 2016",Regency Ballroom,San Francisco,California
+439,2016-02-09,Lettuce,54,26,False,False,440,"Tuesday, February 9, 2016",The Catalyst,Santa Cruz,California
+440,2016-04-19,Roger Clyne & the Peacemakers,52,26,False,False,441,"Tuesday, April 19, 2016",Moe's Alley,Santa Cruz,California
+441,2016-05-09,Motion City Soundtrack,40,22,False,False,442,"Monday, May 9, 2016",Regency Ballroom,San Francisco,California
+442,2016-05-20,X Ambassadors,12,10,False,False,443,"Friday, May 20, 2016",Infinite Loop,Cupertino,California
+443,2016-06-03,Paul Simon,6,5,False,False,444,"Friday, June 3, 2016",Greek Theatre,Berkeley,California
+444,2016-08-05,Outside Lands 2016,37,22,True,False,445,"Friday, August 5, 2016",Golden Gate Park,San Francisco,California
+445,2016-08-06,Outside Lands 2016,37,22,True,False,446,"Saturday, August 6, 2016",Golden Gate Park,San Francisco,California
+446,2016-08-07,Outside Lands 2016,37,22,True,False,447,"Sunday, August 7, 2016",Golden Gate Park,San Francisco,California
+447,2016-08-15,Live at Lagunitas,30,20,True,False,448,"Monday, August 15, 2016",Lagunitas,Peteluma,California
+448,2016-09-08,Eve 6,48,23,False,False,449,"Thursday, September 8, 2016",The Ritz,San Jose,California
+449,2016-09-10,Counting Crows,25,17,False,False,450,"Saturday, September 10, 2016",Shoreline Amphitheater,Mountain View,California
+450,2016-09-16,Riot Fest '16,83,39,False,False,451,"Friday, September 16, 2016",Douglas Park,Chicago,Illinois
+451,2016-09-17,Riot Fest '16,83,39,False,False,452,"Saturday, September 17, 2016",Douglas Park,Chicago,Illinois
+452,2016-09-18,Motion City Soundtrack,99,39,True,False,453,"Sunday, September 18, 2016",Metro,Chicago,Illinois
+453,2017-01-28,Railroad Earth,42,22,True,False,454,"Saturday, January 28, 2017",The Fillmore,San Francisco,California
+454,2017-03-12,Red Hot Chili Peppers,27,18,True,False,455,"Sunday, March 12, 2017",Oracle Arena,Oakland,California
+455,2017-03-17,Lettuce,26,18,True,False,456,"Friday, March 17, 2017",Fox Theater,Oakland,California
+456,2017-03-18,Cold War Kids,105,39,True,False,457,"Saturday, March 18, 2017",Riviera,Chicago,Illinois
+457,2017-03-24,Andrew McMahon in the Wilderness,87,39,True,False,458,"Friday, March 24, 2017",House of Blues,Chicago,Illinois
+458,2017-04-22,Jimmy Eat World,31,21,True,False,459,"Saturday, April 22, 2017",Ace of Spades,Sacramento,California
+459,2017-06-10,Live 105's BFD 2017,25,17,True,False,460,"Saturday, June 10, 2017",Shoreline Amphitheater,Mountain View,California
+460,2017-08-02,Foster the People,121,39,True,False,461,"Wednesday, August 2, 2017",Vic,Chicago,illinois
+461,2017-08-03,Lollapalooza ‘17,86,39,True,False,462,"Thursday, August 3, 2017",Grant Park,Chicago,Illinois
+462,2017-08-04,Lollapalooza ‘17,86,39,True,False,463,"Friday, August 4, 2017",Grant Park,Chicago,Illinois
+463,2017-08-04,Andrew McMahon in the Wilderness,75,39,True,False,464,"Friday, August 4, 2017",Bottom Lounge,Chicago,Illinois
+464,2017-08-05,Lollapalooza ‘17,86,39,True,False,465,"Saturday, August 5, 2017",Grant Park,Chicago,Illinois
+465,2017-08-06,Lollapalooza ‘17,86,39,True,False,466,"Sunday, August 6, 2017",Grant Park,Chicago,Illinois
+466,2017-08-11,Outside Lands 2017,37,22,True,False,467,"Friday, August 11, 2017",Golden Gate Park,San Francisco,California
+467,2017-08-12,Outside Lands 2017,37,22,True,False,468,"Saturday, August 12, 2017",Golden Gate Park,San Francisco,California
+468,2017-08-16,Gregory Alan Isakov,55,27,True,False,469,"Wednesday, August 16, 2017",Mountain Winery,Saratoga,California
+469,2017-08-28,Tom Petty & the Heartbrakers,6,5,True,False,470,"Monday, August 28, 2017",Greek Theatre,Berkeley,California
+470,2017-09-15,Kaaboo ‘17,15,12,True,False,471,"Friday, September 15, 2017",Del Mar Fairgrounds,Del Mar,California
+471,2017-09-16,Kaaboo ‘17,15,12,True,False,472,"Saturday, September 16, 2017",Del Mar Fairgrounds,Del Mar,California
+472,2017-09-17,Kaaboo ‘17,15,12,True,False,473,"Sunday, September 17, 2017",Del Mar Fairgrounds,Del Mar,California
+473,2017-09-21,Milky Chance,26,18,True,False,474,"Thursday, September 21, 2017",Fox Theater,Oakland,California
+474,2017-10-11,TCC ’17 Data Night Out,161,66,False,False,475,"Wednesday, October 11, 2017",Mandalay Bay Conference Center,Las Vegas,Nevada
+475,2017-10-21,Arcade Fire,27,18,True,False,476,"Saturday, October 21, 2017",Oracle Arena,Oakland,California
+476,2017-11-13,Gin Blossoms,38,22,True,False,477,"Monday, November 13, 2017",Great American Music Hall,San Francisco,California
+477,2017-11-14,Third Eye Blind,46,23,True,False,478,"Tuesday, November 14, 2017",Civic National City,San Jose,California
+478,2017-11-18,Counting Crows,56,28,True,False,479,"Saturday, November 18, 2017",Green Music Center (Sonoma State University),Sonoma,California
+479,2017-12-01,Q101’s Nights We Stole Christmas,72,39,True,False,480,"Friday, December 1, 2017",Aragon Ballroom,Chicago,Illinois
+480,2018-01-27,Milky Chance,106,39,True,False,481,"Friday, January 27, 2018",Riviera Theater,Chicago,Illinois
+481,2018-02-03,Stick Figure,26,18,False,False,482,"Saturday, February 3, 2018",Fox Theater,Oakland,California
+482,2018-02-16,Lettuce,26,18,True,False,483,"Friday, February 16, 2018",Fox Theater,Oakland,California
+483,2018-03-01,Blind Pilot with Orchestra,168,72,True,False,484,"Thursday, March 1, 2018",Arlene Schnitzer Concert Hall,Portland,Oregon
+484,2018-05-04,Twiddle,61,32,True,False,485,"Friday, May 4, 2018",Red Rocks Amphitheatre,Morrison,Colorado
+485,2018-05-23,Andrew McMahon in the Wilderness,36,22,True,False,486,"Wednesday, May 23, 2018",Fillmore,San Francisco,California
+486,2018-06-14,Mihali,49,24,True,False,487,"Thursday, June 14, 2018",Terrapin Station,San Rafael,California
+487,2018-06-16,Phil Lesch & Friends,49,24,True,False,488,"Saturday, June 16, 2018",Terrapin Station,San Rafael,California
+488,2018-07-14,Counting Crows,162,66,True,False,489,"Saturday, July 14, 2018",The Joint / Hard Rock Hotel & Casino,Las Vegas,Nevada
+489,2018-07-25,311,25,17,True,False,490,"Wednesday, July 25, 2018",Shoreline Amphitheater,Mountain View,California
+490,2018-08-10,Outside Lands 2018,37,22,True,False,491,"Friday, August 10, 2018",Golden Gate Park,San Francisco,California
+491,2018-08-11,Outside Lands 2018,37,22,True,False,492,"Saturday, August 11, 2018",Golden Gate Park,San Francisco,California
+492,2018-08-12,Outside Lands 2018,37,22,True,False,493,"Sunday, August 12, 2018",Golden Gate Park,San Francisco,California
+493,2018-08-27,Smashing Pumpkins,27,18,True,False,494,"Monday, August 27, 2018",Oracle Arena,Oakland,California
+494,2018-09-21,Arcade Fire,6,5,True,False,495,"Friday, September 21, 2018",Greek Theatre,Berkeley,California
+495,2018-09-28,P1440,45,23,True,False,496,"Friday, September 28, 2018",Avaya Stadium,San Jose,California
+496,2018-09-29,P1440,45,23,True,False,497,"Saturday, September 29, 2018",Avaya Stadium,San Jose,California
+497,2018-10-18,Alkaline Trio,51,26,True,False,498,"Thursday, October 18, 2018",Catalyst,Santa Cruz,California
+498,2018-11-08,Soja,26,18,True,False,499,"Thursday, November 8, 2018",Fox Theater,Oakland,California
+499,2018-12-05,Justin Courtney Pierre,34,22,True,False,500,"Wednesday, December 5, 2018",Bottom of the Hill,San Francisco,California
+500,2018-12-12,Childish Gambino,47,23,True,False,501,"Wednesday, December 12, 2018",SAP Centre,San Jose,California
+501,2019-02-08,Twiddle,78,39,True,False,502,"Friday, February 8, 2019",Concord,Chicago,Illinois
+502,2019-03-07,Twiddle,42,22,True,False,503,"Thursday, March 7, 2019",The Fillmore,San Francisco,California
+503,2019-03-08,Twiddle,54,26,True,False,504,"Friday, March 8, 2019",The Catalyst,Santa Cruz,California
+504,2019-03-21,Andrew McMahon in the Wilderness,26,18,True,False,505,"Thursday, March 21, 2019",Fox Theater,Oakland,California
+505,2019-05-02,Twiddle,61,32,True,False,506,"Thursday, May 2, 2019",Red Rocks Amphitheatre,Morrison,Colorado
+506,2019-06-12,Ludovico Einaudi,13,10,True,False,507,"Wednesday, June 12, 2019",Steve Jobs Theater,Cupertino,California
+507,2019-06-15,Summer Gods Tour,33,22,True,False,508,"Saturday, June 15, 2019",Bill Graham Civic Auditorium,San Francisco,California
+508,2019-06-21,Local Natives,26,18,True,False,509,"Friday, June 21, 2019",Fox Theater,Oakland,California
+509,2019-06-22,Local Natives,16,13,True,False,510,"Saturday, June 22, 2019",Hollywood Palladium,Hollywood,California
+510,2019-06-23,High Times Cannabis Cup,14,11,True,False,511,"Sunday, June 23, 2019",Cow Palace,Daly City,California
+511,2019-06-27,Anderson Paak,33,22,True,False,512,"Thursday, June 27, 2019",Bill Graham Civic Auditorium,San Francisco,California
+512,2019-07-15,Spoon,163,67,True,False,513,"Monday, July 15, 2019",Virginia Street Brewhouse,Reno,Nevada
+513,2019-08-01,Summer Gods Tour,10,8,True,False,514,"Thursday, August 1, 2019",North Island Credit Union Amphitheatre,Chula Vista,California
+514,2019-08-09,Outside Lands 2019,37,22,True,False,515,"Friday, August 9, 2019",Golden Gate Park,San Francisco,California
+515,2019-08-09,Paul Simon,26,18,True,False,516,"Friday, August 9, 2019",Fox Theater,Oakland,California
+516,2019-08-20,Outside Lands 2019,37,22,True,False,517,"Saturday, August 20, 2019",Golden Gate Park,San Francisco,California
+517,2019-08-11,Outside Lands 2019,37,22,True,False,518,"Sunday, August 11, 2019",Golden Gate Park,San Francisco,California
+518,2019-10-19,Judah & the Lion,26,18,True,False,519,"Saturday, October 19, 2019",Fox Theater,Oakland,California
+519,2019-11-11,10th Annual Dear Jack Benefit,18,15,True,False,520,"Monday, November 11, 2019",El Rey Theatre,Los Angeles,California
+520,2019-11-20,Cold War Kids,42,22,True,False,521,"Wednesday, November 20, 2019",The Fillmore,San Francisco,California
+521,2019-11-22,Manchester Orchestra,44,22,True,False,522,"Friday, November 22, 2019",The Warfield,San Francisco,California
+522,2019-12-16,Local Natives,169,72,True,False,523,"Monday, December 16, 2019",Crystal Ballroom,Portland,Oregon
+523,2019-12-18,Andrew McMahon,43,22,True,False,524,"Wednesday, December 18, 2019",The Independent,San Francisco,California
+524,2019-12-20,Andrew McMahon,8,6,True,False,525,"Friday, December 20, 2019",The Cave Big Bear,Big Bear Lake,California
+525,2020-01-25,Motion City Soundtrack,7,5,True,False,526,"Saturday, January 25, 2020",The UC Theatre,Berkeley,California
+526,2020-03-07,Twiddle,42,22,True,False,527,"Saturday, March 7, 2020",The Fillmore,San Francisco,California
+527,2020-10-02,Andrew McMahon in the Wilderness,132,46,True,False,528,"Friday, October 2, 2020",Schaumburg Boomers Stadium,Schaumburg,Illinois
+528,2020-10-03,Andrew McMahon in the Wilderness,132,46,True,False,529,"Saturday, October 3, 2020",Schaumburg Boomers Stadium,Schaumburg,Illinois
+529,2020-10-04,Andrew McMahon in the Wilderness,132,46,True,False,530,"Sunday, October 4, 2020",Schaumburg Boomers Stadium,Schaumburg,Illinois
+530,2021-07-27,Angels & Airwaves,9,7,True,False,531,"Tuesday, July 27, 2021",Gnarlywood,Carlsbad,California
+531,2021-08-31,Counting Crows,173,73,True,False,532,"Tuesday, August 31, 2021",Edgefield Amphitheater,Troutdale,Oregon
+532,2021-09-03,Spoon,179,79,True,False,533,"Friday, September 3, 2021",Ogden Amphitheatre,Ogden,Utah
+533,2021-09-09,Blind Pilot,172,72,True,False,534,"Thursday, September 9, 2021",Topaz Farm,Portland,Oregon
+534,2021-09-10,Blind Pilot,172,72,True,False,535,"Friday, September 10, 2021",Topaz Farm,Portland,Oregon
+535,2021-09-27,Cold War Kids,31,21,True,False,536,"Monday, September 27, 2021",Ace of Spades,Sacramento,California
+536,2021-10-09,Angels & Airwaves,103,39,True,False,537,"Saturday, October 9, 2021",Radius,Chicago,Illinois
+537,2021-10-11,Bleachers,4,3,True,False,538,"Monday, October 11, 2021",The Van Buren,Phoenix,Arizona
+538,2021-10-20,Bleachers,169,72,True,False,539,"Wednesday, October 20, 2021",Crystal Ballroom,Portland,Oregon
+539,2021-10-28,Bleachers,72,39,True,False,540,"Thursday, October 28, 2021",Aragon Ballroom,Chicago,Illinois
+540,2021-10-29,Twiddle,182,82,True,False,541,"Friday, October 29, 2021",Wild Buffalo,Bellingham,Washington
+541,2021-11-02,Tokyo Police Club,203,85,True,False,542,"Tuesday, November 2, 2021",Tractor Tavern,Seattle,Washington
+542,2021-11-06,Bleachers,174,74,True,False,543,"Saturday, November 6, 2021",XL Live,Harrisburg,Pennsylvania
+543,2021-11-13,Twiddle,102,39,True,False,544,"Saturday, November 13, 2021",Park West,Chicago,Illinois
+544,2021-11-17,Foster the People: Torches 10th Anniversary,23,15,True,False,545,"Wednesday, November 17, 2021",Wiltern Theater,Los Angeles,California
+545,2021-12-04,Audacy Beach Festival,63,34,True,False,546,"Saturday, December 4, 2021",Fort Lauderdale Beach,Fort Lauderdale,Florida
+546,2021-12-06,Audacy Beach Festival,63,34,True,False,547,"Sunday, December 6, 2021",Fort Lauderdale Beach,Fort Lauderdale,Florida
+547,2021-12-16,Milky Chance,201,85,True,False,548,"Thursday, December 16, 2021",The Moore Theatre,Seattle,Washington
+548,2022-02-23,Manchester Orchestra,201,85,True,False,549,"Wednesday, February 23, 2022",The Moore Theatre,Seattle,Washington
+549,2022-05-11,Delta Spirit,206,87,True,False,550,"Wednesday, May 11, 2022",Alma,Tacoma,Washington
+550,2022-06-13,Ben Folds,183,83,True,False,551,"Monday, June 13, 2022",Edmonds Center for the Arts,Edmonds,Washington
+551,2022-06-20,Bleachers,61,32,True,False,552,"Monday, June 20, 2022",Red Rocks Amphitheatre,Morrison,Colorado
+552,2022-07-14,Motion City Soundtrack CTTM 17th Anniversary,192,85,True,False,553,"Thursday, July 14, 2022",Neptune Theatre,Seattle,Washington
+553,2022-07-15,Blind Pilot,170,72,True,False,554,"Friday, July 15, 2022",Pioneer Square Courthouse,Portland,Oregon
+554,2022-07-18,The Airborne Toxic Event,196,85,True,False,555,"Monday, July 18, 2022",Showbox,Seattle,Washington
+555,2022-07-28,Red Hot Chili Peppers,50,25,True,False,556,"Friday, July 28, 2022",Levi's Stadium,Santa Clara,California
+556,2022-09-01,Andrew McMahon in the Wilderness,197,85,True,False,557,"Thursday, September 1, 2022",Showbox SODO,Seattle,Washington
+557,2022-09-12,Judah & the Lion,196,85,True,False,558,"Monday, September 12, 2022",Showbox,Seattle,Washington
+558,2022-09-13,Good Kid,190,85,True,False,559,"Tuesday, September 13, 2022",Madame Lou’s,Seattle,Washington
+559,2022-09-15,Alkaline Trio,99,39,True,False,560,"Thursday, September 15, 2022",Metro,Chicago,Illinois
+560,2022-09-16,Riot Fest ‘22,89,39,True,False,561,"Friday, September 16, 2022",Humboldt Park,Chicago,Illinois
+561,2022-09-17,Riot Fest ‘22,89,39,True,False,562,"Saturday, September 17, 2022",Humboldt Park,Chicago,Illinois
+562,2022-09-17,Riot Fest ’22 Aftershow,99,39,True,False,563,"Saturday, September 17, 2022",Metro,Chicago,Illinois
+563,2022-09-18,Riot Fest ‘22,89,39,True,False,564,"Sunday, September 18, 2022",Humboldt Park,Chicago,Illinois
+564,2022-09-27,The Wallflowers,192,85,True,False,565,"Tuesday, September 27, 2022",Neptune Theatre,Seattle,Washington
+565,2022-10-20,Spafford,193,85,True,False,566,"Thursday, October 20, 2022",Neumo’s,Seattle,Washington
+566,2022-10-26,Death Cab for Cutie,194,85,True,False,567,"Wednesday, October 26, 2022",Paramount Theatre,Seattle,Washington
+567,2022-10-28,Jimmy Eat World,3,3,True,False,568,"Friday, October 28, 2022",Arizona Financial Theatre,Phoenix,Arizona
+568,2022-10-29,When We Were Young ‘22,160,66,True,False,569,"Saturday, October 29, 2022",Las Vegas Fairgrounds,Las Vegas,Nevada
+569,2022-11-11,13th Annual Dear Jack Benefit,87,39,True,False,570,"Friday, November 11, 2022",House of Blues,Chicago,Illinois
+570,2022-11-30,Bleachers,58,30,True,False,571,"Wednesday, November 30, 2022",Commodore Ballroom,Vancouver,Canada
+571,2023-03-02,Twiddle,200,85,True,False,572,"Thursday, March 2, 2023",The Crocodile,Seattle,Washington
+572,2023-03-07,The Wonder Years,197,85,True,False,573,"Tuesday, March 7, 2023",Showbox SODO,Seattle,Washington
+573,2023-03-15,John Mellencamp,194,85,True,False,574,"Wednesday, March 15, 2023",Paramount Theatre,Seattle,Washington
+574,2023-05-02,Go Go Penguin,192,85,True,False,575,"Tuesday, May 2, 2023",Neptune Theatre,Seattle,Washington
+575,2023-05-11,Couch,190,85,True,False,576,"Thursday, May 11, 2023",Madame Lou’s,Seattle,Washington
+576,2023-06-01,The Cure,186,85,True,False,577,"Thursday, June 1, 2023",Climate Pledge Arena,Seattle,Washington
+577,2023-06-23,Blink 182,186,85,True,False,578,"Sunday, June 23, 2023",Climate Pledge Arena,Seattle,Washington
+578,2023-07-11,Jimmy Eat World,157,65,True,False,579,"Tuesday, July 11, 2023",Big Sky Brewing Amphitheatre,Missoula,Montana
+579,2023-07-14,Jimmy Eat World,205,86,True,False,580,"Friday, July 14, 2023",The Podium,Spokane,Washington
+580,2023-07-15,Jimmy Eat World,204,85,True,False,581,"Saturday July 15, 2023",WAMU Theater,Seattle,Washington
+581,2023-07-27,Tears for Fears,186,85,True,False,582,"Thursday, July 27, 2023",Climate Pledge Arena,Seattle,Washington
+582,2023-07-29,Sad Summer Fest ‘23,17,14,True,False,583,"Saturday, July 29, 2023",Five Points Amphitheatre,Irvine,California
+583,2023-08-11,Young the Giant,184,84,True,False,584,"Friday, August 11, 2023",Marymoor Live,Redmond,Washington
+584,2023-08-16,Manchester Orchestra,108,39,True,False,585,"Wednesday, August 16, 2023",Salt Shed,Chicago,Illinois
+585,2023-08-25,Ed Sheeran: - Tour,194,85,True,False,586,"Friday, August 25, 2023",Paramount Theatre,Seattle,Washington
+586,2023-09-16,Counting Crows,209,88,True,False,587,"Saturday, September 16, 2023",Chateau Ste Michelle Winery,Woodinville,Washington
+587,2023-09-26,The All-American Rejects,204,85,True,False,588,"Tuesday, September 26, 2023",WAMU Theater,Seattle,Washington
+588,2023-09-26,Local Natives,194,85,True,False,589,"Tuesday, September 26, 2023",Paramount Theatre,Seattle,Washington
+589,2023-10-06,The Postal Service,186,85,True,False,590,"Friday, October 6, 2023",Climate Pledge Arena,Seattle,Washington
+590,2023-10-21,When We Were Young ‘23,160,66,True,False,591,"Saturday, October 21, 2023",Las Vegas Fairgrounds,Las Vegas,Nevada
+591,2023-11-04,Ichi Bichi,202,85,True,False,592,"Saturday, November 4, 2023",Tim’s Tavern,Seattle,Washington
+592,2023-11-11,Twiddle,60,31,True,False,593,"Saturday, November 11, 2023",Mission Ballroom,Denver,Colorado
+593,2024-01-31,Cold War Kids,36,22,True,False,594,"Wednesday, January 31, 2024",Fillmore,San Francisco,California
+594,2024-02-03,Cold War Kids,201,85,False,False,595,"Saturday, February 3, 2024",The Moore Theatre,Seattle,Washington
+595,2024-02-28,Grouplove,197,85,True,False,596,"Wednesday, February 28, 2024",Showbox SODO,Seattle,Washington
+596,2024-03-23,Typhoon,200,85,True,False,597,"Saturday, March 23, 2024",The Crocodile,Seattle,Washington
+597,2024-03-23,Alkaline Trio,197,85,True,False,598,"Saturday, March 23, 2024",Showbox SODO,Seattle,Washington
+598,2024-04-09,Spanish Love Songs,187,85,True,False,599,"Tuesday, April 9, 2024",El Corazon,Seattle,Washington
+599,2024-05-24,Billy Joel,199,85,True,False,600,"Friday, May 24, 2024",T-Mobile Park,Seattle,Washington
+600,2024-06-13,Third Eye Blind,204,85,True,False,601,"Thursday, June 13, 2024",WAMU Theater,Seattle,Washington
+601,2024-06-22,Cage the Elephant,186,85,True,False,602,"Saturday, June 22, 2024",Climate Pledge Arena,Seattle,Washington
+602,2024-10-11,The Airborne Toxic Event,196,85,True,False,603,"Friday, October 11, 2024",Showbox,Seattle,Washington
+603,2024-10-12,The Airborne Toxic Event,196,85,True,False,604,"Saturday, October 12, 2024",Showbox,Seattle,Washington
+604,2024-11-09,Holiday from Real Cruise ‘24,5,4,True,False,605,"Saturday, November 9, 2024",Norwegian Gem Cruise Ship,,Atlantic Ocean
+605,2024-11-10,Holiday from Real Cruise ‘24,5,4,False,False,606,"Sunday, November 10, 2024",Norwegian Gem Cruise Ship,,Atlantic Ocean
+606,2024-11-11,Holiday from Real Cruise ‘24,5,4,True,False,607,"Monday, November 11, 2024",Norwegian Gem Cruise Ship,,Atlantic Ocean
+607,2024-11-12,Holiday from Real Cruise ‘24,5,4,True,False,608,"Tuesday, November 12, 2024",Norwegian Gem Cruise Ship,,Atlantic Ocean
+608,2025-01-25,Foster the People,194,85,False,False,609,"Saturday, January 25, 2025",Paramount Theatre,Seattle,Washington
+609,2025-01-27,Jack's Mannequin,57,29,True,False,610,"Monday, January 27, 2025",The Venice West,Venice,California
+610,2025-02-24,Blind Pilot,192,85,True,False,611,"Monday, February 24, 2025",Neptune Theatre,Seattle,Washington
+611,2025-04-02,band,178,78,True,False,612,"Wednesday, April 2, 2025",,Austin,Texas
+612,2025-06-18,Spacehog,192,85,True,False,613,"Wednesday, June 18, 2025",Neptune Theatre,Seattle,Washington
+613,2025-06-20,Jack’s Mannequin,108,39,True,False,614,"Friday, June 20, 2025",Salt Shed,Chicago,Illinois
+614,2025-06-21,Winnetka Music Festival ‘25,138,50,True,False,615,"Saturday, June 21, 2025",Downtown Winnetka,Winnetka,Illinois
+615,2025-07-08,Live,181,81,True,False,616,"Tuesday, July 8, 2025",White River Amphitheater,Auburn,Washington
+616,2025-08-22,Acceptance,196,85,False,False,617,"Friday, August 22, 2025",Showbox,Seattle,Washington
+617,2025-09-03,The Offspring,181,81,True,False,618,"Wednesday, September 3, 2025",White River Amphitheater,Auburn,Washington
+618,2025-09-14,Everclear,208,87,False,False,619,"Sunday, September 14, 2025",Emerald Queen Casino,Tacoma,Washington
+619,2025-11-11,David Byrne,194,85,True,False,620,"Tuesday, November 11, 2025",Paramount Theatre,Seattle,Washington
+620,2025-11-19,Jack’s Mannequin,197,85,True,False,621,"Wednesday, November 19, 2025",Showbox SODO,Seattle,Washington
+621,2025-11-23,Hot Mulligan,197,85,True,False,622,"Sunday, November 23, 2025",Showbox SODO,Seattle,Washington
+622,2025-12-02,Motion City Soundtrack,197,85,True,False,623,"Tuesday, December 2, 2025",Showbox SODO,Seattle,Washington
+623,2025-12-09,Mike Campbell & the Dirty Knobs,39,22,False,False,624,"Tuesday, December 9, 2025",Palace of Fine Arts,San Francisco,California
+624,2026-03-14,Ages and Ages,198,85,False,False,625,"Saturday, March 14, 2026",Sunset Tavern,Seattle,Washington
+625,2026-03-26,The Last Night on Earth,29,19,False,False,626,"Thursday, March 26, 2026",Plaza Theatre,Palm Springs,California
+626,2026-03-27,The Last Night on Earth,29,19,True,False,627,"Friday, March 27, 2026",Plaza Theatre,Palm Springs,California
+627,2026-03-28,The Airborne Toxic Event (acoustic),28,19,False,False,628,"Saturday, March 28, 2026",Hotel Zoso Woodstock Ballroom,Palm Springs,California
+628,2026-03-28,The Last Night on Earth,29,19,False,False,629,"Saturday, March 28, 2026",Plaza Theatre,Palm Springs,California
+629,2026-04-18,Motion City Soundtrack,159,66,True,False,630,"Saturday, April 18, 2026",House of Blues Las Vegas,Las Vegas,Nevada
+630,2026-04-29,Oh Wonder,26,18,True,False,631,"Wednesday, April 29, 2026",Fox Theater,Oakland,California
+631,2026-05-02,The Academy is…,196,85,False,False,632,"Saturday, May 2, 2026",Showbox,Seattle,Washington
+632,2026-05-09,Good Kid,197,85,False,False,633,"Saturday, May 9, 2026",Showbox SODO,Seattle,Washington
+633,2026-05-15,Tripping Daisy,200,85,False,False,634,"Friday, May 15, 2026",The Crocodile,Seattle,Washington
+634,2026-05-22,Motion City Soundtrack,62,33,True,False,635,"Friday, May 22, 2026",O2 Academy Islington,London,England
+635,2026-06-24,Our Lady Peace,197,85,False,False,636,"Wednesday, June 24, 2026",Showbox SODO,Seattle,Washington
+636,2026-07-18,Jimmy Eat World,204,85,False,True,637,"Saturday, July 18, 2026",WAMU Theater,Seattle,Washington
+637,2026-07-19,Jimmy Eat World,59,30,False,True,639,"Sunday, July 19, 2026",Doug Mitchell Thunderbird Sports Center,Vancouver,Canada
+638,2026-07-24,Blind Pilot,172,72,False,True,640,"Friday, July 24, 2026",Topaz Farm,Portland,Oregon
+639,2026-07-25,Young the Giant,191,85,False,True,641,"Saturday, July 25, 2026",Marymoor Live,Seattle,Washington
+640,2026-07-28,Of Monsters and Men,194,85,False,True,642,"Tuesday, July 28, 2026",Paramount Theatre,Seattle,Washington
+641,2026-08-01,Ed Sheeran,189,85,False,True,643,"Saturday, August 1, 2026",Lumen Field,Seattle,Washington
+642,2026-08-07,Counting Crows,20,15,False,True,644,"Friday, August 7, 2026",Hollywood Bowl,Los Angeles,California
+643,2026-08-14,Three Pianos,90,39,False,True,645,"Friday, August 14, 2026",Huntington Bank Pavilion,Chicago,Illinois
+644,2026-08-20,Jimmy Eat World,90,39,False,True,646,"Thursday, August 20, 2026",Huntington Bank Pavilion,Chicago,Illinois
+645,2026-08-23,Third Eye Blind,67,36,False,True,647,"Sunday, August 23, 2026",RiverEdge,Aurora,Illinois
+646,2026-09-16,Foster the People,204,85,False,True,648,"Wednesday, September 16, 2026",WAMU Theater,Seattle,Washington
+647,2026-09-19,Bleachers,207,87,False,True,649,"Saturday, September 19, 2026",Dune Peninsula,Tacoma,Washington
+648,2026-09-20,The Airborne Toxic Event,197,85,False,True,650,"Sunday, September 20, 2026",Showbox SODO,Seattle,Washington
+649,2026-10-03,Cytrus,188,85,False,True,651,"Saturday, October 3, 2026",Hidden Hall,Seattle,Washington
+650,2026-10-05,Judah & the Lion,196,85,False,True,652,"Monday, October 5, 2026",Showbox,Seattle,Washington
+651,2026-10-20,Rise Against,204,85,False,True,653,"Tuesday, October 20, 2026",WAMU Theater,Seattle,Washington
+652,2026-11-06,Smashing Pumpkins,186,85,False,True,654,"Friday, November 6, 2026",Climate Pledge Arena,Seattle,Washington
+653,2026-12-05,Pete Yorn,185,85,False,True,655,"Saturday, December 5, 2026",Chop Suey,Seattle,Washington
+654,2026-11-25,Boston Manor,196,85,False,True,656,"Wednesday, November 25, 2026",Showbox,Seattle,Washington

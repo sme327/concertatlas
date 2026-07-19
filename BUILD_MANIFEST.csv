@@ -1,0 +1,7 @@
+item,count,definition
+events,654,Clean valid source rows
+artists,972,Unique normalized listed names
+event_artists,1772,Ordered event/name relationships
+cities,95,Unique city/state combinations
+venues,221,Unique venue/city/state combinations
+audit_items,32,Items requiring review

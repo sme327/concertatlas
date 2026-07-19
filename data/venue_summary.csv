@@ -1,0 +1,222 @@
+venue_id,shows,first_visit,latest_visit,venue_name_recorded,city_id,city,state_region,canonical_venue_name,latitude,longitude,geocode_status
+1,1,2015-05-03,2015-05-03,Southern Alberta Jubilee Auditorium,1,Calgary,Alberta (Canada),Southern Alberta Jubilee Auditorium,,,unresolved
+2,1,2015-05-04,2015-05-04,Northern Alberta Jubilee Auditorium,2,Edmonton,Alberta (Canada),Northern Alberta Jubilee Auditorium,,,unresolved
+3,1,2022-10-28,2022-10-28,Arizona Financial Theatre,3,Phoenix,Arizona,Arizona Financial Theatre,,,unresolved
+4,1,2021-10-11,2021-10-11,The Van Buren,3,Phoenix,Arizona,The Van Buren,,,unresolved
+5,4,2024-11-09,2024-11-12,Norwegian Gem Cruise Ship,4,,Atlantic Ocean,Norwegian Gem Cruise Ship,,,unresolved
+6,4,2014-08-15,2018-09-21,Greek Theatre,5,Berkeley,California,Greek Theatre,,,unresolved
+7,1,2020-01-25,2020-01-25,The UC Theatre,5,Berkeley,California,The UC Theatre,,,unresolved
+8,1,2019-12-20,2019-12-20,The Cave Big Bear,6,Big Bear Lake,California,The Cave Big Bear,,,unresolved
+9,1,2021-07-27,2021-07-27,Gnarlywood,7,Carlsbad,California,Gnarlywood,,,unresolved
+10,1,2019-08-01,2019-08-01,North Island Credit Union Amphitheatre,8,Chula Vista,California,North Island Credit Union Amphitheatre,,,unresolved
+11,1,2013-08-23,2013-08-23,Pacific Amphitheater,9,Costa Mesa,California,Pacific Amphitheater,,,unresolved
+12,4,2013-07-26,2016-05-20,Infinite Loop,10,Cupertino,California,Infinite Loop,,,unresolved
+13,1,2019-06-12,2019-06-12,Steve Jobs Theater,10,Cupertino,California,Steve Jobs Theater,,,unresolved
+14,1,2019-06-23,2019-06-23,Cow Palace,11,Daly City,California,Cow Palace,,,unresolved
+15,3,2017-09-15,2017-09-17,Del Mar Fairgrounds,12,Del Mar,California,Del Mar Fairgrounds,,,unresolved
+16,1,2019-06-22,2019-06-22,Hollywood Palladium,13,Hollywood,California,Hollywood Palladium,,,unresolved
+17,1,2023-07-29,2023-07-29,Five Points Amphitheatre,14,Irvine,California,Five Points Amphitheatre,,,unresolved
+18,1,2019-11-11,2019-11-11,El Rey Theatre,15,Los Angeles,California,El Rey Theatre,,,unresolved
+19,2,2013-06-08,2013-06-09,Fonda Theatre,15,Los Angeles,California,Fonda Theatre,,,unresolved
+20,1,2026-08-07,2026-08-07,Hollywood Bowl,15,Los Angeles,California,Hollywood Bowl,,,unresolved
+21,1,2013-11-23,2013-11-23,Sports Arena,15,Los Angeles,California,Sports Arena,,,unresolved
+22,1,2004-10-11,2004-10-11,The Theatre at Ace Hotel,15,Los Angeles,California,The Theatre at Ace Hotel,,,unresolved
+23,1,2021-11-17,2021-11-17,Wiltern Theater,15,Los Angeles,California,Wiltern Theater,,,unresolved
+24,1,2014-08-23,2014-08-23,Monterey County Fairgrounds,16,Monterey,California,Monterey County Fairgrounds,,,unresolved
+25,4,2014-07-31,2018-07-25,Shoreline Amphitheater,17,Mountain View,California,Shoreline Amphitheater,,,unresolved
+26,14,2014-03-29,2026-04-29,Fox Theater,18,Oakland,California,Fox Theater,,,unresolved
+27,4,2013-12-07,2018-08-27,Oracle Arena,18,Oakland,California,Oracle Arena,,,unresolved
+28,1,2026-03-28,2026-03-28,Hotel Zoso Woodstock Ballroom,19,Palm Springs,California,Hotel Zoso Woodstock Ballroom,,,unresolved
+29,3,2026-03-26,2026-03-28,Plaza Theatre,19,Palm Springs,California,Plaza Theatre,,,unresolved
+30,1,2016-08-15,2016-08-15,Lagunitas,20,Peteluma,California,Lagunitas,,,unresolved
+31,2,2017-04-22,2021-09-27,Ace of Spades,21,Sacramento,California,Ace of Spades,,,unresolved
+32,1,2013-07-18,2013-07-18,Americas Cup Pavilion,22,San Francisco,California,Americas Cup Pavilion,,,unresolved
+33,2,2019-06-15,2019-06-27,Bill Graham Civic Auditorium,22,San Francisco,California,Bill Graham Civic Auditorium,,,unresolved
+34,1,2018-12-05,2018-12-05,Bottom of the Hill,22,San Francisco,California,Bottom of the Hill,,,unresolved
+35,2,2013-10-17,2014-08-07,California Academy of Sciences,22,San Francisco,California,California Academy of Sciences,,,unresolved
+36,2,2018-05-23,2024-01-31,Fillmore,22,San Francisco,California,Fillmore,,,unresolved
+37,15,2014-06-07,2019-08-20,Golden Gate Park,22,San Francisco,California,Golden Gate Park,,,unresolved
+38,1,2017-11-13,2017-11-13,Great American Music Hall,22,San Francisco,California,Great American Music Hall,,,unresolved
+39,1,2025-12-09,2025-12-09,Palace of Fine Arts,22,San Francisco,California,Palace of Fine Arts,,,unresolved
+40,2,2016-01-20,2016-05-09,Regency Ballroom,22,San Francisco,California,Regency Ballroom,,,unresolved
+41,1,2014-10-17,2014-10-17,Slim’s,22,San Francisco,California,Slim’s,,,unresolved
+42,10,2013-12-14,2020-03-07,The Fillmore,22,San Francisco,California,The Fillmore,,,unresolved
+43,2,2013-09-14,2019-12-18,The Independent,22,San Francisco,California,The Independent,,,unresolved
+44,2,2015-10-10,2019-11-22,The Warfield,22,San Francisco,California,The Warfield,,,unresolved
+45,2,2018-09-28,2018-09-29,Avaya Stadium,23,San Jose,California,Avaya Stadium,,,unresolved
+46,1,2017-11-14,2017-11-14,Civic National City,23,San Jose,California,Civic National City,,,unresolved
+47,2,2014-03-25,2018-12-12,SAP Centre,23,San Jose,California,SAP Centre,,,unresolved
+48,1,2016-09-08,2016-09-08,The Ritz,23,San Jose,California,The Ritz,,,unresolved
+49,2,2018-06-14,2018-06-16,Terrapin Station,24,San Rafael,California,Terrapin Station,,,unresolved
+50,3,2015-06-26,2022-07-28,Levi's Stadium,25,Santa Clara,California,Levi's Stadium,,,unresolved
+51,1,2018-10-18,2018-10-18,Catalyst,26,Santa Cruz,California,Catalyst,,,unresolved
+52,1,2016-04-19,2016-04-19,Moe's Alley,26,Santa Cruz,California,Moe's Alley,,,unresolved
+53,1,2013-05-19,2013-05-19,Rio Theatre,26,Santa Cruz,California,Rio Theatre,,,unresolved
+54,5,2013-04-23,2019-03-08,The Catalyst,26,Santa Cruz,California,The Catalyst,,,unresolved
+55,1,2017-08-16,2017-08-16,Mountain Winery,27,Saratoga,California,Mountain Winery,,,unresolved
+56,1,2017-11-18,2017-11-18,Green Music Center (Sonoma State University),28,Sonoma,California,Green Music Center (Sonoma State University),,,unresolved
+57,1,2025-01-27,2025-01-27,The Venice West,29,Venice,California,The Venice West,,,unresolved
+58,1,2022-11-30,2022-11-30,Commodore Ballroom,30,Vancouver,Canada,Commodore Ballroom,,,unresolved
+59,1,2026-07-19,2026-07-19,Doug Mitchell Thunderbird Sports Center,30,Vancouver,Canada,Doug Mitchell Thunderbird Sports Center,,,unresolved
+60,1,2023-11-11,2023-11-11,Mission Ballroom,31,Denver,Colorado,Mission Ballroom,,,unresolved
+61,6,2009-07-29,2022-06-20,Red Rocks Amphitheatre,32,Morrison,Colorado,Red Rocks Amphitheatre,,,unresolved
+62,1,2026-05-22,2026-05-22,O2 Academy Islington,33,London,England,O2 Academy Islington,,,unresolved
+63,2,2021-12-04,2021-12-06,Fort Lauderdale Beach,34,Fort Lauderdale,Florida,Fort Lauderdale Beach,,,unresolved
+64,3,2014-05-09,2014-05-11,Atlantic Station,35,Atlanta,Georgia,Atlantic Station,,,unresolved
+65,1,2014-05-10,2014-05-10,CenterStage,35,Atlanta,Georgia,CenterStage,,,unresolved
+66,1,2009-08-12,2009-08-12,Chastain Park Amphitheatre,35,Atlanta,Georgia,Chastain Park Amphitheatre,,,unresolved
+67,1,2026-08-23,2026-08-23,RiverEdge,36,Aurora,Illinois,RiverEdge,,,unresolved
+68,2,2007-07-28,2010-06-26,Toyota Park,37,Bridgeview,Illinois,Toyota Park,,,unresolved
+69,1,2012-07-29,2012-07-29,Brookfield Zoo,38,Brookfield,Illinois,Brookfield Zoo,,,unresolved
+70,1,2002-07-27,2002-07-27,A Finkl & Sons,39,Chicago,Illinois,A Finkl & Sons,,,unresolved
+71,3,2003-02-21,2004-08-07,Abbey Pub,39,Chicago,Illinois,Abbey Pub,,,unresolved
+72,15,1996-07-05,2021-10-28,Aragon Ballroom,39,Chicago,Illinois,Aragon Ballroom,,,unresolved
+73,1,2008-08-21,2008-08-21,Auditorium Theatre,39,Chicago,Illinois,Auditorium Theatre,,,unresolved
+74,1,2008-11-01,2008-11-01,Beat Kitchen,39,Chicago,Illinois,Beat Kitchen,,,unresolved
+75,4,2009-07-19,2017-08-04,Bottom Lounge,39,Chicago,Illinois,Bottom Lounge,,,unresolved
+76,4,2006-09-15,2010-08-20,Charter One Pavilion at Northerly Island,39,Chicago,Illinois,Charter One Pavilion at Northerly Island,,,unresolved
+77,5,2008-10-08,2011-10-28,Chicago Theatre,39,Chicago,Illinois,Chicago Theatre,,,unresolved
+78,1,2019-02-08,2019-02-08,Concord,39,Chicago,Illinois,Concord,,,unresolved
+79,3,2001-11-08,2008-05-23,Congress Theatre,39,Chicago,Illinois,Congress Theatre,,,unresolved
+80,3,2009-12-17,2012-04-06,Cubby Bear,39,Chicago,Illinois,Cubby Bear,,,unresolved
+81,1,2011-06-05,2011-06-05,Division Avenue & Damen,39,Chicago,Illinois,Division Avenue & Damen,,,unresolved
+82,11,2001-11-13,2012-12-30,Double Door,39,Chicago,Illinois,Double Door,,,unresolved
+83,2,2016-09-16,2016-09-17,Douglas Park,39,Chicago,Illinois,Douglas Park,,,unresolved
+84,2,2009-10-08,2010-09-12,Elbo Room,39,Chicago,Illinois,Elbo Room,,,unresolved
+85,4,2009-10-30,2012-08-04,Empty Bottle,39,Chicago,Illinois,Empty Bottle,,,unresolved
+86,14,2004-07-04,2017-08-06,Grant Park,39,Chicago,Illinois,Grant Park,,,unresolved
+87,47,1997-07-08,2022-11-11,House of Blues,39,Chicago,Illinois,House of Blues,,,unresolved
+88,3,2000-03-23,2001-09-24,House of Blues Second Stage,39,Chicago,Illinois,House of Blues Second Stage,,,unresolved
+89,5,2012-09-15,2022-09-18,Humboldt Park,39,Chicago,Illinois,Humboldt Park,,,unresolved
+90,2,2026-08-14,2026-08-20,Huntington Bank Pavilion,39,Chicago,Illinois,Huntington Bank Pavilion,,,unresolved
+91,1,2008-06-03,2008-06-03,Jay Pritzker Pavilion at Millenium Park,39,Chicago,Illinois,Jay Pritzker Pavilion at Millenium Park,,,unresolved
+92,1,2007-05-04,2007-05-04,Joe's,39,Chicago,Illinois,Joe's,,,unresolved
+93,1,2008-04-18,2008-04-18,Kathy's House (neighborhood),39,Chicago,Illinois,Kathy's House (neighborhood),,,unresolved
+94,1,2009-10-07,2009-10-07,Lakeshore Theatre,39,Chicago,Illinois,Lakeshore Theatre,,,unresolved
+95,17,2009-10-26,2012-10-23,Lincoln Hall,39,Chicago,Illinois,Lincoln Hall,,,unresolved
+96,3,2000-07-02,2006-07-28,Lincoln Park Zoo,39,Chicago,Illinois,Lincoln Park Zoo,,,unresolved
+97,2,2007-04-17,2008-04-09,Loyola Gentile Center,39,Chicago,Illinois,Loyola Gentile Center,,,unresolved
+98,1,2009-07-10,2009-07-10,Madison Street & Des Plaines Street,39,Chicago,Illinois,Madison Street & Des Plaines Street,,,unresolved
+99,49,1996-03-22,2022-09-17,Metro,39,Chicago,Illinois,Metro,,,unresolved
+100,1,2012-07-07,2012-07-07,Navy Pier,39,Chicago,Illinois,Navy Pier,,,unresolved
+101,1,2015-09-12,2015-09-12,Northerly Island,39,Chicago,Illinois,Northerly Island,,,unresolved
+102,9,1999-09-29,2021-11-13,Park West,39,Chicago,Illinois,Park West,,,unresolved
+103,1,2021-10-09,2021-10-09,Radius,39,Chicago,Illinois,Radius,,,unresolved
+104,1,2008-04-23,2008-04-23,Reggie's,39,Chicago,Illinois,Reggie's,,,unresolved
+105,24,1997-03-01,2017-03-18,Riviera,39,Chicago,Illinois,Riviera,,,unresolved
+106,1,2018-01-27,2018-01-27,Riviera Theater,39,Chicago,Illinois,Riviera Theater,,,unresolved
+107,1,2010-04-24,2010-04-24,Rubloff Auditorium,39,Chicago,Illinois,Rubloff Auditorium,,,unresolved
+108,2,2023-08-16,2025-06-20,Salt Shed,39,Chicago,Illinois,Salt Shed,,,unresolved
+109,12,2002-08-15,2012-07-27,Schubas,39,Chicago,Illinois,Schubas,,,unresolved
+110,1,2012-06-02,2012-06-02,Sheffield & Addison,39,Chicago,Illinois,Sheffield & Addison,,,unresolved
+111,2,1997-06-29,2011-07-05,Soldier Field,39,Chicago,Illinois,Soldier Field,,,unresolved
+112,1,2012-04-08,2012-04-08,Subterranean,39,Chicago,Illinois,Subterranean,,,unresolved
+113,1,2010-09-26,2010-09-26,The Hideout,39,Chicago,Illinois,The Hideout,,,unresolved
+114,5,2009-08-22,2012-04-14,The Vic,39,Chicago,Illinois,The Vic,,,unresolved
+115,1,2001-12-07,2001-12-07,Top Note Theatre,39,Chicago,Illinois,Top Note Theatre,,,unresolved
+116,1,2012-05-10,2012-05-10,Township,39,Chicago,Illinois,Township,,,unresolved
+117,1,2004-07-18,2004-07-18,Tweeter Center,39,Chicago,Illinois,Tweeter Center,,,unresolved
+118,4,2002-10-21,2011-08-25,UIC Pavilion,39,Chicago,Illinois,UIC Pavilion,,,unresolved
+119,1,2010-09-04,2010-09-04,Union Park,39,Chicago,Illinois,Union Park,,,unresolved
+120,6,1999-10-07,2009-08-23,United Center,39,Chicago,Illinois,United Center,,,unresolved
+121,12,1997-08-14,2017-08-02,Vic,39,Chicago,Illinois,Vic,,,unresolved
+122,2,2005-05-03,2008-04-08,WTTW Grainger Studio,39,Chicago,Illinois,WTTW Grainger Studio,,,unresolved
+123,1,2013-06-22,2013-06-22,Wicker Park/Damen Ave,39,Chicago,Illinois,Wicker Park/Damen Ave,,,unresolved
+124,3,2007-07-05,2012-09-08,Wrigley Field,39,Chicago,Illinois,Wrigley Field,,,unresolved
+125,1,2002-09-25,2002-09-25,NIU Convocation Center,40,DeKalb,Illinois,NIU Convocation Center,,,unresolved
+126,1,2010-06-13,2010-06-13,Ravinia,41,Highland Park,Illinois,Ravinia,,,unresolved
+127,1,2006-09-03,2006-09-03,Rotary Hill,42,Naperville,Illinois,Rotary Hill,,,unresolved
+128,1,2007-04-15,2007-04-15,Bradley Field House,43,Peoria,Illinois,Bradley Field House,,,unresolved
+129,1,1999-05-05,1999-05-05,Coronado Theatre,44,Rockford,Illinois,Coronado Theatre,,,unresolved
+130,3,2001-03-02,2008-12-12,Allstate Arena,45,Rosemont,Illinois,Allstate Arena,,,unresolved
+131,6,1995-12-08,1998-12-18,Rosemont Horizon,45,Rosemont,Illinois,Rosemont Horizon,,,unresolved
+132,3,2020-10-02,2020-10-04,Schaumburg Boomers Stadium,46,Schaumburg,Illinois,Schaumburg Boomers Stadium,,,unresolved
+133,6,2006-07-30,2011-08-20,First Midwest Bank Amphitheatre,47,Tinley Park,Illinois,First Midwest Bank Amphitheatre,,,unresolved
+134,21,1995-08-31,2000-08-25,New World Music Theatre,47,Tinley Park,Illinois,New World Music Theatre,,,unresolved
+135,6,2001-08-03,2003-06-28,Tweeter Center,47,Tinley Park,Illinois,Tweeter Center,,,unresolved
+136,2,1999-09-25,2000-04-08,Canopy Club,48,Urbana,Illinois,Canopy Club,,,unresolved
+137,1,1996-10-10,1996-10-10,Odeum,49,Villa Park,Illinois,Odeum,,,unresolved
+138,1,2025-06-21,2025-06-21,Downtown Winnetka,50,Winnetka,Illinois,Downtown Winnetka,,,unresolved
+139,1,2007-08-04,2007-08-04,Victory Field,51,Indianapolis,Indiana,Victory Field,,,unresolved
+140,1,1998-08-15,1998-08-15,Deer Creek Music Center,52,Noblesville,Indiana,Deer Creek Music Center,,,unresolved
+141,1,2002-10-15,2002-10-15,Morris Performing Arts Center,53,South Bend,Indiana,Morris Performing Arts Center,,,unresolved
+142,1,2007-08-10,2007-08-10,Harrah's Hidden Cove,54,Council Bluff,Iowa,Harrah's Hidden Cove,,,unresolved
+143,1,2007-08-11,2007-08-11,Principal Park,55,Des Moines,Iowa,Principal Park,,,unresolved
+144,1,2007-08-03,2007-08-03,Louisville Slugger Field,56,Louisville,Kentucky,Louisville Slugger Field,,,unresolved
+145,1,2012-07-01,2012-07-01,Ottobar,57,Baltimore,Maryland,Ottobar,,,unresolved
+146,1,2008-02-01,2008-02-01,Ram's Head Live,57,Baltimore,Maryland,Ram's Head Live,,,unresolved
+147,2,2011-09-23,2011-09-24,St Andrew’s Hall,58,Detroit,Michigan,St Andrew’s Hall,,,unresolved
+148,1,2009-07-07,2009-07-07,The Intersection,59,Grand Rapids,Michigan,The Intersection,,,unresolved
+149,1,2000-10-08,2000-10-08,The Orbit Room,59,Grand Rapids,Michigan,The Orbit Room,,,unresolved
+150,1,1999-07-17,1999-07-17,State Theatre,60,Kalamazoo,Michigan,State Theatre,,,unresolved
+151,1,2000-05-28,2000-05-28,Wings Stadium,60,Kalamazoo,Michigan,Wings Stadium,,,unresolved
+152,1,2009-07-08,2009-07-08,Meadow Brook Music Festival,61,Rochester Hills,Michigan,Meadow Brook Music Festival,,,unresolved
+153,1,2001-09-01,2001-09-01,400 Bar,62,Minneapolis,Minnesota,400 Bar,,,unresolved
+154,1,2004-02-13,2004-02-13,Fine Line Music Café,62,Minneapolis,Minnesota,Fine Line Music Café,,,unresolved
+155,1,2000-07-09,2000-07-09,Riverport Amphitheatre,63,Maryland Heights,Missouri,Riverport Amphitheatre,,,unresolved
+156,1,2012-03-02,2012-03-02,Plush,64,St Louis,Missouri,Plush,,,unresolved
+157,1,2023-07-11,2023-07-11,Big Sky Brewing Amphitheatre,65,Missoula,Montana,Big Sky Brewing Amphitheatre,,,unresolved
+158,1,2015-10-20,2015-10-20,Freemont Street,66,Las Vegas,Nevada,Freemont Street,,,unresolved
+159,1,2026-04-18,2026-04-18,House of Blues Las Vegas,66,Las Vegas,Nevada,House of Blues Las Vegas,,,unresolved
+160,2,2022-10-29,2023-10-21,Las Vegas Fairgrounds,66,Las Vegas,Nevada,Las Vegas Fairgrounds,,,unresolved
+161,1,2017-10-11,2017-10-11,Mandalay Bay Conference Center,66,Las Vegas,Nevada,Mandalay Bay Conference Center,,,unresolved
+162,1,2018-07-14,2018-07-14,The Joint / Hard Rock Hotel & Casino,66,Las Vegas,Nevada,The Joint / Hard Rock Hotel & Casino,,,unresolved
+163,1,2019-07-15,2019-07-15,Virginia Street Brewhouse,67,Reno,Nevada,Virginia Street Brewhouse,,,unresolved
+164,1,2006-08-25,2006-08-25,Tweeter Center at the Waterfront,68,Camden,New Jersey,Tweeter Center at the Waterfront,,,unresolved
+165,3,2012-07-13,2012-07-15,Yeatman’s Cove,69,Cincinnati,Ohio,Yeatman’s Cove,,,unresolved
+166,1,2007-07-24,2007-07-24,Classic Park,70,Eastlake,Ohio,Classic Park,,,unresolved
+167,1,2012-06-16,2012-06-16,Centennial Terrace,71,Sylvania,Ohio,Centennial Terrace,,,unresolved
+168,2,2013-04-27,2018-03-01,Arlene Schnitzer Concert Hall,72,Portland,Oregon,Arlene Schnitzer Concert Hall,,,unresolved
+169,2,2019-12-16,2021-10-20,Crystal Ballroom,72,Portland,Oregon,Crystal Ballroom,,,unresolved
+170,1,2022-07-15,2022-07-15,Pioneer Square Courthouse,72,Portland,Oregon,Pioneer Square Courthouse,,,unresolved
+171,1,2015-12-20,2015-12-20,Revolution Hall,72,Portland,Oregon,Revolution Hall,,,unresolved
+172,3,2021-09-09,2026-07-24,Topaz Farm,72,Portland,Oregon,Topaz Farm,,,unresolved
+173,1,2021-08-31,2021-08-31,Edgefield Amphitheater,73,Troutdale,Oregon,Edgefield Amphitheater,,,unresolved
+174,1,2021-11-06,2021-11-06,XL Live,74,Harrisburg,Pennsylvania,XL Live,,,unresolved
+175,2,2008-08-08,2008-08-09,Southside Works,75,Pittsburgh,Pennsylvania,Southside Works,,,unresolved
+176,1,2009-06-20,2009-06-20,Orpheum Theatre,76,Memphis,Tennessee,Orpheum Theatre,,,unresolved
+177,1,2009-08-11,2009-08-11,Ryman Auditorium,77,Nashville,Tennessee,Ryman Auditorium,,,unresolved
+178,1,2025-04-02,2025-04-02,,78,Austin,Texas,,,,unresolved
+179,1,2021-09-03,2021-09-03,Ogden Amphitheatre,79,Ogden,Utah,Ogden Amphitheatre,,,unresolved
+180,1,2006-08-26,2006-08-26,Nissan Pavillion,80,Bristow,Virginia,Nissan Pavillion,,,unresolved
+181,2,2025-07-08,2025-09-03,White River Amphitheater,81,Auburn,Washington,White River Amphitheater,,,unresolved
+182,1,2021-10-29,2021-10-29,Wild Buffalo,82,Bellingham,Washington,Wild Buffalo,,,unresolved
+183,1,2022-06-13,2022-06-13,Edmonds Center for the Arts,83,Edmonds,Washington,Edmonds Center for the Arts,,,unresolved
+184,1,2023-08-11,2023-08-11,Marymoor Live,84,Redmond,Washington,Marymoor Live,,,unresolved
+185,1,2026-12-05,2026-12-05,Chop Suey,85,Seattle,Washington,Chop Suey,,,unresolved
+186,6,2023-06-01,2026-11-06,Climate Pledge Arena,85,Seattle,Washington,Climate Pledge Arena,,,unresolved
+187,1,2024-04-09,2024-04-09,El Corazon,85,Seattle,Washington,El Corazon,,,unresolved
+188,1,2026-10-03,2026-10-03,Hidden Hall,85,Seattle,Washington,Hidden Hall,,,unresolved
+189,1,2026-08-01,2026-08-01,Lumen Field,85,Seattle,Washington,Lumen Field,,,unresolved
+190,2,2022-09-13,2023-05-11,Madame Lou’s,85,Seattle,Washington,Madame Lou’s,,,unresolved
+191,1,2026-07-25,2026-07-25,Marymoor Live,85,Seattle,Washington,Marymoor Live,,,unresolved
+192,5,2022-07-14,2025-06-18,Neptune Theatre,85,Seattle,Washington,Neptune Theatre,,,unresolved
+193,1,2022-10-20,2022-10-20,Neumo’s,85,Seattle,Washington,Neumo’s,,,unresolved
+194,7,2022-10-26,2026-07-28,Paramount Theatre,85,Seattle,Washington,Paramount Theatre,,,unresolved
+195,1,2014-09-09,2014-09-09,Seattle Center,85,Seattle,Washington,Seattle Center,,,unresolved
+196,9,2014-09-10,2026-11-25,Showbox,85,Seattle,Washington,Showbox,,,unresolved
+197,10,2022-09-01,2026-09-20,Showbox SODO,85,Seattle,Washington,Showbox SODO,,,unresolved
+198,1,2026-03-14,2026-03-14,Sunset Tavern,85,Seattle,Washington,Sunset Tavern,,,unresolved
+199,1,2024-05-24,2024-05-24,T-Mobile Park,85,Seattle,Washington,T-Mobile Park,,,unresolved
+200,3,2023-03-02,2026-05-15,The Crocodile,85,Seattle,Washington,The Crocodile,,,unresolved
+201,3,2021-12-16,2024-02-03,The Moore Theatre,85,Seattle,Washington,The Moore Theatre,,,unresolved
+202,1,2023-11-04,2023-11-04,Tim’s Tavern,85,Seattle,Washington,Tim’s Tavern,,,unresolved
+203,1,2021-11-02,2021-11-02,Tractor Tavern,85,Seattle,Washington,Tractor Tavern,,,unresolved
+204,6,2023-07-15,2026-10-20,WAMU Theater,85,Seattle,Washington,WAMU Theater,,,unresolved
+205,1,2023-07-14,2023-07-14,The Podium,86,Spokane,Washington,The Podium,,,unresolved
+206,1,2022-05-11,2022-05-11,Alma,87,Tacoma,Washington,Alma,,,unresolved
+207,1,2026-09-19,2026-09-19,Dune Peninsula,87,Tacoma,Washington,Dune Peninsula,,,unresolved
+208,1,2025-09-14,2025-09-14,Emerald Queen Casino,87,Tacoma,Washington,Emerald Queen Casino,,,unresolved
+209,1,2023-09-16,2023-09-16,Chateau Ste Michelle Winery,88,Woodinville,Washington,Chateau Ste Michelle Winery,,,unresolved
+210,1,2011-09-03,2011-09-03,Alpine Valley,89,East Troy,Wisconsin,Alpine Valley,,,unresolved
+211,1,2010-04-29,2010-04-29,Waldron County Fairgrounds,90,Elkhorn,Wisconsin,Waldron County Fairgrounds,,,unresolved
+212,1,2008-10-11,2008-10-11,Resch Center,91,Green Bay,Wisconsin,Resch Center,,,unresolved
+213,1,2008-04-12,2008-04-12,(Carthage College),92,Kenosha,Wisconsin,(Carthage College),,,unresolved
+214,1,2014-12-13,2014-12-13,Orpheum Theatre,93,Madison,Wisconsin,Orpheum Theatre,,,unresolved
+215,1,2010-06-05,2010-06-05,Maier Festival Park Summerfest Grounds,94,Milwaukee,Wisconsin,Maier Festival Park Summerfest Grounds,,,unresolved
+216,4,1999-07-02,2001-07-06,Marcus Amphitheatre,94,Milwaukee,Wisconsin,Marcus Amphitheatre,,,unresolved
+217,2,1997-11-03,1998-03-14,Modjeska,94,Milwaukee,Wisconsin,Modjeska,,,unresolved
+218,8,1999-09-23,2007-04-05,Rave/Eagle's Ballroom,94,Milwaukee,Wisconsin,Rave/Eagle's Ballroom,,,unresolved
+219,1,2002-11-29,2002-11-29,Riverside Theatre,94,Milwaukee,Wisconsin,Riverside Theatre,,,unresolved
+220,2,2002-10-10,2003-03-27,Shank Hall,94,Milwaukee,Wisconsin,Shank Hall,,,unresolved
+221,1,1998-11-18,1998-11-18,Kolf Arena,95,Oshkosh,Wisconsin,Kolf Arena,,,unresolved

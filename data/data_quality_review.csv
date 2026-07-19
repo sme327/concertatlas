@@ -1,0 +1,33 @@
+category,severity,source_row,value,related_value,suggestion
+artist_possible_alias,review,,10th Annual Dear Jack Benefit,13th Annual Dear Jack Benefit,Possible alias or typo (similarity 0.97); do not merge without review.
+artist_possible_alias,review,,American H-Fi,American Hi-Fi,Possible alias or typo (similarity 0.96); do not merge without review.
+artist_possible_alias,review,,Ezra Furman & the Harpoons,Ezra Furman and the Harpoons,Possible alias or typo (similarity 0.93); do not merge without review.
+artist_possible_alias,review,,Fitz & the Tantrums,Fitz and the Tantrums,Possible alias or typo (similarity 0.90); do not merge without review.
+artist_possible_alias,review,,Five For Fighting,Five For Fightning,Possible alias or typo (similarity 0.97); do not merge without review.
+artist_possible_alias,review,,Lollapalooza ’10,Lollapalooza ’11,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Margot & the Nuclear So & So’s,Margot & the Nuclear So and So's,Possible alias or typo (similarity 0.90); do not merge without review.
+artist_possible_alias,review,,Motion City Soundtrack CTTM 10th Anniversary,Motion City Soundtrack CTTM 17th Anniversary,Possible alias or typo (similarity 0.98); do not merge without review.
+artist_possible_alias,review,,Nahko & Medicine for the People,Nahko and Medicine for the People,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2014,Outside Lands 2016,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2014,Outside Lands 2017,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2014,Outside Lands 2018,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2014,Outside Lands 2019,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2016,Outside Lands 2017,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2016,Outside Lands 2018,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2016,Outside Lands 2019,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2017,Outside Lands 2018,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2017,Outside Lands 2019,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Outside Lands 2018,Outside Lands 2019,Possible alias or typo (similarity 0.94); do not merge without review.
+artist_possible_alias,review,,Q101's Jamboree '97,Q101's Jamboree '98,Possible alias or typo (similarity 0.95); do not merge without review.
+artist_possible_alias,review,,Q101's Twisted Christmas 2,Q101's Twisted Christmas 5,Possible alias or typo (similarity 0.96); do not merge without review.
+artist_possible_alias,review,,The Head & The Heart,The Head and the Heart,Possible alias or typo (similarity 0.90); do not merge without review.
+artist_possible_alias,review,,Toad the Wet Sprocket,Toad the Wet Sprockett,Possible alias or typo (similarity 0.98); do not merge without review.
+artist_possible_alias,review,,Tom Petty & the Heartbrakers,Tom Petty & the Heartbreakers,Possible alias or typo (similarity 0.98); do not merge without review.
+artist_possible_alias,review,,Tom Petty & the Heartbrakers,Tom Petty and the Heartbreakers,Possible alias or typo (similarity 0.92); do not merge without review.
+artist_possible_alias,review,,Tom Petty & the Heartbreakers,Tom Petty and the Heartbreakers,Possible alias or typo (similarity 0.93); do not merge without review.
+artist_possible_alias,review,,When We Were Young ‘22,When We Were Young ‘23,Possible alias or typo (similarity 0.95); do not merge without review.
+missing_venue,review,612,,,Review missing venue_recorded.
+missing_city,review,605,,,Review missing city_recorded.
+missing_city,review,606,,,Review missing city_recorded.
+missing_city,review,607,,,Review missing city_recorded.
+missing_city,review,608,,,Review missing city_recorded.

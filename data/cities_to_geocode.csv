@@ -1,0 +1,96 @@
+city_id,city,state_region,country,latitude,longitude,geocode_status
+1,Calgary,Alberta (Canada),,,,unresolved
+2,Edmonton,Alberta (Canada),,,,unresolved
+3,Phoenix,Arizona,,,,unresolved
+4,,Atlantic Ocean,,,,unresolved
+5,Berkeley,California,,,,unresolved
+6,Big Bear Lake,California,,,,unresolved
+7,Carlsbad,California,,,,unresolved
+8,Chula Vista,California,,,,unresolved
+9,Costa Mesa,California,,,,unresolved
+10,Cupertino,California,,,,unresolved
+11,Daly City,California,,,,unresolved
+12,Del Mar,California,,,,unresolved
+13,Hollywood,California,,,,unresolved
+14,Irvine,California,,,,unresolved
+15,Los Angeles,California,,,,unresolved
+16,Monterey,California,,,,unresolved
+17,Mountain View,California,,,,unresolved
+18,Oakland,California,,,,unresolved
+19,Palm Springs,California,,,,unresolved
+20,Peteluma,California,,,,unresolved
+21,Sacramento,California,,,,unresolved
+22,San Francisco,California,,,,unresolved
+23,San Jose,California,,,,unresolved
+24,San Rafael,California,,,,unresolved
+25,Santa Clara,California,,,,unresolved
+26,Santa Cruz,California,,,,unresolved
+27,Saratoga,California,,,,unresolved
+28,Sonoma,California,,,,unresolved
+29,Venice,California,,,,unresolved
+30,Vancouver,Canada,,,,unresolved
+31,Denver,Colorado,,,,unresolved
+32,Morrison,Colorado,,,,unresolved
+33,London,England,,,,unresolved
+34,Fort Lauderdale,Florida,,,,unresolved
+35,Atlanta,Georgia,,,,unresolved
+36,Aurora,Illinois,,,,unresolved
+37,Bridgeview,Illinois,,,,unresolved
+38,Brookfield,Illinois,,,,unresolved
+39,Chicago,Illinois,,,,unresolved
+40,DeKalb,Illinois,,,,unresolved
+41,Highland Park,Illinois,,,,unresolved
+42,Naperville,Illinois,,,,unresolved
+43,Peoria,Illinois,,,,unresolved
+44,Rockford,Illinois,,,,unresolved
+45,Rosemont,Illinois,,,,unresolved
+46,Schaumburg,Illinois,,,,unresolved
+47,Tinley Park,Illinois,,,,unresolved
+48,Urbana,Illinois,,,,unresolved
+49,Villa Park,Illinois,,,,unresolved
+50,Winnetka,Illinois,,,,unresolved
+51,Indianapolis,Indiana,,,,unresolved
+52,Noblesville,Indiana,,,,unresolved
+53,South Bend,Indiana,,,,unresolved
+54,Council Bluff,Iowa,,,,unresolved
+55,Des Moines,Iowa,,,,unresolved
+56,Louisville,Kentucky,,,,unresolved
+57,Baltimore,Maryland,,,,unresolved
+58,Detroit,Michigan,,,,unresolved
+59,Grand Rapids,Michigan,,,,unresolved
+60,Kalamazoo,Michigan,,,,unresolved
+61,Rochester Hills,Michigan,,,,unresolved
+62,Minneapolis,Minnesota,,,,unresolved
+63,Maryland Heights,Missouri,,,,unresolved
+64,St Louis,Missouri,,,,unresolved
+65,Missoula,Montana,,,,unresolved
+66,Las Vegas,Nevada,,,,unresolved
+67,Reno,Nevada,,,,unresolved
+68,Camden,New Jersey,,,,unresolved
+69,Cincinnati,Ohio,,,,unresolved
+70,Eastlake,Ohio,,,,unresolved
+71,Sylvania,Ohio,,,,unresolved
+72,Portland,Oregon,,,,unresolved
+73,Troutdale,Oregon,,,,unresolved
+74,Harrisburg,Pennsylvania,,,,unresolved
+75,Pittsburgh,Pennsylvania,,,,unresolved
+76,Memphis,Tennessee,,,,unresolved
+77,Nashville,Tennessee,,,,unresolved
+78,Austin,Texas,,,,unresolved
+79,Ogden,Utah,,,,unresolved
+80,Bristow,Virginia,,,,unresolved
+81,Auburn,Washington,,,,unresolved
+82,Bellingham,Washington,,,,unresolved
+83,Edmonds,Washington,,,,unresolved
+84,Redmond,Washington,,,,unresolved
+85,Seattle,Washington,,,,unresolved
+86,Spokane,Washington,,,,unresolved
+87,Tacoma,Washington,,,,unresolved
+88,Woodinville,Washington,,,,unresolved
+89,East Troy,Wisconsin,,,,unresolved
+90,Elkhorn,Wisconsin,,,,unresolved
+91,Green Bay,Wisconsin,,,,unresolved
+92,Kenosha,Wisconsin,,,,unresolved
+93,Madison,Wisconsin,,,,unresolved
+94,Milwaukee,Wisconsin,,,,unresolved
+95,Oshkosh,Wisconsin,,,,unresolved

@@ -1,0 +1,71 @@
+location_type,venue,city,state_region,country,query,status,candidate,review_note
+city,,,Atlantic Ocean,,,unplottable_region,,Region 'Atlantic Ocean' has no fixed coordinates; add a manual override if desired.
+city,,Peteluma,California,USA,"Peteluma, California, USA",not_found,,Review manually.
+city,,Council Bluff,Iowa,USA,"Council Bluff, Iowa, USA",not_found,,Review manually.
+venue,Norwegian Gem Cruise Ship,,Atlantic Ocean,,,unplottable_region,,Region 'Atlantic Ocean' has no fixed coordinates; add a manual override if desired.
+venue,Pacific Amphitheater,Costa Mesa,California,USA,"Pacific Amphitheater, Costa Mesa, California, USA",not_found,,Review manually.
+venue,Del Mar Fairgrounds,Del Mar,California,USA,"Del Mar Fairgrounds, Del Mar, California, USA",not_found,,Review manually.
+venue,Five Points Amphitheatre,Irvine,California,USA,"Five Points Amphitheatre, Irvine, California, USA",not_found,,Review manually.
+venue,The Theatre at Ace Hotel,Los Angeles,California,USA,"The Theatre at Ace Hotel, Los Angeles, California, USA",not_found,,Review manually.
+venue,Hotel Zoso Woodstock Ballroom,Palm Springs,California,USA,"Hotel Zoso Woodstock Ballroom, Palm Springs, California, USA",not_found,,Review manually.
+venue,Lagunitas,Peteluma,California,USA,"Lagunitas, Peteluma, California, USA",not_found,,Review manually.
+venue,Americas Cup Pavilion,San Francisco,California,USA,"Americas Cup Pavilion, San Francisco, California, USA",not_found,,Review manually.
+venue,The Warfield,San Francisco,California,USA,"The Warfield, San Francisco, California, USA",not_found,,Review manually.
+venue,Avaya Stadium,San Jose,California,USA,"Avaya Stadium, San Jose, California, USA",not_found,,Review manually.
+venue,SAP Centre,San Jose,California,USA,"SAP Centre, San Jose, California, USA",not_found,,Review manually.
+venue,Terrapin Station,San Rafael,California,USA,"Terrapin Station, San Rafael, California, USA",not_found,,Review manually.
+venue,Green Music Center (Sonoma State University),Sonoma,California,USA,"Green Music Center (Sonoma State University), Sonoma, California, USA",not_found,,Review manually.
+venue,Doug Mitchell Thunderbird Sports Center,Vancouver,Canada,Canada,"Doug Mitchell Thunderbird Sports Center, Vancouver, Canada",not_found,,Review manually.
+venue,CenterStage,Atlanta,Georgia,USA,"CenterStage, Atlanta, Georgia, USA",not_found,,Review manually.
+venue,Chastain Park Amphitheatre,Atlanta,Georgia,USA,"Chastain Park Amphitheatre, Atlanta, Georgia, USA",not_found,,Review manually.
+venue,A Finkl & Sons,Chicago,Illinois,USA,"A Finkl & Sons, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Abbey Pub,Chicago,Illinois,USA,"Abbey Pub, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Charter One Pavilion at Northerly Island,Chicago,Illinois,USA,"Charter One Pavilion at Northerly Island, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Congress Theatre,Chicago,Illinois,USA,"Congress Theatre, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Double Door,Chicago,Illinois,USA,"Double Door, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Elbo Room,Chicago,Illinois,USA,"Elbo Room, Chicago, Illinois, USA",not_found,,Review manually.
+venue,House of Blues Second Stage,Chicago,Illinois,USA,"House of Blues Second Stage, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Jay Pritzker Pavilion at Millenium Park,Chicago,Illinois,USA,"Jay Pritzker Pavilion at Millenium Park, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Kathy's House (neighborhood),Chicago,Illinois,USA,"Kathy's House (neighborhood), Chicago, Illinois, USA",not_found,,Review manually.
+venue,Lakeshore Theatre,Chicago,Illinois,USA,"Lakeshore Theatre, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Loyola Gentile Center,Chicago,Illinois,USA,"Loyola Gentile Center, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Madison Street & Des Plaines Street,Chicago,Illinois,USA,"Madison Street & Des Plaines Street, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Top Note Theatre,Chicago,Illinois,USA,"Top Note Theatre, Chicago, Illinois, USA",not_found,,Review manually.
+venue,Tweeter Center,Chicago,Illinois,USA,"Tweeter Center, Chicago, Illinois, USA",not_found,,Review manually.
+venue,WTTW Grainger Studio,Chicago,Illinois,USA,"WTTW Grainger Studio, Chicago, Illinois, USA",not_found,,Review manually.
+venue,NIU Convocation Center,DeKalb,Illinois,USA,"NIU Convocation Center, DeKalb, Illinois, USA",not_found,,Review manually.
+venue,Bradley Field House,Peoria,Illinois,USA,"Bradley Field House, Peoria, Illinois, USA",not_found,,Review manually.
+venue,Rosemont Horizon,Rosemont,Illinois,USA,"Rosemont Horizon, Rosemont, Illinois, USA",not_found,,Review manually.
+venue,First Midwest Bank Amphitheatre,Tinley Park,Illinois,USA,"First Midwest Bank Amphitheatre, Tinley Park, Illinois, USA",not_found,,Review manually.
+venue,New World Music Theatre,Tinley Park,Illinois,USA,"New World Music Theatre, Tinley Park, Illinois, USA",not_found,,Review manually.
+venue,Tweeter Center,Tinley Park,Illinois,USA,"Tweeter Center, Tinley Park, Illinois, USA",not_found,,Review manually.
+venue,Odeum,Villa Park,Illinois,USA,"Odeum, Villa Park, Illinois, USA",not_found,,Review manually.
+venue,Downtown Winnetka,Winnetka,Illinois,USA,"Downtown Winnetka, Winnetka, Illinois, USA",not_found,,Review manually.
+venue,Deer Creek Music Center,Noblesville,Indiana,USA,"Deer Creek Music Center, Noblesville, Indiana, USA",not_found,,Review manually.
+venue,Harrah's Hidden Cove,Council Bluff,Iowa,USA,"Harrah's Hidden Cove, Council Bluff, Iowa, USA",not_found,,Review manually.
+venue,Ram's Head Live,Baltimore,Maryland,USA,"Ram's Head Live, Baltimore, Maryland, USA",not_found,,Review manually.
+venue,The Orbit Room,Grand Rapids,Michigan,USA,"The Orbit Room, Grand Rapids, Michigan, USA",not_found,,Review manually.
+venue,Meadow Brook Music Festival,Rochester Hills,Michigan,USA,"Meadow Brook Music Festival, Rochester Hills, Michigan, USA",not_found,,Review manually.
+venue,400 Bar,Minneapolis,Minnesota,USA,"400 Bar, Minneapolis, Minnesota, USA",not_found,,Review manually.
+venue,Fine Line Music Café,Minneapolis,Minnesota,USA,"Fine Line Music Café, Minneapolis, Minnesota, USA",not_found,,Review manually.
+venue,Riverport Amphitheatre,Maryland Heights,Missouri,USA,"Riverport Amphitheatre, Maryland Heights, Missouri, USA",not_found,,Review manually.
+venue,Big Sky Brewing Amphitheatre,Missoula,Montana,USA,"Big Sky Brewing Amphitheatre, Missoula, Montana, USA",not_found,,Review manually.
+venue,Freemont Street,Las Vegas,Nevada,USA,"Freemont Street, Las Vegas, Nevada, USA",not_found,,Review manually.
+venue,Las Vegas Fairgrounds,Las Vegas,Nevada,USA,"Las Vegas Fairgrounds, Las Vegas, Nevada, USA",not_found,,Review manually.
+venue,The Joint / Hard Rock Hotel & Casino,Las Vegas,Nevada,USA,"The Joint / Hard Rock Hotel & Casino, Las Vegas, Nevada, USA",not_found,,Review manually.
+venue,Tweeter Center at the Waterfront,Camden,New Jersey,USA,"Tweeter Center at the Waterfront, Camden, New Jersey, USA",not_found,,Review manually.
+venue,Yeatman’s Cove,Cincinnati,Ohio,USA,"Yeatman’s Cove, Cincinnati, Ohio, USA",not_found,,Review manually.
+venue,Centennial Terrace,Sylvania,Ohio,USA,"Centennial Terrace, Sylvania, Ohio, USA",not_found,,Review manually.
+venue,Ogden Amphitheatre,Ogden,Utah,USA,"Ogden Amphitheatre, Ogden, Utah, USA",not_found,,Review manually.
+venue,Nissan Pavillion,Bristow,Virginia,USA,"Nissan Pavillion, Bristow, Virginia, USA",not_found,,Review manually.
+venue,Marymoor Live,Redmond,Washington,USA,"Marymoor Live, Redmond, Washington, USA",not_found,,Review manually.
+venue,Madame Lou’s,Seattle,Washington,USA,"Madame Lou’s, Seattle, Washington, USA",not_found,,Review manually.
+venue,Marymoor Live,Seattle,Washington,USA,"Marymoor Live, Seattle, Washington, USA",not_found,,Review manually.
+venue,Neumo’s,Seattle,Washington,USA,"Neumo’s, Seattle, Washington, USA",not_found,,Review manually.
+venue,The Moore Theatre,Seattle,Washington,USA,"The Moore Theatre, Seattle, Washington, USA",not_found,,Review manually.
+venue,Waldron County Fairgrounds,Elkhorn,Wisconsin,USA,"Waldron County Fairgrounds, Elkhorn, Wisconsin, USA",not_found,,Review manually.
+venue,Maier Festival Park Summerfest Grounds,Milwaukee,Wisconsin,USA,"Maier Festival Park Summerfest Grounds, Milwaukee, Wisconsin, USA",not_found,,Review manually.
+venue,Marcus Amphitheatre,Milwaukee,Wisconsin,USA,"Marcus Amphitheatre, Milwaukee, Wisconsin, USA",not_found,,Review manually.
+venue,Rave/Eagle's Ballroom,Milwaukee,Wisconsin,USA,"Rave/Eagle's Ballroom, Milwaukee, Wisconsin, USA",not_found,,Review manually.
+venue,Kolf Arena,Oshkosh,Wisconsin,USA,"Kolf Arena, Oshkosh, Wisconsin, USA",not_found,,Review manually.
+venue,Monterey County Fairgrounds,Monterey,California,USA,,suspicious_distance,,Resolved 59.2 km from city center; verify before overriding.
