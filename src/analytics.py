@@ -214,6 +214,64 @@ def journey_sequence(filtered: pd.DataFrame, artist_events: pd.DataFrame,
     return stops
 
 
+US_STATES = {
+    "Arizona", "California", "Colorado", "Florida", "Georgia", "Illinois",
+    "Indiana", "Iowa", "Kentucky", "Maryland", "Michigan", "Minnesota",
+    "Missouri", "Montana", "Nevada", "New Jersey", "Ohio", "Oregon",
+    "Pennsylvania", "Tennessee", "Texas", "Utah", "Virginia", "Washington",
+    "Wisconsin",
+}
+HOME_STATES = {"Illinois", "California", "Washington"}
+
+
+def country_for_region(state_region) -> str | None:
+    """Country a recorded state_region belongs to; None when it has no
+    country (e.g. 'Atlantic Ocean')."""
+    s = str(state_region or "").strip()
+    if not s or s == "Atlantic Ocean":
+        return None
+    if s in US_STATES:
+        return "USA"
+    if s == "England":
+        return "United Kingdom"
+    if s == "Canada" or "(Canada)" in s:
+        return "Canada"
+    return None
+
+
+def geo_metrics(filtered: pd.DataFrame) -> dict[str, int]:
+    """Distinct US states and countries in the filtered event set."""
+    regions = filtered.state_region.dropna().unique()
+    states = {r for r in regions if r in US_STATES}
+    countries = {c for c in (country_for_region(r) for r in regions) if c}
+    return {"states": len(states), "countries": len(countries)}
+
+
+def year_breakdown(filtered: pd.DataFrame, artist_events: pd.DataFrame) -> pd.DataFrame:
+    """Per-year shows with the year's top artist and top venue (for the
+    timeline histogram hover) and whether the year holds upcoming shows."""
+    d = filtered.dropna(subset=["event_date"]).copy()
+    if d.empty:
+        return pd.DataFrame(columns=["year", "shows", "has_upcoming", "top_artist", "top_venue"])
+    d["year"] = d.event_date.dt.year
+    ae = artist_events[artist_events.event_id.isin(d.event_id)].copy()
+    ae = ae.merge(d[["event_id", "year"]], on="event_id")
+    top_artists = (ae.groupby(["year", "display_name"]).event_id.nunique()
+                   .reset_index(name="n")
+                   .sort_values(["year", "n", "display_name"], ascending=[True, False, True])
+                   .drop_duplicates("year").set_index("year").display_name)
+    top_venues = (d.groupby(["year", "venue"]).event_id.nunique()
+                  .reset_index(name="n")
+                  .sort_values(["year", "n", "venue"], ascending=[True, False, True])
+                  .drop_duplicates("year").set_index("year").venue)
+    out = (d.groupby("year")
+           .agg(shows=("event_id", "nunique"), has_upcoming=("is_upcoming", "max"))
+           .reset_index())
+    out["top_artist"] = out.year.map(top_artists)
+    out["top_venue"] = out.year.map(top_venues)
+    return out
+
+
 def region_summary(df: pd.DataFrame) -> pd.DataFrame:
     """Rooms-and-eras style summary grouped by recorded state/region."""
     d = df.dropna(subset=['event_date'])

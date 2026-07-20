@@ -1,5 +1,5 @@
-# The Long Encore
-### A Personal Concert Atlas
+# My Concert Atlas
+A personal concert atlas — a visual autobiography in shows.
 
 ~30 years of shows explored through **place**, **artist**, and **time** on one
 map-driven interface — including a chronological **journey player** that
@@ -108,7 +108,7 @@ src/
   components/
     map_view.py            Plotly MapLibre city/venue maps + click handling
     journey.py             Client-side journey player (vendored MapLibre)
-    time_controls.py       ALL TIME | YEAR | RANGE (universal)
+    time_controls.py       ALL TIME | TIMELINE (single year drags into range)
     venue_panel.py         Venue drawer with artist constellation
     event_cards.py         Ticket list + Still Ahead / From the Archive sections
     artist_profile.py      Rich and basic artist profiles

@@ -121,3 +121,29 @@ def test_region_summary():
     reg = region_summary(make_events())
     il = reg[reg.state_region == "Illinois"].iloc[0]
     assert (il.first_year, il.latest_year, il.appearances) == (1999, 2005, 2)
+
+
+def test_country_for_region():
+    from src.analytics import country_for_region
+    assert country_for_region("Illinois") == "USA"
+    assert country_for_region("Alberta (Canada)") == "Canada"
+    assert country_for_region("Canada") == "Canada"
+    assert country_for_region("England") == "United Kingdom"
+    assert country_for_region("Atlantic Ocean") is None
+    assert country_for_region(None) is None
+
+
+def test_geo_metrics():
+    from src.analytics import geo_metrics
+    gm = geo_metrics(make_events())  # Illinois + Washington
+    assert gm == {"states": 2, "countries": 1}
+
+
+def test_year_breakdown_top_artist_and_venue():
+    from src.analytics import year_breakdown
+    yb = year_breakdown(make_events(), make_artist_events()).set_index("year")
+    assert yb.loc[2005, "shows"] == 2
+    assert yb.loc[2005, "top_artist"] == "Counting Crows"
+    assert yb.loc[1999, "top_venue"] == "Metro"
+    assert bool(yb.loc[2026, "has_upcoming"]) is True
+    assert bool(yb.loc[1999, "has_upcoming"]) is False

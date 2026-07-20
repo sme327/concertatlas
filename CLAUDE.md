@@ -1,4 +1,4 @@
-# CLAUDE.md — The Long Encore (A Personal Concert Atlas)
+# CLAUDE.md — My Concert Atlas
 
 Read `PHASE_1_BRIEF.md` and `README.md` before editing. Phase 1 (atlas,
 drilldown, profiles, geocoding) and Phase 2 (journey player, tickets,
@@ -37,7 +37,7 @@ narrative terminology) are complete.
 
 ## Branding & terminology
 
-- Product name: **THE LONG ENCORE**, subtitle "A Personal Concert Atlas".
+- Product name: **MY CONCERT ATLAS** (renamed from The Long Encore per the homepage brief).
 - Times Seen · Places (world level) · Venues · Shared Bills (with the
   "billing roles are not inferred" caveat) · First/Latest/Next Time ·
   Still Ahead · From the Archive.

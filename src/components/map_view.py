@@ -36,17 +36,38 @@ def _gravity(shows: pd.Series) -> np.ndarray:
 
 
 def _gravity_colors(shows: pd.Series) -> list[str]:
-    """Color intensity carries importance: pale amber → deep orange."""
+    """Density encoding: yellow → orange → red with visit frequency, so the
+    busiest place (Chicago) reads as dominant before any number is read."""
     t = _gravity(shows)
-    r = (243 + (198 - 243) * t).round().astype(int)
-    g = (217 + (86 - 217) * t).round().astype(int)
-    b = (167 + (16 - 167) * t).round().astype(int)
-    return [f"rgb({rr},{gg},{bb})" for rr, gg, bb in zip(r, g, b)]
+    colors = []
+    for v in t:
+        if v < 0.5:                      # yellow -> orange
+            u = v / 0.5
+            r, g, b = 242 + (232 - 242) * u, 209 + (140 - 209) * u, 107 + (48 - 107) * u
+        else:                            # orange -> red
+            u = (v - 0.5) / 0.5
+            r, g, b = 232 + (185 - 232) * u, 140 + (48 - 140) * u, 48 + (33 - 48) * u
+        colors.append(f"rgb({int(r)},{int(g)},{int(b)})")
+    return colors
 
 
-def _sizes(shows: pd.Series, base: float = 11, spread: float = 6) -> np.ndarray:
-    """Near-constant size with only slight variation; color is the signal."""
+def _sizes(shows: pd.Series, base: float = 10, spread: float = 9) -> np.ndarray:
+    """Slight size growth with visit count; color carries the main signal."""
     return base + _gravity(shows) * spread
+
+
+def _glow_trace(plot: pd.DataFrame) -> go.Scattermap | None:
+    """A soft underlay behind the busiest locations (top of the gravity
+    scale) — a subtle glow, not a halo on everything."""
+    t = _gravity(plot.shows)
+    hot = plot[t >= 0.55]
+    if hot.empty:
+        return None
+    return go.Scattermap(
+        lat=hot.latitude, lon=hot.longitude, mode="markers",
+        marker=dict(size=_sizes(hot.shows) * 2.3, color=_gravity_colors(hot.shows), opacity=0.22),
+        hoverinfo="skip",
+    )
 
 
 def _base_layout(fig: go.Figure, center: dict, zoom: float, height: int) -> go.Figure:
@@ -73,10 +94,14 @@ def city_map(cities: pd.DataFrame, height: int = 560) -> go.Figure | None:
         plot.shows.astype(int), plot.venues.astype(int), plot.artists.astype(int),
         plot.first_date.map(fmt_date), plot.latest_date.map(fmt_date),
     ], axis=-1)
-    fig = go.Figure(go.Scattermap(
+    fig = go.Figure()
+    glow = _glow_trace(plot)
+    if glow is not None:
+        fig.add_trace(glow)
+    fig.add_trace(go.Scattermap(
         lat=plot.latitude, lon=plot.longitude,
         mode="markers",
-        marker=dict(size=_sizes(plot.shows), color=_gravity_colors(plot.shows), opacity=0.92),
+        marker=dict(size=_sizes(plot.shows), color=_gravity_colors(plot.shows), opacity=0.95),
         customdata=customdata,
         hovertemplate=(
             "<b>%{customdata[1]}</b> · %{customdata[2]}<br>"
@@ -132,12 +157,12 @@ def clicked_id(chart_event) -> int | None:
         points = chart_event.selection.points
     except AttributeError:
         points = (chart_event or {}).get("selection", {}).get("points", []) if chart_event else []
-    if not points:
-        return None
-    cd = points[0].get("customdata")
-    if cd is None or not len(cd):
-        return None
-    try:
-        return int(cd[0])
-    except (TypeError, ValueError):
-        return None
+    # The glow underlay has no customdata; take the first point that does.
+    for point in points or []:
+        cd = point.get("customdata")
+        if cd is not None and len(cd):
+            try:
+                return int(cd[0])
+            except (TypeError, ValueError):
+                continue
+    return None

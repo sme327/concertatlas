@@ -10,7 +10,7 @@ from src.config import DATA_DIR
 from src.repository import artist_frame, event_frame, geocode_coverage, unresolved_locations
 from src.ui import inject_css, page_header
 
-st.set_page_config(page_title="About · The Long Encore", page_icon="🎟️", layout="wide",
+st.set_page_config(page_title="About · My Concert Atlas", page_icon="🎟️", layout="wide",
                    initial_sidebar_state="collapsed")
 inject_css()
 page_header()

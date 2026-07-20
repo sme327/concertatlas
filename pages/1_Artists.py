@@ -17,7 +17,7 @@ from src.repository import artist_frame, event_frame
 from src.state import init_state, year_bounds
 from src.ui import inject_css, page_header
 
-st.set_page_config(page_title="Artists · The Long Encore", page_icon="🎟️", layout="wide",
+st.set_page_config(page_title="Artists · My Concert Atlas", page_icon="🎟️", layout="wide",
                    initial_sidebar_state="collapsed")
 inject_css()
 page_header()

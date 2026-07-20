@@ -4,9 +4,26 @@ from __future__ import annotations
 
 import streamlit as st
 
-from src.analytics import artist_summary, city_aggregates, journey_sequence, venue_aggregates, year_counts
-from src.components.event_cards import render_archive_sections
+import random
+
+import plotly.graph_objects as go
+
+from src.analytics import (
+    HOME_STATES,
+    US_STATES,
+    artist_summary,
+    city_aggregates,
+    country_for_region,
+    geo_metrics,
+    journey_sequence,
+    venue_aggregates,
+    year_breakdown,
+)
 from src.components.journey import render_journey_player
+from src.components.map_view import HOVER_STYLE
+from src.config import INK, MUTED
+from src.filters import bill_for
+from src.ui import ticket_html
 from src.components.map_view import city_map, clicked_id, venue_map
 from src.components.time_controls import render_time_controls
 from src.components.venue_panel import render_venue_panel
@@ -24,9 +41,9 @@ from src.state import (
     set_mode,
     year_bounds,
 )
-from src.ui import bar_rows_html, inject_css, journey_timeline_html, page_header
+from src.ui import bar_rows_html, inject_css, page_header
 
-st.set_page_config(page_title="The Long Encore — Atlas", page_icon="🎟️", layout="wide",
+st.set_page_config(page_title="My Concert Atlas", page_icon="🎟️", layout="wide",
                    initial_sidebar_state="collapsed")
 inject_css()
 
@@ -44,7 +61,7 @@ summary_all = artist_summary(artist_events)
 artist_names = dict(zip(summary_all.artist_id, summary_all.display_name))
 artist_counts = dict(zip(summary_all.artist_id, summary_all.appearances))
 
-page_header(f"{min_year}–{max_year}")
+page_header()
 
 # ---------------------------------------------------------------- controls
 hc1, hc2 = st.columns([1.15, 1.6])
@@ -61,15 +78,15 @@ with hc2:
 
 if s.mode == "artist":
     ids = summary_all.artist_id.tolist()
-    current = ids.index(s.selected_artist) if s.selected_artist in ids else None
-    chosen = st.selectbox(
-        "Artist", options=ids, index=current,
+    if s.get("artist_sel") != s.selected_artist:
+        s.artist_sel = s.selected_artist  # keep widget in lockstep with state
+    st.selectbox(
+        "Artist", options=ids, key="artist_sel",
         format_func=lambda i: f"{artist_names[i]} — {artist_counts[i]}×",
         placeholder=f"Search {len(ids):,} artists (the most-seen are first)…",
+        on_change=lambda: select_artist(s.artist_sel),
         label_visibility="collapsed",
     )
-    if chosen != s.selected_artist:
-        select_artist(chosen)
 
 start_year, end_year = year_bounds()
 filtered = filter_events(
@@ -94,7 +111,7 @@ cagg = city_aggregates(filtered, artist_events)
 # keeps the interactive Plotly map one click away.
 drilled = s.selected_city is not None or s.selected_venue is not None
 artist_journey = s.mode == "artist" and s.selected_artist is not None
-year_journey = s.mode == "place" and s.time_mode == "year"
+year_journey = s.mode == "place" and s.time_mode == "range" and start_year == end_year
 journey_available = (artist_journey or year_journey) and not drilled
 
 view = "ALL LOCATIONS"
@@ -118,7 +135,7 @@ if journey_available and view == "JOURNEY":
         subtitle = f"1 TIME SEEN · {first_year}"
         label_mode = "artist"
     else:
-        title = f"{s.year} in concert"
+        title = f"{start_year} in concert"
         subtitle = f"{len(stops)} shows that year"
         label_mode = "year"
     render_journey_player(stops, esc(title.upper()), esc(subtitle), label_mode=label_mode)
@@ -180,11 +197,36 @@ else:
                         "review the cache, then `python scripts/apply_geocodes.py`.")
                 st.image("assets/concert-map-square.png", width="stretch",
                          caption="Visual direction for the concert atlas")
-        # Chronological journey strip: the same filtered history, year by year.
-        yc = year_counts(filtered)
-        strip = journey_timeline_html(yc, s.year if s.time_mode == "year" else None)
-        if strip:
-            st.markdown(strip, unsafe_allow_html=True)
+        # Timeline histogram: hover for the year's top artist/venue; click a
+        # bar to focus the whole page on that year; future shows read warm red.
+        yb = year_breakdown(filtered, artist_events)
+        if len(yb):
+            in_filter = (yb.year >= start_year) & (yb.year <= end_year) if s.time_mode == "range" \
+                else yb.year.notna()
+            colors = ["#b4553f" if up else ("#e89a3d" if sel else "#6b5136")
+                      for up, sel in zip(yb.has_upcoming.astype(bool), in_filter)]
+            bar = go.Figure(go.Bar(
+                x=yb.year, y=yb.shows, marker_color=colors, marker_line_width=0,
+                customdata=yb[["top_artist", "top_venue"]].fillna("—").values,
+                hovertemplate=("<b>%{x}</b> · %{y} shows<br>Top artist: %{customdata[0]}<br>"
+                               "Top venue: %{customdata[1]}<extra></extra>"),
+            ))
+            bar.update_layout(
+                height=120, margin=dict(l=0, r=0, t=6, b=0), paper_bgcolor=INK, plot_bgcolor=INK,
+                xaxis=dict(color=MUTED, tickfont=dict(size=9), dtick=5, showgrid=False),
+                yaxis=dict(visible=False), hoverlabel=HOVER_STYLE, showlegend=False, bargap=0.25,
+            )
+            bar_event = st.plotly_chart(bar, width="stretch", on_select="rerun",
+                                        selection_mode=("points",), key=f"yearbar_{s.map_nonce}")
+            bar_points = bar_event.selection.points if bar_event and bar_event.selection else []
+            if bar_points:
+                clicked_year = int(bar_points[0]["x"])
+                if not (s.time_mode == "range" and start_year == end_year == clicked_year):
+                    s.time_mode = "range"
+                    s.start_year = s.end_year = s.year = clicked_year
+                    from src.state import bump_map_nonce
+                    bump_map_nonce()
+                    st.rerun()
 
     with panel_col:
         if s.selected_venue is not None:
@@ -213,12 +255,17 @@ else:
             venue_ids = vagg.venue_id.tolist()
             venue_names = dict(zip(vagg.venue_id, vagg.venue))
             venue_shows = dict(zip(vagg.venue_id, vagg.shows))
-            pick = st.selectbox("Open a venue", venue_ids, index=None,
-                                format_func=lambda i: f"{venue_names[i]} — {venue_shows[i]}×",
-                                placeholder="Open a venue…", label_visibility="collapsed")
-            if pick is not None:
-                select_venue(int(pick))
-                st.rerun()
+
+            def _open_venue():
+                if s.open_venue_sel is not None:
+                    select_venue(int(s.open_venue_sel))
+                    s.open_venue_sel = None   # action select: reset to placeholder
+
+            s.open_venue_sel = None
+            st.selectbox("Open a venue", venue_ids, key="open_venue_sel",
+                         format_func=lambda i: f"{venue_names[i]} — {venue_shows[i]}×",
+                         placeholder="Open a venue…", on_change=_open_venue,
+                         label_visibility="collapsed")
         elif artist_journey:
             name = artist_names.get(s.selected_artist, "")
             others = artist_events[(artist_events.event_id.isin(filtered.event_id))
@@ -254,40 +301,102 @@ else:
                 st.switch_page("pages/1_Artists.py")
         else:
             n_artists = artist_events[artist_events.event_id.isin(filtered.event_id)].artist_id.nunique()
+            gm = geo_metrics(filtered)
             upcoming_line = (f'<div class="stat-line"><span>Still ahead</span><b>{upcoming_n}</b></div>'
                              if upcoming_n else "")
             st.markdown(
                 f'<div class="side-panel">'
-                f'<div class="panel-title">MY CONCERT WORLD</div>'
-                f'<div class="panel-sub">Everything, everywhere, so far</div>'
+                f'<div class="panel-title">AT A GLANCE</div>'
                 f'<div class="stat-line"><span>Shows</span><b>{len(filtered):,}</b></div>'
-                f'<div class="stat-line"><span>Places</span><b>{filtered.city_id.nunique()}</b></div>'
                 f'<div class="stat-line"><span>Venues</span><b>{filtered.venue_id.nunique()}</b></div>'
                 f'<div class="stat-line"><span>Artists</span><b>{n_artists:,}</b></div>'
-                f'<div class="stat-line"><span>Span</span><b>'
-                f'{year_span(filtered.event_date.min(), filtered.event_date.max())}</b></div>'
+                f'<div class="stat-line"><span>States</span><b>{gm["states"]}</b></div>'
+                f'<div class="stat-line"><span>Countries</span><b>{gm["countries"]}</b></div>'
                 f'{upcoming_line}'
                 f'</div>',
                 unsafe_allow_html=True,
             )
             st.markdown('<div class="eyebrow" style="margin-top:.8rem">Most visited</div>', unsafe_allow_html=True)
+            mv = st.segmented_control(
+                "Most visited", options=["Cities", "Venues", "States", "Countries"],
+                default="Cities", key="mv_toggle", label_visibility="collapsed",
+            ) or "Cities"
+            if mv == "Cities":
+                ranked = [(f"{r.city} · {r.state_region}", int(r.shows))
+                          for r in cagg.head(8).itertuples()]
+            elif mv == "Venues":
+                vagg_all = venue_aggregates(filtered, artist_events)
+                ranked = [(f"{r.venue} · {r.city}", int(r.shows))
+                          for r in vagg_all.head(8).itertuples()]
+            elif mv == "States":
+                states = (filtered[filtered.state_region.isin(US_STATES - HOME_STATES)]
+                          .groupby("state_region").event_id.nunique()
+                          .sort_values(ascending=False).head(8))
+                ranked = list(states.items())
+            else:
+                by_country = filtered.assign(country=filtered.state_region.map(country_for_region))
+                countries = (by_country.dropna(subset=["country"])
+                             .groupby("country").event_id.nunique()
+                             .sort_values(ascending=False).head(8))
+                ranked = list(countries.items())
+            if mv == "States":
+                st.caption("Home states (IL, CA, WA) excluded.")
             ranks = "".join(
-                f'<div class="rank-row"><span>{i}. {esc(r.city)} · '
-                f'<span class="muted">{esc(r.state_region)}</span></span>'
-                f'<span class="n">{int(r.shows)}</span></div>'
-                for i, r in enumerate(cagg.head(8).itertuples(), start=1)
-            )
+                f'<div class="rank-row"><span>{i}. {esc(label)}</span>'
+                f'<span class="n">{n}</span></div>'
+                for i, (label, n) in enumerate(ranked, start=1)
+            ) or '<div class="muted small">Nothing in this filter.</div>'
             st.markdown(ranks, unsafe_allow_html=True)
             city_ids = cagg.city_id.tolist()
             city_names = dict(zip(cagg.city_id, cagg.city))
             city_shows = dict(zip(cagg.city_id, cagg.shows))
-            pick = st.selectbox("Open a place", city_ids, index=None,
-                                format_func=lambda i: f"{city_names[i]} — {city_shows[i]} shows",
-                                placeholder="Open a place…", label_visibility="collapsed")
-            if pick is not None:
-                select_city(int(pick))
-                st.rerun()
 
-# ---------------------------------------------------------------- tickets
-st.divider()
-render_archive_sections(filtered, artist_events)
+            def _open_place():
+                if s.open_place_sel is not None:
+                    select_city(int(s.open_place_sel))
+                    s.open_place_sel = None   # action select: reset to placeholder
+
+            s.open_place_sel = None
+            st.selectbox("Open a place", city_ids, key="open_place_sel",
+                         format_func=lambda i: f"{city_names[i]} — {city_shows[i]} shows",
+                         placeholder="Open a place…", on_change=_open_place,
+                         label_visibility="collapsed")
+
+# ---------------------------------------------------------------- still ahead
+# Every upcoming show, always — a responsive grid, never a truncated list.
+ahead = filtered[filtered.is_upcoming == 1].sort_values(["event_date", "event_id"])
+if len(ahead):
+    st.divider()
+    st.markdown(
+        f'<div class="eyebrow">Still ahead — {len(ahead)} night'
+        f'{"s" if len(ahead) != 1 else ""} on the horizon</div>',
+        unsafe_allow_html=True,
+    )
+    grid = "".join(
+        ticket_html(row, bill_for(artist_events, row.event_id), "journey_compact")
+        for row in ahead.itertuples()
+    )
+    st.markdown(f'<div class="ticket-grid">{grid}</div>', unsafe_allow_html=True)
+
+# ---------------------------------------------------------------- one night at random
+# A memory resurfaced from the archive — an invitation to keep exploring.
+past = filtered[filtered.is_upcoming == 0]
+if len(past):
+    st.divider()
+    mc1, mc2 = st.columns([2.2, 1], vertical_alignment="center")
+    with mc1:
+        st.markdown('<div class="eyebrow">One night at random</div>', unsafe_allow_html=True)
+    with mc2:
+        if st.button("Pull another from the shoebox"):
+            s.memory_seed = s.get("memory_seed", 0) + 1
+    memory_id = random.Random(s.get("memory_seed", 0)).choice(sorted(past.event_id.tolist()))
+    memory = past[past.event_id == memory_id].iloc[0]
+    n_here = int(filtered[filtered.venue_id == memory.venue_id].event_id.nunique())
+    meta = f"ONE OF {n_here} NIGHTS AT {str(memory.venue).upper()}" if n_here > 1 else ""
+    st.markdown(ticket_html(memory, bill_for(artist_events, int(memory.event_id)),
+                            "past_torn", meta=meta), unsafe_allow_html=True)
+    if st.button("Visit this venue on the map"):
+        set_mode("place")
+        select_city(int(memory.city_id))
+        select_venue(int(memory.venue_id))
+        st.rerun()

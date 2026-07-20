@@ -29,18 +29,24 @@ def inject_css() -> None:
       .muted { color:var(--muted); }
       .small { font-size:.85rem; }
 
-      /* Compact permanent header — no clipping, modest height. */
-      .brand-block { padding:.1rem 0 .5rem; }
-      .brand-title { font-size:1.55rem; font-weight:850; letter-spacing:.02em; line-height:1.15;
-                     color:var(--paper); overflow:visible; }
-      .brand-sub { color:var(--amber); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
-                   font-weight:700; margin-top:.05rem; }
+      /* Single-line header: minimum chrome, maximum content space. */
+      .brand-block { padding:.05rem 0 .2rem; }
+      .brand-title { font-size:.95rem; font-weight:850; letter-spacing:.14em; line-height:1.2;
+                     color:var(--paper); }
+      .brand-title .tick { color:var(--amber); }
+      .brand-sub { color:var(--amber); font-size:.66rem; letter-spacing:.2em; text-transform:uppercase;
+                   font-weight:700; }
       [data-testid="stPageLink"] a { text-transform:uppercase; letter-spacing:.14em; font-size:.76rem; }
       [data-testid="stPageLink"] a p { font-size:.76rem !important; font-weight:700; }
 
-      /* Section titles (subpages) — bounded size, no clipped descenders. */
-      .hero-title { font-size:clamp(1.6rem,3.4vw,2.6rem); line-height:1.12; font-weight:850;
-                    margin:.1rem 0 .5rem; overflow:visible; }
+      /* Section titles (subpages) — quiet, museum-label scale. */
+      .hero-title { font-size:clamp(1.25rem,2.6vw,1.8rem); line-height:1.1; font-weight:850;
+                    margin:.05rem 0 .4rem; overflow:visible; }
+
+      /* Upcoming: responsive grid of ticket cards — every show visible. */
+      .ticket-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(290px, 1fr));
+                     gap:.7rem; align-items:start; }
+      .ticket-grid .ticket { margin:0; max-width:100%; }
 
       /* Contextual side rail — reads as one unit with the map. */
       .side-panel { border-left:2px solid var(--amber); padding:.25rem 0 .25rem 1rem; }
@@ -175,13 +181,13 @@ def inject_css() -> None:
     """, unsafe_allow_html=True)
 
 
-def page_header(years: str = "1995–2026") -> None:
-    """Compact permanent header: brand left, uppercase nav right."""
+def page_header(years: str = "") -> None:
+    """One slim line: brand left, uppercase nav right. No subtitle block."""
     b, n1, n2, n3, n4 = st.columns([3.2, 0.7, 0.85, 0.75, 0.75], vertical_alignment="center")
     with b:
         st.markdown(
-            f'<div class="brand-block"><div class="brand-title">THE LONG ENCORE</div>'
-            f'<div class="brand-sub">A Personal Concert Atlas · {years}</div></div>',
+            '<div class="brand-block"><div class="brand-title">'
+            '<span class="tick">MY</span> CONCERT ATLAS</div></div>',
             unsafe_allow_html=True,
         )
     links = [(n1, "app.py", "ATLAS"), (n2, "pages/1_Artists.py", "ARTISTS"),
