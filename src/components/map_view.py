@@ -51,21 +51,32 @@ def _gravity_colors(shows: pd.Series) -> list[str]:
     return colors
 
 
-def _sizes(shows: pd.Series, base: float = 10, spread: float = 9) -> np.ndarray:
-    """Slight size growth with visit count; color carries the main signal."""
+def _sizes(shows: pd.Series, base: float = 9, spread: float = 17) -> np.ndarray:
+    """Size grows meaningfully with visit count so the dominant city reads
+    at a glance; color still carries the density scale."""
     return base + _gravity(shows) * spread
 
 
+def _lightened(colors: list[str], amount: float = 0.45) -> list[str]:
+    out = []
+    for c in colors:
+        r, g, b = (int(x) for x in c[4:-1].split(","))
+        out.append(f"rgb({int(r + (255 - r) * amount)},{int(g + (255 - g) * amount)},"
+                   f"{int(b + (255 - b) * amount)})")
+    return out
+
+
 def _glow_trace(plot: pd.DataFrame) -> go.Scattermap | None:
-    """A soft underlay behind the busiest locations (top of the gravity
-    scale) — a subtle glow, not a halo on everything."""
+    """A warm halo behind the busiest locations. Lightened toward white so it
+    reads as glow on the dark basemap, not a muddy stain."""
     t = _gravity(plot.shows)
-    hot = plot[t >= 0.55]
+    hot = plot[t >= 0.5]
     if hot.empty:
         return None
     return go.Scattermap(
         lat=hot.latitude, lon=hot.longitude, mode="markers",
-        marker=dict(size=_sizes(hot.shows) * 2.3, color=_gravity_colors(hot.shows), opacity=0.22),
+        marker=dict(size=_sizes(hot.shows) * 1.7, color=_lightened(_gravity_colors(hot.shows)),
+                    opacity=0.3),
         hoverinfo="skip",
     )
 
@@ -88,6 +99,9 @@ def city_map(cities: pd.DataFrame, height: int = 560) -> go.Figure | None:
     plot = cities.dropna(subset=["latitude", "longitude"])
     if plot.empty:
         return None
+    # Draw ascending so the busiest places paint LAST — Chicago sits on top
+    # of its metro neighbors instead of hiding beneath them.
+    plot = plot.sort_values("shows")
     center, zoom = _zoom_for(plot.latitude, plot.longitude, single_point_zoom=8.0)
     customdata = np.stack([
         plot.city_id.astype(int), plot.city.astype(str), plot.state_region.astype(str),
@@ -117,6 +131,7 @@ def venue_map(venues: pd.DataFrame, selected_venue_id: int | None = None, height
     plot = venues.dropna(subset=["latitude", "longitude"])
     if plot.empty:
         return None
+    plot = plot.sort_values("shows")   # busiest venues paint on top
     center, zoom = _zoom_for(plot.latitude, plot.longitude, single_point_zoom=13.0)
 
     def trace(rows: pd.DataFrame, selected: bool) -> go.Scattermap:

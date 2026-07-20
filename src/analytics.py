@@ -272,6 +272,34 @@ def year_breakdown(filtered: pd.DataFrame, artist_events: pd.DataFrame) -> pd.Da
     return out
 
 
+def month_breakdown(filtered: pd.DataFrame, artist_events: pd.DataFrame) -> pd.DataFrame:
+    """Per-month shows for a single-year view, with each month's top artist
+    and venue. Only months that have shows are returned."""
+    d = filtered.dropna(subset=["event_date"]).copy()
+    if d.empty:
+        return pd.DataFrame(columns=["month", "label", "shows", "has_upcoming",
+                                     "top_artist", "top_venue"])
+    d["month"] = d.event_date.dt.month
+    ae = artist_events[artist_events.event_id.isin(d.event_id)].copy()
+    ae = ae.merge(d[["event_id", "month"]], on="event_id")
+    top_artists = (ae.groupby(["month", "display_name"]).event_id.nunique()
+                   .reset_index(name="n")
+                   .sort_values(["month", "n", "display_name"], ascending=[True, False, True])
+                   .drop_duplicates("month").set_index("month").display_name)
+    top_venues = (d.groupby(["month", "venue"]).event_id.nunique()
+                  .reset_index(name="n")
+                  .sort_values(["month", "n", "venue"], ascending=[True, False, True])
+                  .drop_duplicates("month").set_index("month").venue)
+    out = (d.groupby("month")
+           .agg(shows=("event_id", "nunique"), has_upcoming=("is_upcoming", "max"))
+           .reset_index())
+    out["label"] = out.month.map(lambda m: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                                            "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"][m - 1])
+    out["top_artist"] = out.month.map(top_artists)
+    out["top_venue"] = out.month.map(top_venues)
+    return out
+
+
 def region_summary(df: pd.DataFrame) -> pd.DataFrame:
     """Rooms-and-eras style summary grouped by recorded state/region."""
     d = df.dropna(subset=['event_date'])

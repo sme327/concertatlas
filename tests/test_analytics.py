@@ -147,3 +147,12 @@ def test_year_breakdown_top_artist_and_venue():
     assert yb.loc[1999, "top_venue"] == "Metro"
     assert bool(yb.loc[2026, "has_upcoming"]) is True
     assert bool(yb.loc[1999, "has_upcoming"]) is False
+
+
+def test_month_breakdown_single_year():
+    from src.analytics import month_breakdown
+    events = filter_events(make_events(), 2005, 2005)   # July + September 2005
+    mb = month_breakdown(events, make_artist_events()).set_index("label")
+    assert mb.loc["JUL", "shows"] == 1 and mb.loc["SEP", "shows"] == 1
+    assert mb.loc["JUL", "top_artist"] == "Counting Crows"
+    assert "JAN" not in mb.index  # only months with shows appear

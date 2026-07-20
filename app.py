@@ -16,6 +16,7 @@ from src.analytics import (
     country_for_region,
     geo_metrics,
     journey_sequence,
+    month_breakdown,
     venue_aggregates,
     year_breakdown,
 )
@@ -197,9 +198,33 @@ else:
                         "review the cache, then `python scripts/apply_geocodes.py`.")
                 st.image("assets/concert-map-square.png", width="stretch",
                          caption="Visual direction for the concert atlas")
-        # Timeline histogram: hover for the year's top artist/venue; click a
-        # bar to focus the whole page on that year; future shows read warm red.
-        yb = year_breakdown(filtered, artist_events)
+        single_year = s.time_mode == "range" and start_year == end_year
+        if single_year:
+            # One year selected: the year histogram would be a single bar, so
+            # show that year month by month instead (informative, not clickable).
+            mb = month_breakdown(filtered, artist_events)
+            if len(mb):
+                colors = ["#b4553f" if up else "#e89a3d" for up in mb.has_upcoming.astype(bool)]
+                bar = go.Figure(go.Bar(
+                    x=mb.label, y=mb.shows, marker_color=colors, marker_line_width=0,
+                    customdata=mb[["top_artist", "top_venue"]].fillna("—").values,
+                    hovertemplate=("<b>%{x} " + str(start_year) + "</b> · %{y} shows<br>"
+                                   "Top artist: %{customdata[0]}<br>"
+                                   "Top venue: %{customdata[1]}<extra></extra>"),
+                ))
+                bar.update_layout(
+                    height=120, margin=dict(l=0, r=0, t=6, b=0), paper_bgcolor=INK, plot_bgcolor=INK,
+                    xaxis=dict(color=MUTED, tickfont=dict(size=9), showgrid=False,
+                               categoryorder="array", categoryarray=mb.label.tolist()),
+                    yaxis=dict(visible=False), hoverlabel=HOVER_STYLE, showlegend=False, bargap=0.25,
+                )
+                st.plotly_chart(bar, width="stretch", key=f"monthbar_{s.map_nonce}")
+                st.caption(f"{start_year}, month by month. Widen the timeline above to compare years.")
+            yb = year_breakdown(filtered, artist_events).head(0)  # skip year chart below
+        else:
+            # Timeline histogram: hover for the year's top artist/venue; click a
+            # bar to focus the whole page on that year; future shows read warm red.
+            yb = year_breakdown(filtered, artist_events)
         if len(yb):
             in_filter = (yb.year >= start_year) & (yb.year <= end_year) if s.time_mode == "range" \
                 else yb.year.notna()
@@ -362,41 +387,60 @@ else:
                          placeholder="Open a place…", on_change=_open_place,
                          label_visibility="collapsed")
 
-# ---------------------------------------------------------------- still ahead
-# Every upcoming show, always — a responsive grid, never a truncated list.
-ahead = filtered[filtered.is_upcoming == 1].sort_values(["event_date", "event_id"])
-if len(ahead):
-    st.divider()
-    st.markdown(
-        f'<div class="eyebrow">Still ahead — {len(ahead)} night'
-        f'{"s" if len(ahead) != 1 else ""} on the horizon</div>',
-        unsafe_allow_html=True,
-    )
-    grid = "".join(
-        ticket_html(row, bill_for(artist_events, row.event_id), "journey_compact")
-        for row in ahead.itertuples()
-    )
-    st.markdown(f'<div class="ticket-grid">{grid}</div>', unsafe_allow_html=True)
+if s.time_mode == "range":
+    # ------------------------------------------------------------ the stubs
+    # Timeline view: the page becomes those years — every ticket stub from
+    # the selected window, chronological. Upcoming/random sections step aside.
+    chron = filtered.sort_values(["event_date", "event_id"])
+    if len(chron):
+        st.divider()
+        label = str(start_year) if start_year == end_year else f"{start_year}–{end_year}"
+        st.markdown(
+            f'<div class="eyebrow">The stubs — {label} · {len(chron)} night'
+            f'{"s" if len(chron) != 1 else ""}</div>',
+            unsafe_allow_html=True,
+        )
+        grid = "".join(
+            ticket_html(row, bill_for(artist_events, row.event_id), "journey_compact")
+            for row in chron.itertuples()
+        )
+        st.markdown(f'<div class="ticket-grid">{grid}</div>', unsafe_allow_html=True)
+else:
+    # ------------------------------------------------------------ still ahead
+    # Every upcoming show, always — a responsive grid, never a truncated list.
+    ahead = filtered[filtered.is_upcoming == 1].sort_values(["event_date", "event_id"])
+    if len(ahead):
+        st.divider()
+        st.markdown(
+            f'<div class="eyebrow">Still ahead — {len(ahead)} night'
+            f'{"s" if len(ahead) != 1 else ""} on the horizon</div>',
+            unsafe_allow_html=True,
+        )
+        grid = "".join(
+            ticket_html(row, bill_for(artist_events, row.event_id), "journey_compact")
+            for row in ahead.itertuples()
+        )
+        st.markdown(f'<div class="ticket-grid">{grid}</div>', unsafe_allow_html=True)
 
-# ---------------------------------------------------------------- one night at random
-# A memory resurfaced from the archive — an invitation to keep exploring.
-past = filtered[filtered.is_upcoming == 0]
-if len(past):
-    st.divider()
-    mc1, mc2 = st.columns([2.2, 1], vertical_alignment="center")
-    with mc1:
-        st.markdown('<div class="eyebrow">One night at random</div>', unsafe_allow_html=True)
-    with mc2:
-        if st.button("Pull another from the shoebox"):
-            s.memory_seed = s.get("memory_seed", 0) + 1
-    memory_id = random.Random(s.get("memory_seed", 0)).choice(sorted(past.event_id.tolist()))
-    memory = past[past.event_id == memory_id].iloc[0]
-    n_here = int(filtered[filtered.venue_id == memory.venue_id].event_id.nunique())
-    meta = f"ONE OF {n_here} NIGHTS AT {str(memory.venue).upper()}" if n_here > 1 else ""
-    st.markdown(ticket_html(memory, bill_for(artist_events, int(memory.event_id)),
-                            "past_torn", meta=meta), unsafe_allow_html=True)
-    if st.button("Visit this venue on the map"):
-        set_mode("place")
-        select_city(int(memory.city_id))
-        select_venue(int(memory.venue_id))
-        st.rerun()
+    # ------------------------------------------------------------ one night at random
+    # A memory resurfaced from the archive — an invitation to keep exploring.
+    past = filtered[filtered.is_upcoming == 0]
+    if len(past):
+        st.divider()
+        mc1, mc2 = st.columns([2.2, 1], vertical_alignment="center")
+        with mc1:
+            st.markdown('<div class="eyebrow">One night at random</div>', unsafe_allow_html=True)
+        with mc2:
+            if st.button("Pull another from the shoebox"):
+                s.memory_seed = s.get("memory_seed", 0) + 1
+        memory_id = random.Random(s.get("memory_seed", 0)).choice(sorted(past.event_id.tolist()))
+        memory = past[past.event_id == memory_id].iloc[0]
+        n_here = int(filtered[filtered.venue_id == memory.venue_id].event_id.nunique())
+        meta = f"ONE OF {n_here} NIGHTS AT {str(memory.venue).upper()}" if n_here > 1 else ""
+        st.markdown(ticket_html(memory, bill_for(artist_events, int(memory.event_id)),
+                                "past_torn", meta=meta), unsafe_allow_html=True)
+        if st.button("Visit this venue on the map"):
+            set_mode("place")
+            select_city(int(memory.city_id))
+            select_venue(int(memory.venue_id))
+            st.rerun()
