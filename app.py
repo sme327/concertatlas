@@ -82,7 +82,7 @@ if s.mode == "artist":
     if s.get("artist_sel") != s.selected_artist:
         s.artist_sel = s.selected_artist  # keep widget in lockstep with state
     st.selectbox(
-        "Artist", options=ids, key="artist_sel",
+        "Artist", options=ids, index=None, key="artist_sel",
         format_func=lambda i: f"{artist_names[i]} — {artist_counts[i]}×",
         placeholder=f"Search {len(ids):,} artists (the most-seen are first)…",
         on_change=lambda: select_artist(s.artist_sel),
@@ -423,9 +423,11 @@ else:
         st.markdown(f'<div class="ticket-grid">{grid}</div>', unsafe_allow_html=True)
 
     # ------------------------------------------------------------ one night at random
-    # A memory resurfaced from the archive — an invitation to keep exploring.
+    # A memory resurfaced from the archive — an invitation to keep exploring
+    # broadly. Place mode only: while following one artist, every ticket is
+    # already that artist's, so a "random" pull adds nothing new to discover.
     past = filtered[filtered.is_upcoming == 0]
-    if len(past):
+    if s.mode == "place" and len(past):
         st.divider()
         mc1, mc2 = st.columns([2.2, 1], vertical_alignment="center")
         with mc1:
