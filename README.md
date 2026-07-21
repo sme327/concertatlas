@@ -76,9 +76,19 @@ surfaces data-derived milestones ("First Seattle show", "12th time in
 Chicago", "First time at Metro").
 
 - **MapLibre GL JS is vendored locally** (`assets/vendor/`) and inlined into
-  the component — the player code works offline.
-- **Basemap tiles still come from Carto online** — the map background needs an
-  internet connection (same as the Plotly basemap).
+  the component — the player code works offline; the vector basemap tiles
+  (OpenFreeMap) still need an internet connection, with an automatic
+  fallback to a raster Carto style if vector tiles can't load.
+- **The player must be served as a real file, never inline HTML.** The
+  vendored MapLibre build never loads any vector tiles when its document's
+  location is the special `about:srcdoc` value — which is how Streamlit
+  embeds a raw HTML string passed to `st.iframe()`. Markers still animate in
+  that case (they're plain DOM elements) but the basemap stays permanently
+  black. `render_journey_player()` writes the player to `static/` under a
+  content-hash filename and points `st.iframe()` at that URL instead, which
+  requires `enableStaticServing = true` in `.streamlit/config.toml` (already
+  set). See the module docstring in `src/components/journey.py` for how this
+  was diagnosed.
 - All playback state lives inside the component; Streamlit only supplies the
   ordered journey data (`analytics.journey_sequence`).
 

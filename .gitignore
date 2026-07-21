@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 data/concerts.sqlite.bak
 .streamlit/secrets.toml
+static/journey_*.html

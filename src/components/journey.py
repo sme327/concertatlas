@@ -7,6 +7,16 @@ a stylized dark VECTOR basemap (OpenFreeMap tiles: water, parks, roads, rail,
 vector tiles cannot load. All playback state lives inside the component;
 Streamlit only supplies the ordered journey data.
 
+IMPORTANT — must be served as a real file, never as inline srcdoc HTML:
+the vendored MapLibre build silently never loads any vector tiles when its
+document's location is the special "about:srcdoc" value (confirmed by
+direct testing — a plain fetch() to the same tile URL works fine there, so
+this is specific to MapLibre's own worker/tile-loading path, not a network
+or CORS issue). st.iframe(raw_html_string, ...) embeds via srcdoc, so the
+player is instead written to static/ and referenced by URL — see
+_write_static_html(). This requires enableStaticServing = true in
+.streamlit/config.toml.
+
 Cinematic design ("watching my life unfold"):
 - Three camera altitudes, one continuous camera: wide overhead between
   regions, regional framing during travel, and a tilted street-level 3D
@@ -24,13 +34,42 @@ Cinematic design ("watching my life unfold"):
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import time
 
 import streamlit as st
 
-from src.config import ASSETS_DIR
+from src.config import ASSETS_DIR, ROOT
 
 VENDOR = ASSETS_DIR / "vendor"
+STATIC_DIR = ROOT / "static"
+STATIC_MAX_AGE_SECONDS = 3600  # stale journey files older than this get swept
+
+
+def _write_static_html(html: str) -> str:
+    """Write the player's HTML to static/ under a content-hash filename and
+    return the URL path st.iframe should load. Content hashing means the
+    same journey reuses the same file (browser-cacheable) while different
+    journeys — including different concurrent users' journeys — never
+    collide. Old files are swept opportunistically so the folder doesn't
+    grow without bound on a long-running server.
+    """
+    STATIC_DIR.mkdir(exist_ok=True)
+    digest = hashlib.sha256(html.encode("utf-8")).hexdigest()[:20]
+    filename = f"journey_{digest}.html"
+    path = STATIC_DIR / filename
+    if not path.exists():
+        path.write_text(html, encoding="utf-8")
+    now = time.time()
+    for other in STATIC_DIR.glob("journey_*.html"):
+        if other.name != filename:
+            try:
+                if now - other.stat().st_mtime > STATIC_MAX_AGE_SECONDS:
+                    other.unlink()
+            except OSError:
+                pass  # another session may be mid-write/read; never fail the render for this
+    return f"/app/static/{filename}"
 
 ROUTE_SENTENCE = "Your route through these shows — the order you attended them, not the artist's tour."
 
@@ -634,4 +673,5 @@ def render_journey_player(stops: list[dict], title: str, subtitle: str,
 {HEADER_JS}
 {PLAYER_JS}</script>
 </body></html>"""
-    st.iframe(html, height=height + 132)
+    url = _write_static_html(html)
+    st.iframe(url, height=height + 132)

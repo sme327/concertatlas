@@ -1,3 +1,12 @@
+[server]
+# Required so the journey player's map can load: it must be served as a real
+# navigated URL (src=) rather than inline srcdoc HTML. The vendored MapLibre
+# build fails to load any vector tiles when document.location is the special
+# "about:srcdoc" value — srcdoc is how st.iframe() embeds raw HTML strings,
+# so the player is written to static/ and referenced by URL instead. See
+# src/components/journey.py for details.
+enableStaticServing = true
+
 [theme]
 base = "dark"
 primaryColor = "#E89A3D"
