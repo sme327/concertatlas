@@ -59,6 +59,45 @@ def infer_venue_category(venue_name: str | None) -> str:
     return "club"
 
 
+def load_home_residences(path: Path) -> pd.DataFrame:
+    """Optional user-maintained home history: start_date,city,state_region[,note].
+
+    Each residence is in effect from its start_date until the next row's
+    start_date begins; the last row extends to today. A blank start_date on
+    the first row means "since before the data began." Returns an empty
+    frame (never a fabricated guess) if the file is missing or malformed —
+    callers should treat that as "no home routing available."
+    """
+    empty = pd.DataFrame(columns=["start_date", "city", "state_region", "note"])
+    if not path.exists():
+        return empty
+    try:
+        df = pd.read_csv(path)
+    except Exception:
+        return empty
+    if not len(df) or "city" not in df.columns or "state_region" not in df.columns:
+        return empty
+    df = df.dropna(subset=["city", "state_region"]).copy()
+    df["start_date"] = pd.to_datetime(df.get("start_date"), errors="coerce")
+    return df.sort_values("start_date", na_position="first").reset_index(drop=True)
+
+
+def home_for_date(event_date, residences: pd.DataFrame) -> dict | None:
+    """The residence in effect on event_date, or None if none are configured.
+
+    The result carries only city/state_region — coordinates are resolved by
+    the caller against the trusted cities table, the same way every other
+    location in the app is, so home points are never a separate/uncertain
+    coordinate source.
+    """
+    if residences.empty:
+        return None
+    ts = pd.Timestamp(event_date)
+    eligible = residences[residences.start_date.isna() | (residences.start_date <= ts)]
+    row = eligible.iloc[-1] if len(eligible) else residences.iloc[0]
+    return {"city": row.city, "state_region": row.state_region}
+
+
 def load_attendance_types(path: Path) -> dict[int, str]:
     """Optional user-maintained metadata: event_id,attendance_type.
     Unknown values are ignored rather than guessed."""

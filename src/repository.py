@@ -45,6 +45,20 @@ def artist_frame(db_path: Path = DEFAULT_DB) -> pd.DataFrame:
         return pd.read_sql_query(query, conn, parse_dates=["event_date"])
 
 
+def city_coordinates(db_path: Path = DEFAULT_DB) -> dict[tuple[str, str], tuple[float, float]]:
+    """(city, state_region) -> (latitude, longitude) for every resolved city.
+
+    The single source of truth for "where is this city" — home residences
+    and anything else that needs a city point look it up here rather than
+    carrying a second, potentially-inconsistent coordinate.
+    """
+    with connect(db_path) as conn:
+        rows = conn.execute(
+            "SELECT city, state_region, latitude, longitude FROM cities WHERE latitude IS NOT NULL"
+        ).fetchall()
+    return {(r["city"], r["state_region"]): (r["latitude"], r["longitude"]) for r in rows}
+
+
 def geocode_coverage(db_path: Path = DEFAULT_DB) -> pd.DataFrame:
     """Resolved vs unresolved coordinate counts for cities and venues."""
     query = """

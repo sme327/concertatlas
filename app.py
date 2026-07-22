@@ -20,23 +20,24 @@ from src.analytics import (
     venue_aggregates,
     year_breakdown,
 )
+from src.components.artist_browser import render_artist_browser
 from src.components.journey import render_journey_player
 from src.components.map_view import HOVER_STYLE
-from src.config import INK, MUTED
+from src.config import DATA_DIR, INK, MUTED
 from src.filters import bill_for
+from src.journey_meta import load_attendance_types, load_home_residences
 from src.ui import ticket_html
 from src.components.map_view import city_map, clicked_id, venue_map
 from src.components.time_controls import render_time_controls
 from src.components.venue_panel import render_venue_panel
 from src.filters import filter_events
 from src.formatting import esc, fmt_date, year_span
-from src.repository import artist_frame, event_frame
+from src.repository import artist_frame, city_coordinates, event_frame
 from src.state import (
     clear_city,
     init_state,
     prune_empty_selections,
     reset_all,
-    select_artist,
     select_city,
     select_venue,
     set_mode,
@@ -54,13 +55,17 @@ def load_data():
     return event_frame(), artist_frame()
 
 
+@st.cache_data
+def load_city_coordinates():
+    return city_coordinates()
+
+
 events, artist_events = load_data()
 min_year, max_year = int(events.event_date.dt.year.min()), int(events.event_date.dt.year.max())
 init_state(min_year, max_year)
 s = st.session_state
 summary_all = artist_summary(artist_events)
 artist_names = dict(zip(summary_all.artist_id, summary_all.display_name))
-artist_counts = dict(zip(summary_all.artist_id, summary_all.appearances))
 
 page_header()
 
@@ -78,16 +83,7 @@ with hc2:
     render_time_controls("atlas")
 
 if s.mode == "artist":
-    ids = summary_all.artist_id.tolist()
-    if s.get("artist_sel") != s.selected_artist:
-        s.artist_sel = s.selected_artist  # keep widget in lockstep with state
-    st.selectbox(
-        "Artist", options=ids, index=None, key="artist_sel",
-        format_func=lambda i: f"{artist_names[i]} — {artist_counts[i]}×",
-        placeholder=f"Search {len(ids):,} artists (the most-seen are first)…",
-        on_change=lambda: select_artist(s.artist_sel),
-        label_visibility="collapsed",
-    )
+    render_artist_browser(summary_all, current=s.selected_artist)
 
 start_year, end_year = year_bounds()
 filtered = filter_events(
@@ -125,10 +121,12 @@ if journey_available:
 
 if journey_available and view == "JOURNEY":
     # ------------------------------------------------------------ journey
-    from src.config import DATA_DIR
-    from src.journey_meta import load_attendance_types
-    stops = journey_sequence(filtered, artist_events,
-                             attendance_types=load_attendance_types(DATA_DIR / "attendance_types.csv"))
+    stops = journey_sequence(
+        filtered, artist_events,
+        attendance_types=load_attendance_types(DATA_DIR / "attendance_types.csv"),
+        home_residences=load_home_residences(DATA_DIR / "home_residences.csv"),
+        city_coords=load_city_coordinates(),
+    )
     if artist_journey:
         title = artist_names.get(s.selected_artist, "")
         # Progressive header: start at the first stop; the player advances it.

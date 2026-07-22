@@ -129,19 +129,30 @@ def decade_counts(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def journey_sequence(filtered: pd.DataFrame, artist_events: pd.DataFrame,
-                     attendance_types: dict[int, str] | None = None) -> list[dict]:
+                     attendance_types: dict[int, str] | None = None,
+                     home_residences: pd.DataFrame | None = None,
+                     city_coords: dict[tuple[str, str], tuple[float, float]] | None = None) -> list[dict]:
     """Ordered journey stops for playback.
 
     Ordering: event_date then event_id (deterministic for same-date events).
 
-    Coordinates: national/world-scale playback always uses the trusted
-    canonical CITY coordinates (city_latitude/city_longitude). Venue
-    coordinates are exposed separately (venue_latitude/venue_longitude) ONLY
-    when validated — resolved and within VENUE_CITY_REVIEW_MILES of the
-    parent city — for the street-level arrival camera; they never replace
-    the city point on the route. Every event stays in the chronology,
+    Coordinates: national/world-scale playback (bounds-fitting, the
+    accumulated memory trail) always uses the trusted canonical CITY
+    coordinates (latitude/longitude — city_latitude/city_longitude).
+    Separately, dest_latitude/dest_longitude is the point a stop should be
+    framed and traveled to: the validated VENUE coordinate when resolved
+    and within VENUE_CITY_REVIEW_MILES of its parent city (venues are the
+    destination), falling back to the trusted city point otherwise —
+    dest_precise flags which. Every event stays in the chronology,
     including those without resolved coordinates (has_coords False —
     retained in the detail card, never given a fabricated map point).
+
+    Home: when home_residences/city_coords are supplied, each stop also
+    carries home_city/home_state_region/home_latitude/home_longitude — the
+    residence in effect on that event's date (src/journey_meta.py), with
+    coordinates resolved against the same trusted city table as everything
+    else. Home fields are all None when no residence data is configured;
+    nothing is ever guessed.
 
     Cinematic metadata (travel_mode, travel_miles, season, venue_category,
     attendance_type) is presentation-layer inference from real data; see
@@ -150,6 +161,7 @@ def journey_sequence(filtered: pd.DataFrame, artist_events: pd.DataFrame,
     repeat visits pulse in place instead of drawing loops. The route is the
     user's attendance order, not any performer's tour.
     """
+    from src.journey_meta import home_for_date
     d = (filtered.dropna(subset=["event_date"])
          .sort_values(["event_date", "event_id"])
          .reset_index(drop=True))
@@ -208,6 +220,28 @@ def journey_sequence(filtered: pd.DataFrame, artist_events: pd.DataFrame,
             if distance_miles(float(vlat), float(vlon), coords[0], coords[1]) <= VENUE_CITY_REVIEW_MILES:
                 stop["venue_latitude"], stop["venue_longitude"] = float(vlat), float(vlon)
         stop["attendance_type"] = (attendance_types or {}).get(int(row.event_id))
+
+        # Venues are the destination: prefer the validated venue point,
+        # fall back to the trusted city point. Bounds/trails keep using the
+        # plain latitude/longitude fields above regardless of this choice.
+        if stop["venue_latitude"] is not None:
+            stop["dest_latitude"], stop["dest_longitude"], stop["dest_precise"] = (
+                stop["venue_latitude"], stop["venue_longitude"], True)
+        elif has_coords:
+            stop["dest_latitude"], stop["dest_longitude"], stop["dest_precise"] = float(lat), float(lon), False
+        else:
+            stop["dest_latitude"], stop["dest_longitude"], stop["dest_precise"] = None, None, False
+
+        stop["home_city"] = stop["home_state_region"] = None
+        stop["home_latitude"] = stop["home_longitude"] = None
+        if home_residences is not None and city_coords is not None:
+            home = home_for_date(row.event_date, home_residences)
+            if home is not None:
+                key = (home["city"], home["state_region"])
+                if key in city_coords:
+                    stop["home_city"], stop["home_state_region"] = home["city"], home["state_region"]
+                    stop["home_latitude"], stop["home_longitude"] = city_coords[key]
+
         if has_coords:
             prev_coords = coords
         prev_date = row.event_date

@@ -17,20 +17,34 @@ player is instead written to static/ and referenced by URL — see
 _write_static_html(). This requires enableStaticServing = true in
 .streamlit/config.toml.
 
-Cinematic design ("watching my life unfold"):
-- Three camera altitudes, one continuous camera: wide overhead between
-  regions, regional framing during travel, and a tilted street-level 3D
-  arrival at the venue (when its coordinate is distance-validated).
-- Travel is animated by inferred mode — airplane (with contrail), car, ship
-  for the cruise, walking — along an eased path; never an instant jump.
-- Arrival is a sequence: ease toward the venue, street labels appear with
-  the zoom, the marker warms to a glow, an optional small crowd gathers
-  (only when attendance metadata exists), and the camera drifts in a slow
-  orbit while the ticket holds.
-- Seasons tint the scene from the concert date; repeated segments thicken
-  into memory trails; the finished route stays visible like a travel diary.
-- Calm throughout: no badges, scores, particles, or hard cuts. Reduced
-  motion disables travel/orbit animation but keeps every function working.
+Cinematic design — venues are the destination, home is where it starts:
+- Cities are waypoints; venues are the star. Every marker, the accumulated
+  route, and the vehicle's target all use dest_latitude/dest_longitude — the
+  validated venue point when available, falling back to the trusted city
+  point (src/analytics.py: journey_sequence). Bounds-fitting inherits the
+  same trusted fallback, so nothing here can regress the earlier coordinate
+  fix.
+- Each trip leaves home and returns home. When home data is configured
+  (src/journey_meta.py), every transition after the first bends through
+  that show's home point: previous venue -> home -> next venue, with a
+  brief still beat at home. The very first stop departs from home; the
+  final stop, on finishing, eases back home to close the loop. Without
+  home data configured, travel falls back to a direct venue-to-venue path.
+- Two camera states only (simplified from three): a calm, flat, wide frame
+  for home and for travel between points, and one tilted, closer frame that
+  celebrates the arriving venue. One bounds-fit per transition, not one per
+  leg; no per-venue-category zoom variation, no long-flight camera-follow
+  special case.
+- The artist stays visually present throughout: a monogram badge rides on
+  the vehicle during travel (derived from the artist's own name — never a
+  scraped or fabricated photo).
+- Arrival names the venue on the map itself, not only on the ticket, then
+  holds — still, not orbiting — while the moment settles.
+- Seasons tint the scene from the concert date; repeated destinations
+  thicken into memory trails; the finished route stays visible like a
+  travel diary. Calm throughout: no badges, scores, particles, hard cuts.
+  Reduced motion disables travel/pan animation but keeps every function
+  working.
 """
 from __future__ import annotations
 
@@ -149,9 +163,10 @@ PLAYER_CSS = """
 
   /* REGRESSION GUARD — do not change this structure:
      MapLibre owns the inline `transform` on marker roots (.lemarker, .veh,
-     .crowdwrap). Never animate or overwrite transform on a marker root;
-     all visuals (scale, pulse, glow, ring, rotation) belong to inner
-     elements (.dot, .veh-icon, .crowd-dot) only. */
+     .homemarker, .crowdwrap, .flourish). Never animate or overwrite
+     transform on a marker root; all visuals (scale, pulse, glow, ring,
+     rotation) belong to inner elements (.dot, .veh-icon, .veh-badge,
+     .home-icon, .crowd-dot) only. */
   .lemarker { position:relative; }
   .lemarker .dot { position:absolute; inset:0; border-radius:50%;
               border:1px solid rgba(238,231,218,.45); transition:box-shadow .8s ease; }
@@ -164,13 +179,36 @@ PLAYER_CSS = """
   .lemarker.current.pulse .dot { animation:lepulse 1.1s ease-in-out infinite; }
   @media (prefers-reduced-motion: reduce) { .lemarker.current.pulse .dot { animation:none; } }
 
+  /* Home: a stable, unchanging anchor — distinct from the accumulating,
+     gravity-colored venue dots. No pulse; home doesn't grow or compete. */
+  .homemarker { position:relative; }
+  .homemarker .home-icon { position:absolute; left:50%; top:50%; width:26px; height:26px;
+        margin:-13px 0 0 -13px; filter:drop-shadow(0 0 5px rgba(0,0,0,.65)); }
+  .homemarker .home-icon svg { width:100%; height:100%; }
+
+  /* Vehicles — large and central to the story, since every trip now visibly
+     leaves home and returns to it. */
   .veh { position:relative; }
-  .veh .veh-icon { position:absolute; left:50%; top:50%; width:22px; height:22px; margin:-11px 0 0 -11px;
-        filter:drop-shadow(0 0 4px rgba(0,0,0,.7)); }
+  .veh .veh-icon { position:absolute; left:50%; top:50%; width:40px; height:40px; margin:-20px 0 0 -20px;
+        filter:drop-shadow(0 0 5px rgba(0,0,0,.75)); }
   .veh .veh-icon svg { width:100%; height:100%; }
+  /* The artist stays visually present on the vehicle throughout travel. */
+  .veh .veh-badge { position:absolute; left:50%; top:50%; margin:-25px 0 0 6px; width:20px; height:20px;
+        border-radius:50%; background:#e89a3d; color:#241d12; font-weight:800; font-size:11px;
+        display:flex; align-items:center; justify-content:center; border:1.5px solid #241d12;
+        font-family:-apple-system,'Segoe UI',Roboto,sans-serif; }
+
   .crowdwrap { position:relative; }
   .crowd-dot { position:absolute; width:5px; height:5px; border-radius:50%; background:#d8c9a8;
         opacity:0; transition:transform 1.4s ease, opacity .9s ease; }
+
+  /* Arrival flourish: the venue names itself on the map, celebrating the
+     room rather than the skyline. */
+  .flourish { pointer-events:none; white-space:nowrap; transform:translate(-50%, -140%);
+        color:#f7e8c9; font-weight:800; font-size:.95rem; letter-spacing:.06em; text-transform:uppercase;
+        text-shadow:0 2px 10px rgba(0,0,0,.9), 0 0 18px rgba(232,154,61,.5);
+        opacity:0; transition:opacity 1.1s ease, transform 1.1s ease; }
+  .flourish.in { opacity:1; transform:translate(-50%, -170%); }
 
   @media (max-width: 700px) {
     #overlay { position:static; width:auto; padding:.5rem .6rem 0; }
@@ -197,11 +235,19 @@ const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const N = STOPS.length;
 let idx = 0, playing = false, speed = 1, raf = null, cineCam = false, playToken = 0;
 
-const withCoords = STOPS.filter(s => s.has_coords);
-function coordKey(s) { return s.latitude.toFixed(6) + ',' + s.longitude.toFixed(6); }
+// Venues are the destination: every marker, trail, and camera target uses
+// dest_latitude/dest_longitude (validated venue, falling back to the
+// trusted city point — see journey_sequence). Cities recede to being
+// waypoints on the basemap's own place labels, not app markers.
+function destOf(s) { return (s.dest_latitude != null && s.dest_longitude != null) ? [s.dest_longitude, s.dest_latitude] : null; }
+function homeOf(s) { return (s.home_latitude != null && s.home_longitude != null) ? [s.home_longitude, s.home_latitude] : null; }
+function sameCoord(a, b) { return !!a && !!b && a[0] === b[0] && a[1] === b[1]; }
+
+const withDest = STOPS.map(s => destOf(s)).filter(Boolean);
+function destKey(p) { return p[0].toFixed(6) + ',' + p[1].toFixed(6); }
 
 const TOTALS = {};
-withCoords.forEach(s => { const k = coordKey(s); TOTALS[k] = (TOTALS[k] || 0) + 1; });
+withDest.forEach(p => { const k = destKey(p); TOTALS[k] = (TOTALS[k] || 0) + 1; });
 const MAXTOT = Math.max(1, ...Object.values(TOTALS));
 function gravity(k) { return Math.sqrt((TOTALS[k] || 1) / MAXTOT); }
 function gravityColor(t) {
@@ -258,7 +304,7 @@ const VEC_STYLE = { version: 8,
 
 let STREET_OK = true;   // false once we fall back to raster (no extrusions/pitch)
 const map = new maplibregl.Map({ container:'map', attributionControl:{compact:true},
-  style: VEC_STYLE, center:[-95,39], zoom:3, keyboard:false, maxPitch:60 });
+  style: VEC_STYLE, center:[-95,39], zoom:3, keyboard:false, maxPitch:55 });
 map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
 map.on('error', e => {
   const src = e && e.sourceId;
@@ -268,10 +314,11 @@ map.on('error', e => {
   }
 });
 
-function fullBounds() {
-  if (!withCoords.length) return null;
+function boundsOf(points) {
+  const pts = points.filter(Boolean);
+  if (!pts.length) return null;
   const b = new maplibregl.LngLatBounds();
-  withCoords.forEach(s => b.extend([s.longitude, s.latitude]));
+  pts.forEach(p => b.extend(p));
   return b;
 }
 function boundsPadding() {
@@ -281,40 +328,39 @@ function boundsPadding() {
   return { top: base + 20, bottom: base, right: base, left: overlayPad };
 }
 function fitAll(animate) {
-  const b = fullBounds();
+  const b = boundsOf(withDest);
   if (b) map.fitBounds(b, { padding: boundsPadding(), pitch:0, bearing:0,
                             duration: (animate && !RM) ? 1200 : 0, maxZoom: 9 });
 }
 
 let markers = {};
-let vehMarker = null, crowdMarker = null;
+let homeMarkers = {};
+let vehMarker = null, crowdMarker = null, flourishMarker = null;
 
 function routeCoordsUpTo(i) {
   const pts = [];
   for (let k = 0; k <= i; k++) {
-    const s = STOPS[k];
-    if (!s.has_coords) continue;
-    const p = [s.longitude, s.latitude];
-    if (!pts.length || pts[pts.length-1][0] !== p[0] || pts[pts.length-1][1] !== p[1]) pts.push(p);
+    const p = destOf(STOPS[k]);
+    if (!p) continue;
+    if (!pts.length || !sameCoord(pts[pts.length-1], p)) pts.push(p);
   }
   return pts;
 }
-// Memory trails: repeated segments carry a count and render heavier, like
-// worn paths through the map.
+// Memory trails: repeated destinations carry a count and render heavier,
+// like worn paths through the map.
 function trailFeatures(i) {
   const counts = {};
   const pts = [];
   for (let k = 0; k <= i; k++) {
-    const s = STOPS[k];
-    if (!s.has_coords) continue;
-    const p = [s.longitude, s.latitude];
-    if (pts.length && (pts[pts.length-1][0] !== p[0] || pts[pts.length-1][1] !== p[1])) {
+    const p = destOf(STOPS[k]);
+    if (!p) continue;
+    if (pts.length && !sameCoord(pts[pts.length-1], p)) {
       const a = pts[pts.length-1], b = p;
       const key = [a.join(','), b.join(',')].sort().join('|');
       counts[key] = counts[key] || { a:a, b:b, n:0 };
       counts[key].n += 1;
     }
-    if (!pts.length || pts[pts.length-1][0] !== p[0] || pts[pts.length-1][1] !== p[1]) pts.push(p);
+    if (!pts.length || !sameCoord(pts[pts.length-1], p)) pts.push(p);
   }
   return { type:'FeatureCollection', features: Object.values(counts).map(c => (
     { type:'Feature', properties:{ n:c.n },
@@ -352,7 +398,7 @@ function renderCard(s) {
   const also = alsoListed(s);
   const mile = milestone(s);
   const status = s.is_upcoming ? 'UPCOMING' : 'ARCHIVED';
-  const note = s.has_coords ? '' :
+  const note = s.dest_latitude != null ? '' :
     '<div class="jt-meta jt-note">No mapped point \\u2014 the route continues from the previous location.</div>';
   document.getElementById('card').innerHTML =
     '<div class="jticket">' +
@@ -391,26 +437,45 @@ function styleMarker(m, key, isCurrent) {
   if (!isCurrent) m.el.classList.remove('arrived');
 }
 
+// Home markers are a stable anchor, added once and never rebuilt: they
+// don't accumulate, pulse, or compete with the growing venue dots.
+const HOME_SVG = '<svg viewBox="0 0 24 24"><path fill="#f7e8c9" d="M12 3 2 12h3v8h5v-6h4v6h5v-8h3z"/></svg>';
+function addHomeMarkers() {
+  const seen = {};
+  STOPS.forEach(s => {
+    const p = homeOf(s);
+    if (!p) return;
+    const key = destKey(p);
+    if (seen[key]) return;
+    seen[key] = true;
+    if (homeMarkers[key]) return;
+    const el = document.createElement('div');
+    el.className = 'homemarker';
+    el.innerHTML = '<div class="home-icon">' + HOME_SVG + '</div>';
+    homeMarkers[key] = new maplibregl.Marker({ element: el }).setLngLat(p).addTo(map);
+  });
+}
+
 function rebuild(i, animate) {
   Object.values(markers).forEach(m => m.marker.remove());
   markers = {};
   const s = STOPS[i];
   for (let k = 0; k <= i; k++) {
-    const st = STOPS[k];
-    if (!st.has_coords) continue;
-    const key = coordKey(st);
+    const p = destOf(STOPS[k]);
+    if (!p) continue;
+    const key = destKey(p);
     if (!markers[key]) {
       const el = document.createElement('div');
       el.className = 'lemarker';
       el.innerHTML = '<div class="dot"></div><span class="cnt" style="display:none"></span>';
-      const mk = new maplibregl.Marker({element: el}).setLngLat([st.longitude, st.latitude]).addTo(map);
+      const mk = new maplibregl.Marker({element: el}).setLngLat(p).addTo(map);
       markers[key] = {marker: mk, el: el, count: 0};
     }
     markers[key].count += 1;
   }
-  let currentKey = null;
-  if (s.has_coords) currentKey = coordKey(s);
-  else for (let k = i; k >= 0; k--) if (STOPS[k].has_coords) { currentKey = coordKey(STOPS[k]); break; }
+  const curDest = destOf(s);
+  let currentKey = curDest ? destKey(curDest) : null;
+  if (!currentKey) for (let k = i; k >= 0; k--) { const p = destOf(STOPS[k]); if (p) { currentKey = destKey(p); break; } }
   Object.entries(markers).forEach(([key, m]) => {
     const c = m.el.querySelector('.cnt');
     if (m.count > 1) { c.style.display = 'block'; c.textContent = m.count; }
@@ -420,23 +485,19 @@ function rebuild(i, animate) {
   const trails = map.getSource('trails');
   if (trails) trails.setData(trailFeatures(i));
   const coords = routeCoordsUpTo(i);
-  if (coords.length >= 2 && s.has_coords && s.draw_segment_from_prev) {
-    setLine('route-current', coords.slice(-2));
-  } else {
-    setLine('route-current', []);
-  }
+  setLine('route-current', coords.length >= 2 ? coords.slice(-2) : []);
 
   renderCard(s);
   document.getElementById('counter').textContent = 'Show ' + (i+1) + ' of ' + N;
   document.getElementById('scrub').value = i;
 
-  if (s.has_coords && !cineCam) {
-    const pt = map.project([s.longitude, s.latitude]);
+  if (curDest && !cineCam) {
+    const pt = map.project(curDest);
     const cv = map.getContainer();
     const pad = 70, padLeft = cv.clientWidth >= 760 ? 360 : pad;
     if (pt.x < padLeft || pt.y < pad || pt.x > cv.clientWidth - pad || pt.y > cv.clientHeight - pad) {
-      RM ? map.jumpTo({center:[s.longitude, s.latitude]})
-         : map.easeTo({center:[s.longitude, s.latitude], duration:800});
+      RM ? map.jumpTo({center:curDest})
+         : map.easeTo({center:curDest, duration:800});
     }
   }
 }
@@ -462,57 +523,85 @@ function bearingBetween(a, b) {
   return Math.atan2(pb.x - pa.x, pa.y - pb.y) * 180 / Math.PI;
 }
 
-// Travel: never an instant jump — a vehicle crosses the map, airplane legs
-// leave a contrail, and the camera frames or follows the movement.
-async function travelAnim(a, b, mode, distMi, token) {
-  if (RM || !a || !b || !mode) return;
-  const bb = new maplibregl.LngLatBounds(); bb.extend(a); bb.extend(b);
-  const cam = map.cameraForBounds(bb, { padding: 110 });
-  await easeAsync({ center: cam.center, zoom: Math.min(cam.zoom, mode === 'airplane' ? 8.5 : 11.5),
-                    pitch: 0, bearing: 0, duration: 1000 / speed });
+// The artist stays visually present throughout: a monogram badge derived
+// from their own name (never a photo) rides on the vehicle.
+const BAND_INITIAL = (CONFIG.label_mode === 'artist')
+  ? (document.getElementById('jtitle').textContent.trim().charAt(0) || '')
+  : '';
+
+// Travel: never an instant jump. One camera fit covers the WHOLE transition
+// (every waypoint, home included) before the vehicle moves at all — one
+// simple, consistent move per transition, not one per leg.
+async function travelAnim(waypoints, mode, distMi, token) {
+  const pts = waypoints.filter(Boolean);
+  if (pts.length < 2) return;
+  if (RM) return;
+  const b = boundsOf(pts);
+  const cam = map.cameraForBounds(b, { padding: 120 });
+  await easeAsync({ center: cam.center, zoom: Math.min(cam.zoom, 9), pitch: 0, bearing: 0,
+                    duration: 1400 / speed });
   if (token !== currentToken()) return;
+
   const el = document.createElement('div');
   el.className = 'veh';
-  el.innerHTML = '<div class="veh-icon">' + (VEH_SVG[mode] || VEH_SVG.car) + '</div>';
-  vehMarker = new maplibregl.Marker({ element: el }).setLngLat(a).addTo(map);
+  el.innerHTML = '<div class="veh-icon">' + (VEH_SVG[mode] || VEH_SVG.car) + '</div>' +
+    (BAND_INITIAL ? '<div class="veh-badge">' + esc(BAND_INITIAL) + '</div>' : '');
+  vehMarker = new maplibregl.Marker({ element: el }).setLngLat(pts[0]).addTo(map);
   const icon = el.querySelector('.veh-icon');   // rotation on the inner element only
-  if (mode === 'airplane' || mode === 'ship') icon.style.transform = 'rotate(' + bearingBetween(a, b) + 'deg)';
-  const dur = Math.min(3600, 1000 + (distMi || 50) * (mode === 'walking' ? 60 : 4)) / speed;
-  const follow = (distMi || 0) > 600;
-  const trail = [];
-  await new Promise(res => {
-    const t0 = performance.now();
-    function frame(now) {
-      if (token !== currentToken()) { res(); return; }
-      const t = Math.min(1, (now - t0) / dur);
-      const e = t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2;   // ease-in-out
-      const pos = [a[0] + (b[0]-a[0])*e, a[1] + (b[1]-a[1])*e];
-      vehMarker.setLngLat(pos);
-      if (mode === 'airplane') { trail.push(pos); setLine('contrail', trail); }
-      if (follow) map.jumpTo({ center: pos });
-      if (t < 1) raf = requestAnimationFrame(frame); else res();
-    }
-    raf = requestAnimationFrame(frame);
-  });
+
+  for (let leg = 0; leg < pts.length - 1; leg++) {
+    if (token !== currentToken()) break;
+    const a = pts[leg], b2 = pts[leg + 1];
+    if (sameCoord(a, b2)) continue;
+    if (mode === 'airplane' || mode === 'ship') icon.style.transform = 'rotate(' + bearingBetween(a, b2) + 'deg)';
+    const legMiles = (distMi || 60) / Math.max(1, pts.length - 1);
+    const dur = Math.min(5000, 1800 + legMiles * (mode === 'walking' ? 70 : 5)) / speed;
+    const trail = [];
+    await new Promise(res => {
+      const t0 = performance.now();
+      function frame(now) {
+        if (token !== currentToken()) { res(); return; }
+        const t = Math.min(1, (now - t0) / dur);
+        const e = t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2;   // ease-in-out
+        const pos = [a[0] + (b2[0]-a[0])*e, a[1] + (b2[1]-a[1])*e];
+        vehMarker.setLngLat(pos);
+        if (mode === 'airplane') { trail.push(pos); setLine('contrail', trail); }
+        if (t < 1) raf = requestAnimationFrame(frame); else res();
+      }
+      raf = requestAnimationFrame(frame);
+    });
+    setLine('contrail', []);
+    // A still beat at home mid-transition — leaving, then returning, is a
+    // felt pause, not just a bent line.
+    if (leg < pts.length - 2) await sleep(650 / speed);
+  }
   if (vehMarker) { vehMarker.remove(); vehMarker = null; }
-  setLine('contrail', []);
 }
 
-// Arrival: ease toward the venue (street labels appear with the zoom), the
-// marker warms to a glow, an optional small crowd gathers, and the camera
-// drifts in a slow orbit while the ticket holds.
-const CATEGORY_ZOOM = { club:16.2, theater:15.8, stadium:15.1, amphitheater:14.7, festival_grounds:14.5 };
+// Arrival: ease to the venue — one consistent, simplified frame (no
+// per-venue-category zoom) — the marker warms to a glow, the venue names
+// itself on the map, an optional small crowd gathers, then a still hold
+// (no orbit) while the moment settles.
 const CROWD_SIZE = { solo:1, couple:2, friends:5, family:4, festival:16 };
 async function arrivalAnim(s, token) {
-  const hasVenue = s.venue_latitude !== null && s.venue_longitude !== null;
-  const tgt = hasVenue ? [s.venue_longitude, s.venue_latitude] : [s.longitude, s.latitude];
-  const zoom = STREET_OK ? (hasVenue ? (CATEGORY_ZOOM[s.venue_category] || 15.5) : 13.5)
-                         : (hasVenue ? 13.5 : 12.5);
-  const pitch = (STREET_OK && !RM) ? (hasVenue ? 55 : 42) : 0;
-  await easeAsync({ center: tgt, zoom: zoom, pitch: pitch, duration: 1700 / speed });
+  const dest = destOf(s);
+  if (!dest) return;
+  const precise = STREET_OK && s.dest_precise;
+  const zoom = precise ? 15.6 : (STREET_OK ? 13.6 : 12.6);
+  const pitch = (STREET_OK && !RM) ? (precise ? 52 : 30) : 0;
+  await easeAsync({ center: dest, zoom: zoom, pitch: pitch, duration: 2200 / speed });
   if (token !== currentToken()) return;
-  const key = s.has_coords ? coordKey(s) : null;
-  if (key && markers[key]) markers[key].el.classList.add('arrived');
+  const key = destKey(dest);
+  if (markers[key]) markers[key].el.classList.add('arrived');
+
+  if (!RM) {
+    const fel = document.createElement('div');
+    fel.className = 'flourish';
+    fel.textContent = s.venue_name;
+    flourishMarker = new maplibregl.Marker({ element: fel }).setLngLat(dest).addTo(map);
+    requestAnimationFrame(() => requestAnimationFrame(() => fel.classList.add('in')));
+  }
+
   const k = CROWD_SIZE[s.attendance_type];
   if (k && !RM) {
     const el = document.createElement('div');
@@ -525,14 +614,20 @@ async function arrivalAnim(s, token) {
       d.dataset.tx = 'translate(' + (Math.cos(ang)*r1) + 'px,' + (Math.sin(ang)*r1) + 'px)';
       el.appendChild(d);
     }
-    crowdMarker = new maplibregl.Marker({ element: el }).setLngLat(tgt).addTo(map);
+    crowdMarker = new maplibregl.Marker({ element: el }).setLngLat(dest).addTo(map);
     requestAnimationFrame(() => el.querySelectorAll('.crowd-dot').forEach(d => {
       d.style.opacity = '0.85'; d.style.transform = d.dataset.tx;   // inner elements only
     }));
   }
-  if (!RM) await easeAsync({ bearing: map.getBearing() + 16, duration: 1900 / speed,
-                             easing: t => t });
-  else await sleep(600);
+
+  // A still hold — remembered, not processed. No orbit.
+  await sleep((RM ? 900 : 2600) / speed);
+
+  if (flourishMarker) {
+    const fm = flourishMarker; flourishMarker = null;
+    fm.getElement().classList.remove('in');
+    setTimeout(() => fm.remove(), 1100);
+  }
   if (crowdMarker) {
     const cm = crowdMarker; crowdMarker = null;
     cm.getElement().querySelectorAll('.crowd-dot').forEach(d => d.style.opacity = '0');
@@ -540,32 +635,56 @@ async function arrivalAnim(s, token) {
   }
 }
 
-function lastCoordsBefore(i) {
-  for (let k = i; k >= 0; k--) if (STOPS[k].has_coords) return [STOPS[k].longitude, STOPS[k].latitude];
+function lastDestBefore(i) {
+  for (let k = i; k >= 0; k--) { const p = destOf(STOPS[k]); if (p) return p; }
   return null;
 }
 
+// Every trip leaves home and returns home. Stop 0 departs from its home
+// (if configured); every later stop bends dest(i-1) -> home(i) -> dest(i).
+// Without home data the path is just dest-to-dest, unchanged from before.
+function transitionWaypoints(i) {
+  const s = STOPS[i];
+  const to = destOf(s);
+  if (i === 0) return [homeOf(s), to].filter(Boolean);
+  const from = lastDestBefore(i - 1);
+  const home = homeOf(s);
+  return [from, home, to].filter(Boolean);
+}
+
 // The play loop: travel → arrive → hold, one stop at a time, chained (no
-// fixed interval — each leg takes the time its journey needs).
+// fixed interval — each transition takes the time its journey needs).
 async function runPlay(token) {
   while (playing && token === currentToken() && idx < N - 1) {
     const j = idx + 1, s = STOPS[j];
-    const from = lastCoordsBefore(idx);
-    const to = s.has_coords ? [s.longitude, s.latitude] : null;
+    const waypoints = transitionWaypoints(j);
     cineCam = true;
-    if (from && to && (from[0] !== to[0] || from[1] !== to[1])) {
-      await travelAnim(from, to, s.travel_mode, s.travel_miles, token);
+    if (waypoints.length >= 2) {
+      await travelAnim(waypoints, s.travel_mode || 'car', s.travel_miles, token);
     }
     if (!playing || token !== currentToken()) break;
     show(j, false);
-    if (to) await arrivalAnim(s, token); else await sleep(1500 / speed);
+    if (destOf(s)) await arrivalAnim(s, token); else await sleep(2000 / speed);
     cineCam = false;
   }
   cineCam = false;
-  if (playing && token === currentToken() && idx >= N - 1) finishJourney();
+  if (playing && token === currentToken() && idx >= N - 1) await finishJourney();
 }
 
-function finishJourney() { pause(); fitAll(true); }
+async function finishJourney() {
+  // Closing beat: ease back home one last time before the summary view —
+  // "where it stands today" starts back where the story started.
+  const token = currentToken();
+  const last = STOPS[N - 1];
+  const home = homeOf(last), dest = destOf(last);
+  pause();
+  if (home && dest && !sameCoord(home, dest) && !RM) {
+    cineCam = true;
+    await travelAnim([dest, home], last.travel_mode || 'car', last.travel_miles, token);
+    cineCam = false;
+  }
+  fitAll(true);
+}
 
 const playBtn = document.getElementById('play');
 function play() {
@@ -581,6 +700,8 @@ function pause() {
   cineCam = false;
   if (raf) { cancelAnimationFrame(raf); raf = null; }
   if (vehMarker) { vehMarker.remove(); vehMarker = null; }
+  if (flourishMarker) { flourishMarker.remove(); flourishMarker = null; }
+  if (crowdMarker) { crowdMarker.remove(); crowdMarker = null; }
   setLine('contrail', []);
 }
 function toggle() { playing ? pause() : play(); }
@@ -621,8 +742,8 @@ function addOverlays() {
       paint:{ 'line-color':'#cfd6d2', 'line-width':1.3, 'line-opacity':0.4, 'line-dasharray':[1,2] } });
   }
 }
-map.on('style.load', () => { addOverlays(); rebuild(idx, false); });
-map.on('load', () => { addOverlays(); fitAll(false); show(0, false); });
+map.on('style.load', () => { addOverlays(); addHomeMarkers(); rebuild(idx, false); });
+map.on('load', () => { addOverlays(); addHomeMarkers(); fitAll(false); show(0, false); });
 window.addEventListener('resize', () => { if (!playing && idx === 0) fitAll(false); });
 """
 
@@ -666,7 +787,7 @@ def render_journey_player(stops: list[dict], title: str, subtitle: str,
   </div>
   <input id="scrub" type="range" min="0" max="{max(n - 1, 0)}" value="0" step="1"
          aria-label="Journey timeline scrubber">
-  <div id="route-note">{ROUTE_SENTENCE} Press play to travel it — flights, drives, and arrivals in order; the completed path stays visible like a travel diary.</div>
+  <div id="route-note">{ROUTE_SENTENCE} Press play to travel it — leaving home, arriving, and returning, in order; the completed path stays visible like a travel diary.</div>
 </div>
 <script>{js}</script>
 <script>const STOPS = {data}; const CONFIG = {config};

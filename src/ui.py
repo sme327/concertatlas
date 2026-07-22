@@ -173,6 +173,23 @@ def inject_css() -> None:
       .event-title { font-weight:750; font-size:1.02rem; }
       .event-bill { color:var(--muted); font-size:.88rem; }
 
+      /* Artist browser — a browsable chip grid, not a developer-style dropdown. */
+      [class*="st-key-artist_browser"] input {
+        background:#161d21; border:1px solid var(--line); color:var(--paper);
+      }
+      [class*="st-key-artist_browser"] [data-testid="stButton"] button {
+        white-space:pre-line; line-height:1.25; text-align:left; font-size:.82rem;
+        padding:.55rem .65rem; border-radius:2px; border:1px solid var(--line);
+        background:#161d21; color:var(--paper); min-height:3.4rem;
+      }
+      [class*="st-key-artist_browser"] [data-testid="stButton"] button p { font-size:.82rem; }
+      [class*="st-key-artist_browser"] [data-testid="stButton"] button:hover {
+        border-color:var(--amber); color:var(--amber);
+      }
+      [class*="st-key-artist_browser"] [data-testid="stButton"] button[kind="primary"] {
+        background:var(--amber); border-color:var(--amber); color:var(--ink); font-weight:700;
+      }
+
       @media (max-width: 900px) {
         .ticket, .ticket.torn { max-width:100%; }
         .jt-yr { display:none; }

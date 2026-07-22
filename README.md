@@ -66,6 +66,23 @@ Restart · 1×/2×/4× speed · timeline scrubber (all keyboard accessible;
 
 > The route is **your sequence of attendance**, never the artist's tour.
 
+**Venues are the destination, not cities.** Every marker, the accumulated
+route, and the vehicle's target use the validated venue coordinate when one
+resolves, falling back to the trusted city point otherwise
+(`journey_sequence`'s `dest_latitude`/`dest_longitude`). Arrival names the
+venue directly on the map (not only on the ticket) and settles into a still
+hold — no orbiting camera — while it sinks in.
+
+**Every trip leaves home and returns home.** When `data/home_residences.csv`
+is filled in (`start_date,city,state_region,note` — one row per era, blank
+`start_date` on the first row means "since before the data began"), each
+transition bends through that show's home point: previous venue → home →
+next venue, with a brief still beat at home. The first stop departs from
+home; finishing the journey eases back home once more to close the loop.
+Home markers are a stable, unpulsing anchor, distinct from the venue dots
+that accumulate and grow with visits. Without a residence file, travel is
+just a direct venue-to-venue path, unchanged from before.
+
 The completed path stays visible like a travel diary: earlier segments fade to
 ~38% opacity, the active segment draws brighter, and when playback ends the
 map remains a summary of the whole relationship. Markers encode **concert
@@ -73,7 +90,15 @@ gravity** — near-constant size with color intensity (pale amber → deep
 orange) and glow scaled to how often a place appears in the selected dataset;
 the same encoding is used on the interactive Plotly maps. The detail card
 surfaces data-derived milestones ("First Seattle show", "12th time in
-Chicago", "First time at Metro").
+Chicago", "First time at Metro"). The artist stays visually present
+throughout travel via a monogram badge on the vehicle, derived from their own
+displayed name — never a scraped or fabricated photo.
+
+The camera is deliberately simple: one bounds-fit per transition (not one per
+leg, regardless of how many waypoints it has), and exactly two framing
+states — a calm, flat, wide frame for home and travel, and one tilted,
+closer frame that celebrates the arriving venue. There's no per-venue-type
+zoom table and no special-cased camera-follow for long flights.
 
 - **MapLibre GL JS is vendored locally** (`assets/vendor/`) and inlined into
   the component — the player code works offline; the vector basemap tiles
@@ -114,10 +139,12 @@ src/
   analytics.py             Aggregations, streaks, gaps, co-appearances
   repository.py            SQLite → pandas frames
   formatting.py            Dates, spans, derived sentences
+  journey_meta.py          Travel-mode/season/venue-category inference, home residences
   ui.py                    CSS system, event cards, constellation, strips
   components/
     map_view.py            Plotly MapLibre city/venue maps + click handling
     journey.py             Client-side journey player (vendored MapLibre)
+    artist_browser.py       Searchable chip-grid artist picker (Follow an Artist)
     time_controls.py       ALL TIME | TIMELINE (single year drags into range)
     venue_panel.py         Venue drawer with artist constellation
     event_cards.py         Ticket list + Still Ahead / From the Archive sections
@@ -135,6 +162,22 @@ tests/                     Analytics, filters, database invariants, boot checks
 - Lineup columns are ordered billed names; nothing is inferred about
   opener/headliner/collaboration.
 - Upcoming status is recomputed from today's date on every load.
+
+## Optional personal-history files
+
+Two CSVs in `data/` are entirely optional and never fabricated when absent
+or incomplete — the app just falls back to simpler behavior:
+
+- **`data/home_residences.csv`** — `start_date,city,state_region,note`, one
+  row per place you lived, sorted by date; a blank `start_date` on the first
+  row means "since before the data began." Powers the journey player's
+  leaving-home/returning-home routing. City/state must already resolve in
+  the `cities` table (city-level precision only — no street addresses are
+  used or needed).
+- **`data/attendance_types.csv`** — `event_id,attendance_type` (one of
+  `solo`, `couple`, `friends`, `family`, `festival`). Drives the optional
+  small crowd that gathers at arrival in the journey player. Unknown values
+  are ignored, never guessed.
 
 ## Known limitations
 

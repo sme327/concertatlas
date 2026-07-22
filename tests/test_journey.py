@@ -112,3 +112,55 @@ def test_attendance_types_attached_only_when_supplied():
     stops = journey_sequence(make_events(), make_artist_events(), attendance_types={1: "friends"})
     assert stops[0]["attendance_type"] == "friends"
     assert stops[1]["attendance_type"] is None
+
+
+def test_dest_prefers_validated_venue_over_city():
+    stops = journey_sequence(make_events(), make_artist_events())
+    # Metro's venue coords are validated (within range of Chicago) -> venue is the destination.
+    assert stops[0]["dest_precise"] is True
+    assert (stops[0]["dest_latitude"], stops[0]["dest_longitude"]) == (41.95, -87.65)
+
+
+def test_dest_falls_back_to_city_when_venue_unvalidated():
+    events = make_events()
+    events.loc[events.event_id == 1, ["venue_latitude", "venue_longitude"]] = [45.0, -93.0]
+    stops = journey_sequence(events, make_artist_events())
+    assert stops[0]["dest_precise"] is False
+    assert (stops[0]["dest_latitude"], stops[0]["dest_longitude"]) == (41.9, -87.6)
+
+
+def test_dest_none_when_city_unresolved():
+    stops = journey_sequence(make_events(), make_artist_events())
+    seattle = [s for s in stops if s["city_name"] == "Seattle"]
+    assert all(s["dest_latitude"] is None and s["dest_precise"] is False for s in seattle)
+
+
+def test_home_fields_none_without_residence_data():
+    stops = journey_sequence(make_events(), make_artist_events())
+    assert all(s["home_city"] is None and s["home_latitude"] is None for s in stops)
+
+
+def test_home_fields_resolved_when_residences_and_coords_supplied():
+    import pandas as pd
+    residences = pd.DataFrame({
+        "start_date": [pd.NaT, pd.Timestamp("2005-08-01")],
+        "city": ["Chicago", "Seattle"],
+        "state_region": ["Illinois", "Washington"],
+    })
+    city_coords = {("Chicago", "Illinois"): (41.8756, -87.6244), ("Seattle", "Washington"): (47.6038, -122.3301)}
+    stops = journey_sequence(make_events(), make_artist_events(),
+                             home_residences=residences, city_coords=city_coords)
+    # Events 1,2 (1999, 2005-07) predate the Aug 2005 move -> Chicago home.
+    assert stops[0]["home_city"] == "Chicago" and stops[0]["home_latitude"] == 41.8756
+    assert stops[1]["home_city"] == "Chicago"
+    # Events 3,4 (2005-09, 2026) are after the move -> Seattle home.
+    assert stops[2]["home_city"] == "Seattle" and stops[2]["home_latitude"] == 47.6038
+    assert stops[3]["home_city"] == "Seattle"
+
+
+def test_home_fields_none_when_city_not_in_coords_table():
+    import pandas as pd
+    residences = pd.DataFrame({"start_date": [pd.NaT], "city": ["Nowhereville"], "state_region": ["Illinois"]})
+    stops = journey_sequence(make_events(), make_artist_events(),
+                             home_residences=residences, city_coords={})
+    assert all(s["home_city"] is None for s in stops)  # never guessed a coordinate
